@@ -1,0 +1,39 @@
+---
+title: "Basic Statistical Tests"
+author: "Nat Condit-Schultz"
+format: revealjs
+---
+
+
+Here is some data simulating a simple linear regression:
+
+
+```{r linear_regression}
+N <- 100
+sigma <- 2
+alpha <- 3.2
+beta <- 1.2
+
+
+X <- rnorm(N)
+Y <- alpha + X * beta + rnorm(N, sd = sigma)
+
+plot(Y ~ X)
+
+```
+
+---
+
+Here is how we could do a hypothesis test, testing the null hypothesis $H_0: \beta = 0$.
+
+
+```{r lmtest}
+
+lm(Y~X) |> summary()
+
+```
+
+
+
+Calculated based on the $t$ distribution,  `Pr(>|t|)` value for the `X` coefficient is less than $0.05$.
+This test assumes...

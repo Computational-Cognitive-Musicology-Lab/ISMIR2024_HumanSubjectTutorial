@@ -5,8 +5,8 @@
 
 Presented by:
 
-+ [Claire Arthur](claire.arthur@gatech.edu) --- Georgia Institute of Technoloy
-+ [Nat Condit-Schultz](natcs@gatech.edu) --- Georgia Institute of Technoloy
++ [Claire Arthur](claire.arthur@gatech.edu) --- Georgia Institute of Technology
++ [Nat Condit-Schultz](natcs@gatech.edu) --- Georgia Institute of Technology
 + [David R. W. Sears](david.sears@ttu.edu) --- Texas Tech University
 + [John Ashley Burgoyne](j.a.burgoyne@uva.nl) --- University of Amsterdam
 + [Joshua Albrecht](joshua-albrecht@uiowa.edu) --- The University of Iowa
