@@ -1,0 +1,362 @@
+Nro,Emotion,Album name,Track,Min:Sec
+001,Happy,Shallow Grave,6,02:02-02:17
+002,Happy,The Rainmaker,2,01:54-02:07
+003,Happy,The Rainmaker,3,02:55-03:13
+004,Happy,Man of Galilee CD1,2,03:02-03:18
+005,Happy,Shakespeare in Love,1,01:06-01:22
+006,Happy,The Rainmaker,5,03:07-03:23
+007,Happy,Man of Galilee CD1,11,00:00-00:18
+008,Happy,Nostradamus,1,00:00-00:16
+009,Happy,Band of Brothers,3,01:19-01:36
+010,Happy,The Untouchables,6,01:50-02:05
+011,Happy,Shine,5,02:00-02:16
+012,Happy,Shine,13,00:00-00:20
+013,Happy,Shallow Grave,3,01:45-02:00
+014,Happy,Shine,5,00:36-00:53
+015,Happy,Big Fish,21,00:00-00:15
+016,Happy,Big Fish,8,00:12-00:34
+017,Happy,Shakespeare in Love,17,00:03-00:23
+018,Happy,Shine,15,01:00-01:19
+019,Happy,Big Fish,13,01:02-01:17
+020,Happy,Vertigo OST,6,04:42-04:57
+021,Happy,Gladiator,17,00:14-00:27
+022,Happy,Shakespeare in Love,21,00:03-00:21
+023,Happy,Big Fish,8,00:35-00:55
+024,Happy,The Four Feathers,7,05:40-05:55
+025,Happy,Big Fish,12,00:55-01:10
+026,Happy,The English Patient,7,00:33-00:58
+027,Happy,Shallow Grave,8,00:00-00:15
+028,Happy,The English Patient,3,00:28-00:45
+029,Happy,Vertigo OST,6,02:02-02:17
+030,Happy,The English Patient,7,00:00-00:31
+031,Sad,The Four Feathers,10,01:15-01:34
+032,Sad,The English Patient,18,00:07-00:32
+033,Sad,The English Patient,10,00:24-00:52
+034,Sad,Band of Brothers,12,01:09-01:26
+035,Sad,Nostradamus,20,01:35-01:52
+036,Sad,Running Scared,15,02:06-02:27
+037,Sad,Road to Perdition,16,00:17-00:32
+038,Sad,Psycho,3,00:58-01:24
+039,Sad,Big Fish,15,00:55-01:11
+040,Sad,Man of Galilee CD1,8,01:20-01:37
+041,Sad,Big Fish,22,00:00-00:20
+042,Sad,The Untouchables,4,00:40-00:55
+043,Sad,Band of Brothers,15,00:35-00:56
+044,Sad,Gladiator,7,02:15-02:38
+045,Sad,Gladiator,4,00:48-01:06
+046,Sad,Gladiator,14,01:38-02:02
+047,Sad,Big Fish,15,00:02-00:17
+048,Sad,Road to Perdition,13,00:47-01:02
+049,Sad,Running Scared,19,03:11-03:25
+050,Sad,Road to Perdition,22,00:00-00:13
+051,Sad,The Rainmaker,11,00:37-00:57
+052,Sad,Band of Brothers,3,07:43-07:58
+053,Sad,The Missing,2,02:31-02:48
+054,Sad,Shakespeare in Love,3,00:59-01:17
+055,Sad,Shine,18,00:43-01:07
+056,Sad,Mississippi Burning,3,00:25-:40
+057,Sad,Road to Perdition,8,00:38-00:53
+058,Sad,Big Fish,11,01:26-01:40
+059,Sad,Road to Perdition,1,00:35-00:50
+060,Sad,Shine,28,01:24-01:43
+061,Tender,Big Fish,17,00:00-00:15
+062,Tender,Shine,10,01:28-01:48
+063,Tender,Running Scared,2,00:00-00:25
+064,Tender,Shakespeare in Love,2,00:00-00:15
+065,Tender,Road to Perdition,26,00:24-00:39
+066,Tender,The Missing,3,00:24-00:49
+067,Tender,Band of Brothers,3,06:58-07:18
+068,Tender,Road to Perdition,13,00:14-00:29
+069,Tender,The Four Feathers,12,00:50-01:02
+070,Tender,Naked Lunch,11,00:00-00:19
+071,Tender,Big Fish,18,00:00-00:13
+072,Tender,The Rainmaker,4,02:57-03:10
+073,Tender,Man of Galilee CD1,7,02:28-02:53
+074,Tender,The Untouchables,9,00:04-00:23
+075,Tender,Nostradamus,14,00:54-01:17
+076,Tender,The Rainmaker,8,02:13-02:33
+077,Tender,Man of Galilee CD1,3,00:55-01:32
+078,Tender,Man of Galilee CD1,4,00:00-00:22
+079,Tender,Nostradamus,2,01:09-01:28
+080,Tender,Nostradamus,7,00:37-00:52
+081,Tender,Road to Perdition,26,00:59-01:14
+082,Tender,Road to Perdition,26,02:47-03:02
+083,Tender,Big Fish,17,01:24-01:39
+084,Tender,Big Fish,14,00:14-00:30
+085,Tender,Gladiator,4,01:58-02:14
+086,Tender,Shine,15,00:45-01:00
+087,Tender,The English Patient,2,01:03-01:2
+088,Tender,Big Fish,12,00:03-00:20
+089,Tender,Naked Lunch,6,00:00-00:16
+090,Tender,Road to Perdition,9,01:34-01:48
+091,Fear,Running Scared,4,02:49-03:05
+092,Fear,Psycho,1,00:00-00:22
+093,Fear,Nostradamus,1,01:28-01:45
+094,Fear,The Untouchables,10,00:54-01:10
+095,Fear,Running Scared,8,00:20-00:35
+096,Fear,Cape Fear,5,01:30-01:48
+097,Fear,Mississippi Burning,8,00:45-01:00
+098,Fear,Road to Perdition,6,00:34-00:49
+099,Fear,Dracula,5,02:12-02:28
+100,Fear,Psycho,10,00:47-01:08
+101,Fear,Shallow Grave,7,00:00-00:15
+102,Fear,Gladiator,7,03:00-03:17
+103,Fear,The Untouchables,5,02:05-02:20
+104,Fear,The Alien Trilogy,11,02:12-02:27
+105,Fear,Road to Perdition,12,00:20-00:35
+106,Fear,Road to Perdition,17,00:02-00:17
+107,Fear,Dracula,2,00:24-00:41
+108,Fear,Cape Fear,5,01:05-01:20
+109,Fear,Mississippi Burning,2,00:55-01:10
+110,Fear,Gladiator,9,02:15-02:36
+111,Fear,Cape Fear,1,00:26-00:35
+112,Fear,Psycho,9,00:35-00:55
+113,Fear,The Untouchables,8,01:38-01:53
+114,Fear,Man of Galilee CD1,6,00:40-01:07
+115,Fear,The Missing,3,02:45-03:06
+116,Fear,Gladiator,9,00:35-00:51
+117,Fear,Shakespeare in Love,11,00:21-00:36
+118,Fear,Band of Brothers,4,00:24-00:44
+119,Fear,Band of Brothers,15,02:14-02:27
+120,Fear,Nostradamus,15,02:48-03:05
+121,Anger,Cape Fear,13,01:02-01:20
+122,Anger,Gladiator,13,01:18-01:26
+123,Anger,Gladiator,3,04:55-05:17
+124,Anger,The Rainmaker,7,01:45-02:00
+125,Anger,The Alien Trilogy,9,00:03-00:18
+126,Anger,The Alien Trilogy,9,01:14-01:29
+127,Anger,Gladiator,3,02:25-02:46
+128,Anger,The Four Feathers,9,02:42-02:57
+129,Anger,The Missing,3,03:24-03:42
+130,Anger,Road to Perdition,25,01:12-01:27
+131,Anger,Shine,9,00:48-01:04
+132,Anger,Psycho,17,00:27-00:45
+133,Anger,Cape Fear,13,00:02-00:20
+134,Anger,Shakespeare in Love,15,00:40-00:56
+135,Anger,Nostradamus,6,01:32-01:47
+136,Anger,The Missing,12,00:28-00:46
+137,Anger,Running Scared,15,03:20-03:33
+138,Anger,Cape Fear,12,00:02-00:20
+139,Anger,The Alien Trilogy,6,00:00-00:15
+140,Anger,Running Scared,16,03:30-03:45
+141,Anger,Cape Fear,6,01:02-01:20
+142,Anger,The Missing,12,00:00-00:24
+143,Anger,Naked Lunch,16,00:55-01:12
+144,Anger,Cape Fear,6,00:00-00:20
+145,Anger,Shakespeare in Love,11,00:45-00:59
+146,Anger,The Missing,10,04:44-05:01
+147,Anger,The Rainmaker,6,05:24-05:42
+148,Anger,Road to Perdition,25,00:13-00:27
+149,Anger,Band of Brothers,18,00:40-01:00
+150,Anger,Shakespeare in Love,9,00:00-00:22
+151,Surprise,The Rainmaker,5,00:00-00:16
+152,Surprise,The Rainmaker,9,01:36-01:46
+153,Surprise,Naked Lunch,14,01:02-01:17
+154,Surprise,Naked Lunch,18,00:14-00:30
+155,Surprise,The Rainmaker,4,04:31-04:43
+156,Surprise,Shallow Grave,4,01:04-01:19
+157,Surprise,The Alien Trilogy,5,00:26-00:41
+158,Surprise,Naked Lunch,8,04:00-04:16
+159,Surprise,Road to Perdition,20,00:25-00:40
+160,Surprise,Man of Galilee CD1,2,00:19-00:42
+161,Surprise,Band of Brothers,6,00:00-00:20
+162,Surprise,Man of Galilee CD1,2,03:45-04:02
+163,Surprise,Naked Lunch,7,01:01-01:20
+164,Surprise,Naked Lunch,17,00:00-00:19
+165,Surprise,Cape Fear,14,00:02-00:20
+166,Surprise,Cape Fear,15,02:32-02:50
+167,Surprise,Road to Perdition,14,00:00-00:15
+168,Surprise,Cape Fear,1,02:15-02:30
+169,Surprise,The Missing,12,02:35-02:55
+170,Surprise,The English Patient,8,01:35-01:57
+171,Surprise,Band of Brothers,2,00:34-00:57
+172,Surprise,Road to Perdition,14,01:15-01:30
+173,Surprise,Running Scared,6,02:53-03:07
+174,Surprise,The English Patient,8,00:38-00:57
+175,Surprise,Nostradamus,18,01:59-02:15
+176,Surprise,Running Scared,22,01:28-01:43
+177,Surprise,Cape Fear,2,01:25-01:40
+178,Surprise,Big Fish,15,00:15-00:30
+179,Surprise,Band of Brothers,12,02:31-02:48
+180,Surprise,Shakespeare in Love,6,00:00-00:19
+181,High Val.,Batman,9,02:03-02:25
+182,High Val.,Dances with Wolves,2,00:49-01:03
+183,High Val.,The Fifth Element,24,01:39-02:03
+184,High Val.,The Ocellus Suite,4,01:19-01:39
+185,High Val.,Mother of Mine,1,01:31-01:49
+186,High Val.,The Portrait of a Lady,7,00:00-00:16
+187,High Val.,Juha,10,00:20-00:38
+188,High Val.,Dances with Wolves,10,00:28-00:46
+189,High Val.,Blanc,12,00:51-01:06
+190,High Val.,Pride and Prejudice,9,00:01-00:21
+191,High Val.,The Godfather,5,01:12-01:28
+192,High Val.,Oliver Twist,1,00:17-00:34
+193,High Val.,JFK,1,02:31-02:49
+194,High Val.,The Portrait of a Lady,12,00:18-00:35
+195,High Val.,Juha,7,00:03-00:15
+196,High Val.,Dracula,11,03:27-03:42
+197,High Val.,Mother of Mine,4,00:11-00:25
+198,High Val.,The Omen ,2,00:16-00:33
+199,High Val.,Juha,10,01:35-01:53
+200,High Val.,Crouching Tiger Hidden Dragon,2,01:40-01:57
+201,High Val.,Dances with Wolves,4,01:21-01:31
+202,High Val.,Juha,1,00:42-00:59
+203,High Val.,Grizzly Man,19,01:04-01:24
+204,High Val.,Outbreak,6,00:16-00:31
+205,High Val.,Oliver Twist,4,01:10-01:30
+206,High Val.,Batman,20,01:09-01:33
+207,High Val.,Juha,7,00:17-00:36
+208,High Val.,Blanc,9,00:17-00:35
+209,High Val.,Crouching Tiger Hidden Dragon,13,00:35-00:49
+210,High Val.,Crouching Tiger Hidden Dragon,13,01:52-02:10
+211,Low Val.,Last samurai,2,02:20-02:40
+212,Low Val.,Batman Returns,5,00:54-01:10
+213,Low Val.,Batman,4,02:11-02:31
+214,Low Val.,Grizzly Man,15,00:57-01:15
+215,Low Val.,Grizzly Man,16,01:05-01:32
+216,Low Val.,JFK,9,02:07-02:21
+217,Low Val.,Lethal weapon 3,8,01:25-01:41
+218,Low Val.,Hellraiser,5,00:00-00:15
+219,Low Val.,Batman Returns,5,00:09-00:25
+220,Low Val.,The Fifth Element,20,00:16-00:37
+221,Low Val.,Hellraiser,9,00:30-00:44
+222,Low Val.,The Fifth Element,2,02:23-02:38
+223,Low Val.,Babylon 5,9,01:08-01:24
+224,Low Val.,Outbreak,7,00:05-00:21
+225,Low Val.,Batman,8,00:34-00:58
+226,Low Val.,Dracula,1,05:30-05:45
+227,Low Val.,Lethal weapon 3,8,04:15-04:29
+228,Low Val.,The Ocellus Suite,3,00:00-00:17
+229,Low Val.,Outbreak,12,00:00-00:15
+230,Low Val.,Babylon 5,3,02:47-03:00
+231,Low Val.,Batman Returns,4,00:19-00:35
+232,Low Val.,Batman Returns,6,02:06-02:21
+233,Low Val.,Juha,3,00:39-00:55
+234,Low Val.,Oliver Twist,15,02:05-02:25
+235,Low Val.,The Godfather,9,00:35-00:48
+236,Low Val.,Lethal weapon 3,5,00:20-00:40
+237,Low Val.,The Fifth Element,9,00:00-00:18
+238,Low Val.,Crouching Tiger Hidden Dragon,7,03:37-03:56
+239,Low Val.,The Fifth Element,19,00:00-00:20
+240,Low Val.,Dracula,5,00:11-00:27
+241,High Ener.,The Godfather,11,00:49-01:06
+242,High Ener.,Grizzly Man,3,01:01-01:18
+243,High Ener.,Batman Returns,9,00:51-01:04
+244,High Ener.,The Portrait of a Lady,8,00:37-00:56
+245,High Ener.,Batman Returns,8,00:03-00:17
+246,High Ener.,Oliver Twist,8,01:40-02:04
+247,High Ener.,Juha,13,01:05-01:20
+248,High Ener.,Mother of Mine,13,00:11-00:26
+249,High Ener.,Outbreak,2,00:22-00:37
+250,High Ener.,Batman,18,00:55-01:15
+251,High Ener.,The Fifth Element,15,00:08-00:22
+252,High Ener.,Crouching Tiger Hidden Dragon,6,00:38-00:51
+253,High Ener.,Crouching Tiger Hidden Dragon,8,01:12-01:25
+254,High Ener.,Blanc,7,00:42-00:55
+255,High Ener.,JFK,3,01:56-02:12
+256,High Ener.,The Portait of a Lady,9,01:50-02:10
+257,High Ener.,Crouching Tiger Hidden Dragon,4,02:45-03:02
+258,High Ener.,The Ocellus Suite,5,03:47-04:00
+259,High Ener.,Blanc,21,00:04-00:17
+260,High Ener.,Batman,4,02:31-02:51
+261,High Ener.,Lethal weapon 3,4,01:40-02:00
+262,High Ener.,Oliver Twist,7,01:30-01:46
+263,High Ener.,Pride and Prejudice,4,00:10-00:29
+264,High Ener.,Dances with Wolves,10,01:33-01:51
+265,High Ener.,Juha,2,00:07-00:18
+266,High Ener.,JFK,8,01:26-01:40
+267,High Ener.,Outbreak,1,00:50-01:05
+268,High Ener.,Juha,5,00:29-00:43
+269,High Ener.,Juha,18,02:30-02:46
+270,High Ener.,The Omen,9,00:00-00:24
+271,Low Ener.,Pride and Prejudice,15,01:18-01:33
+272,Low Ener.,Pride and Prejudice,3,01:40-02:00
+273,Low Ener.,Batman Returns,12,00:57-01:14
+274,Low Ener.,Angel Heart,4,00:08-00:28
+275,Low Ener.,JFK,11,00:00-00:16
+276,Low Ener.,Dracula,7,00:00-00:12
+277,Low Ener.,Last samurai,1,00:05-00:29
+278,Low Ener.,Pride and Prejudice,13,01:02-01:20
+279,Low Ener.,Mother of Mine,16,01:55-02:10
+280,Low Ener.,Blanc,16,00:00-00:15
+281,Low Ener.,Dances with Wolves,11,00:47-01:03
+282,Low Ener.,Crouching Tiger Hidden Dragon,5,00:00-00:15
+283,Low Ener.,Blanc,10,00:13-00:31
+284,Low Ener.,The Portrait of a Lady,4,00:00-00:17
+285,Low Ener.,Juha,16,00:19-00:33
+286,Low Ener.,The Omen,8,00:33-00:51
+287,Low Ener.,Juha,19,01:35-01:52
+288,Low Ener.,The Portrait of a Lady,9,00:00-00:22
+289,Low Ener.,Outbreak,8,01:55-02:10
+290,Low Ener.,The Omen,4,01:02-01:16
+291,Low Ener.,The Fifth Element,18,00:05-00:22
+292,Low Ener.,Batman,9,00:00-00:19
+293,Low Ener.,Crouching Tiger Hidden Dragon,11,00:28-00:46
+294,Low Ener.,Juha,16,00:00-00:15
+295,Low Ener.,Blanc,18,00:00-00:16
+296,Low Ener.,Oliver Twist,2,00:00-00:29
+297,Low Ener.,Batman,5,01:08-01:22
+298,Low Ener.,Mother of Mine,1,00:00-00:15
+299,Low Ener.,Oliver Twist,8,00:14-00:30
+300,Low Ener.,Batman,9,01:31-01:38
+301,High Tens.,Last samurai,9,03:37-03:51
+302,High Tens.,The Omen,5,00:00-00:15
+303,High Tens.,Hellraiser,8,00:00-00:17
+304,High Tens.,Hellraiser,12,01:30-01:49
+305,High Tens.,JFK,2,00:33-00:48
+306,High Tens.,Hellraiser,10,02:44-03:00
+307,High Tens.,Oliver Twist,8,02:39-03:02
+308,High Tens.,JFK,2,01:34-01:49
+309,High Tens.,The Fifth Element,13,00:17-00:31
+310,High Tens.,Last samurai,9,02:30-02:50
+311,High Tens.,Oliver Twist,10,00:00-00:20
+312,High Tens.,Hannibal,6,00:40-00:55
+313,High Tens.,Hannibal,1,00:40-00:54
+314,High Tens.,Batman,1,00:47-01:04
+315,High Tens.,Outbreak,11,00:00-00:15
+316,High Tens.,Batman Returns,2,00:18-00:33
+317,High Tens.,Angel Heart,3,00:43-00:59
+318,High Tens.,The Fifth Element,23,00:04-00:23
+319,High Tens.,Crouching Tiger Hidden Dragon,3,00:00-00:15
+320,High Tens.,JFK,8,00:08-00:25
+321,High Tens.,The Fifth Element,17,00:00-00:19
+322,High Tens.,Pride and Prejudice,13,00:15-00:32
+323,High Tens.,Hannibal,9,08:22-08:38
+324,High Tens.,Dracula,6,01:46-02:03
+325,High Tens.,Lethal weapon 3,7,00:00-00:16
+326,High Tens.,The Omen,12,00:40-00:50
+327,High Tens.,Crouching Tiger Hidden Dragon,12,03:16-03:32
+328,High Tens.,Angel Heart,9,02:40-03:00
+329,High Tens.,Oliver Twist,6,00:51-01:07
+330,High Tens.,Oliver Twist,12,03:07-03:27
+331,Low Tens.,Pride and Prejudice,12,00:01-00:15
+332,Low Tens.,JFK,4,00:00-00:15
+333,Low Tens.,Lethal weapon 3,10,01:59-02:17
+334,Low Tens.,Dances with Wolves,4,01:31-01:48
+335,Low Tens.,Pride and Prejudice,1,00:10-00:26
+336,Low Tens.,Dances with Wolves,8,00:39-00:59
+337,Low Tens.,JFK,11,00:35-00:50
+338,Low Tens.,Lethal weapon 3,10,00:59-01:12
+339,Low Tens.,Dances with Wolves,12,01:08-01:21
+340,Low Tens.,The Portrait of a Lady,3,00:23-00:45
+341,Low Tens.,The Fifth Element,14,00:00-00:20
+342,Low Tens.,Blanc,18,00:48-01:05
+343,Low Tens.,Grizzly Man,1,00:00-00:27
+344,Low Tens.,Mother of Mine,16,00:26-00:41
+345,Low Tens.,Crouching Tiger Hidden Dragon,1,00:51-01:13
+346,Low Tens.,Oliver Twist,8,01:15-01:32
+347,Low Tens.,Crouching Tiger Hidden Dragon,5,00:15-00:30
+348,Low Tens.,Crouching Tiger Hidden Dragon,2,01:10-01:25
+349,Low Tens.,Juha,2,02:11-02:26
+350,Low Tens.,The Fifth Element,5,00:13-00:30
+351,Low Tens.,Crouching Tiger Hidden Dragon,1,00:00-00:15
+352,Low Tens.,The Fifth Element,16,00:18-00:38
+353,Low Tens.,The Fifth Element,12,00:00-00:17
+354,Low Tens.,Grizzly Man,2,00:00-03:50
+355,Low Tens.,JFK,16,05:07-05:24
+356,Low Tens.,Lethal weapon 3,7,03:54-04:13
+357,Low Tens.,Dracula,4,00:55-01:09
+358,Low Tens.,Angel Heart,8,00:39-00:55
+359,Low Tens.,Batman,18,02:46-03:02
+360,Low Tens.,Batman,9,00:57-01:16
+
