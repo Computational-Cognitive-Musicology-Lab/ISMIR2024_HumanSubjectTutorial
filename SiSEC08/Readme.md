@@ -1,3 +1,26 @@
+# SEBASS-DB
+
+In our workshop, we use the SiSEC08 dataset as an example dataset for illustrating various parts of experimental design and data analysis.
+The SiSEC08 dataset is just one part of the larger [SEBASS-DB dataset](https://www.audiolabs-erlangen.de/resources/2019-WASPAA-SEBASS#literatureBib).
+A paper about this dataset is:
+
+> T. Kastner and J. Herre, "The Sebass-DB: A Consolidated Public Data Base of Listening Test Results for Perceptual Evaluation of BSS Quality Measures," *2022 International Workshop on Acoustic Signal Enhancement* (IWAENC), Bamberg, Germany, 2022, pp. 1--5, doi: 10.1109/IWAENC53105.2022.9914724. 
+
+```
+@INPROCEEDINGS{9914724,
+  author={Kastner, Thorsten and Herre, Jürgen},
+  booktitle={2022 International Workshop on Acoustic Signal Enhancement (IWAENC)}, 
+  title={The Sebass-DB: A Consolidated Public Data Base of Listening Test Results for Perceptual Evaluation of BSS Quality Measures}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1-5},
+  keywords={Source separation;Databases;Conferences;Acoustic measurements;Acoustics;Calibration;Testing;audio source separation;listening tests;dataset},
+  doi={10.1109/IWAENC53105.2022.9914724}}
+```
+
+A pdf of the paper is included in this repo: `The_Sebass-DB_A_Consolidated_Public_Data_Base_of_Listening_Test_Results_for_Perceptual_Evaluation_of_BSS_Quality_Measures.pdf`
+
 ## SiSEC08 Dataset 
 
 The *SiSEC08* dataset is part of the *SEBASS-DB*, a collection of subjective ratings on the perceived quality of separated audio soure signals. It contains the results on listening tests on assessing the *Basic Audio Quality* of such signals.
