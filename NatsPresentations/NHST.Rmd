@@ -9,7 +9,7 @@ format:
     incremental: true
     scrollable: true
     footer: "ISMIR 2024: Humans at the Center of MIR --- Null Hypothesis Significance Tests"
-    navigation-mode: grid
+    navigation-mode: vertical
 author: "Nat Condit-Schultz"
 ---
 
