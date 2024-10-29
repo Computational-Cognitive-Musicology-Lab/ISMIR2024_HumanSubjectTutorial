@@ -739,8 +739,8 @@ Nat Condit-Schultz
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic  p.value
   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)    15.2       1.25     12.2  2.49e-21
-2 X1_R           -9.92      1.28     -7.76 8.03e-12</code></pre>
+1 (Intercept)     16.5      1.15     14.3  9.24e-26
+2 X1_R           -10.5      1.15     -9.10 1.11e-14</code></pre>
 </div>
 </div>
 </div>
@@ -755,10 +755,10 @@ Nat Condit-Schultz
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic     p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-1 (Intercept)    11.3       2.15      5.27 0.000000820
-2 X3_Cat2Off      8.97      3.04      2.95 0.00393    </code></pre>
+  term        estimate std.error statistic  p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)    15.6       2.20      7.11 1.90e-10
+2 X3_Cat2Off      3.23      3.11      1.04 3.02e- 1</code></pre>
 </div>
 </div>
 </div>
@@ -775,8 +775,8 @@ Nat Condit-Schultz
 <pre><code># A tibble: 2 × 6
   term         df  sumsq meansq statistic p.value
   &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 X4_Cat5       4  3094.   773.      3.42  0.0117
-2 Residuals    95 21489.   226.     NA    NA     </code></pre>
+1 X4_Cat5       4  2641.   660.      2.94  0.0242
+2 Residuals    95 21299.   224.     NA    NA     </code></pre>
 </div>
 </div>
 </div>
@@ -791,12 +791,12 @@ Nat Condit-Schultz
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 6
-  term               df  sumsq meansq statistic  p.value
-  &lt;chr&gt;           &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 X3_Cat2             1  2009.  2009.     9.67   0.00251
-2 X4_Cat5             4  3363.   841.     4.05   0.00461
-3 X3_Cat2:X4_Cat5     4   511.   128.     0.615  0.653  
-4 Residuals          90 18700.   208.    NA     NA      </code></pre>
+  term               df  sumsq meansq statistic p.value
+  &lt;chr&gt;           &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 X3_Cat2             1   260.   260.      1.18  0.280 
+2 X4_Cat5             4  2676.   669.      3.04  0.0211
+3 X3_Cat2:X4_Cat5     4  1223.   306.      1.39  0.243 
+4 Residuals          90 19780.   220.     NA    NA     </code></pre>
 </div>
 </div>
 </div>
@@ -1144,7 +1144,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li class="fragment">Participants’ ratings tended to get higher over time!<sup>1</sup>
 <ul>
-<li class="fragment">The data is autocorrelated, with $r =$0.26 at lag 1.</li>
+<li class="fragment">The data is autocorrelated, with $r =$0.17 at lag 1.</li>
 </ul></li>
 <li class="fragment">As before, it means each data point contains less unique information, because they can be predicted from past ratings.</li>
 </ul>
@@ -1157,9 +1157,9 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code># A tibble: 3 × 6
   term              df   sumsq meansq statistic    p.value
   &lt;chr&gt;          &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-1 Condition          8 175491. 21936.      84.5  2.38e-118
-2 PreviousRating     1  33832. 33832.     130.   3.70e- 29
-3 Residuals       1740 451732.   260.      NA   NA        </code></pre>
+1 Condition          8 176124. 22016.      80.6  1.58e-113
+2 PreviousRating     1  11444. 11444.      41.9  1.24e- 10
+3 Residuals       1740 475087.   273.      NA   NA        </code></pre>
 </div>
 </div>
 </section></section>
