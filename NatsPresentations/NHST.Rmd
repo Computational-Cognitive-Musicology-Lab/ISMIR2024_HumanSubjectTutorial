@@ -13,6 +13,11 @@ format:
 author: "Nat Condit-Schultz"
 ---
 
+```{r}
+library(broom)
+library(humdrumR)
+```
+
 # Data Analysis
 
 ## What is the goal of data analysis?
@@ -20,7 +25,7 @@ author: "Nat Condit-Schultz"
 + To support *valid* research claims.
 + To be **rigorously skeptical** about our data and our models of the data.
   + Recognize assumptions made about data/models.
-  + Condiser alternative explanations of observed relationships.
+  + Consider alternative explanations of observed relationships.
   + Try to disprove (falsify) your models.
 + This is what reviewers expect.
 
@@ -36,7 +41,7 @@ author: "Nat Condit-Schultz"
 ## Core Idea
 
 + The *Null Hypothesis* ($H_0$), is that there are no **true** relationship between independent and dependent variable(s).
-+ Any *apparent relationships*^[in visualizations, descriptive statistics, or predictive power] may arise purely by random chance. 
++ Any *apparent relationships* may arise purely by random chance. 
 + If we claim a relationship is real when it is not we make a Type 1 error.   
   + NHST is a mechanism for limiting Type 1 errors.
 
@@ -144,6 +149,7 @@ DV ~ $IV_1 + (+ IV₂ + … + IVₙ)$
 
 ::: {.panel-tabset}
 
+### 
 
 ### Numeric DV
 
@@ -187,109 +193,194 @@ DV ~ $IV_1 + (+ IV₂ + … + IVₙ)$
 # Examples
 
 
-## Fake Data
+<!-- ## Fake Data -->
 
 
 
-```{r, echo = TRUE}
-library(broom)
+<!-- ```{r, echo = TRUE} -->
 
-N <- 100
-X1_R <- rnorm(N)
-X2_R <- rnorm(N)
-X3_Cat2 <- gl(2, N / 2, labels = c('On', 'Off')) |> sample()
-X4_Cat5 <- gl(5, N / 5, labels = LETTERS[1:5])
+<!-- N <- 100 -->
+<!-- X1_R <- rnorm(N) -->
+<!-- X2_R <- rnorm(N) -->
+<!-- X3_Cat2 <- gl(2, N / 2, labels = c('On', 'Off')) |> sample() -->
+<!-- X4_Cat5 <- gl(5, N / 5, labels = LETTERS[1:5]) -->
 
-sigma <- 10
+<!-- sigma <- 10 -->
 
-Y <- 5.2 + 1 * X1_R + 
-  -11.2 * X1_R + 
-  as.integer(X3_Cat2) * 7.2 + 
-  (contrasts(X4_Cat5) %*% c(c(1, 3, -10, 5)))[X4_Cat5] +
-  rnorm(N, 0, sigma)
-
+<!-- Y <- 5.2 + 1 * X1_R +  -->
+<!--   -11.2 * X1_R +  -->
+<!--   as.integer(X3_Cat2) * 7.2 +  -->
+<!--   (contrasts(X4_Cat5) %*% c(c(1, 3, -10, 5)))[X4_Cat5] + -->
+<!--   rnorm(N, 0, sigma) -->
 
 
-```
 
-## {.smaller}
+<!-- ``` -->
 
-
-::: {.panel-tabset}
-
-### Linear
-
-```{r}
-fit <- lm(Y ~ X1_R)
-
-plot(Y ~ X1_R)
-abline(fit)
-
-fit |> tidy()
-```
-
-### t-test
-
-```{r}
-fit <- lm(Y ~ X3_Cat2)
-
-plot(Y ~ X3_Cat2)
-abline(fit)
-
-fit |> tidy()
-
-```
-
-### One-way ANOVA
+<!-- ## {.smaller} -->
 
 
-```{r}
-fit <- lm(Y ~ X4_Cat5)
+<!-- ::: {.panel-tabset} -->
 
-plot(Y ~ X4_Cat5)
+<!-- ### Linear -->
 
-fit |> anova() |> tidy()
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X1_R) -->
 
-```
+<!-- plot(Y ~ X1_R) -->
+<!-- abline(fit) -->
 
-### 2 X 5 ANOVA
+<!-- fit |> tidy() -->
+<!-- ``` -->
 
-```{r}
-fit <- lm(Y ~ X3_Cat2 * X4_Cat5)
+<!-- ### t-test -->
 
-tapply(Y, list(X3_Cat2, X4_Cat5), mean) |> barplot(beside = TRUE)
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X3_Cat2) -->
 
-fit |> anova() |> tidy()
+<!-- plot(Y ~ X3_Cat2) -->
+<!-- abline(fit) -->
 
-```
+<!-- fit |> tidy() -->
+
+<!-- ``` -->
+
+<!-- ### One-way ANOVA -->
 
 
-:::
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X4_Cat5) -->
+
+<!-- plot(Y ~ X4_Cat5) -->
+
+<!-- fit |> anova() |> tidy() -->
+
+<!-- ``` -->
+
+<!-- ### 2 X 5 ANOVA -->
+
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X3_Cat2 * X4_Cat5) -->
+
+<!-- tapply(Y, list(X3_Cat2, X4_Cat5), mean) |> barplot(beside = TRUE) -->
+
+<!-- fit |> anova() |> tidy() -->
+
+<!-- ``` -->
+
+
+<!-- ::: -->
 
 
 ## Quality Evaluation Data
 
 ```{r, echo = c(2, 6)}
 par(cex.axis = .6, pch = 16, cex = .5)
-SiSEC <- read.csv('../SiSEC08/SiSEC08_anonymized.csv') |> subset(grepl('Algo', Condition))
+SiSEC <- read.csv('../SiSEC08_source_separation/SiSEC08_anonymized.csv') |> subset(grepl('Algo', Condition))
 SiSEC <- as.data.table(SiSEC)
 SiSEC[, Order := rank(Ratingscore + rnorm(length(Ratingscore), 0, 40)), by = Listener]
 SiSEC <- SiSEC[order(SiSEC$Listener, SiSEC$Order), ]
-plot(Ratingscore ~ factor(Condition), data = SiSEC)
 
 ```
 
-+ The "omnibus" Null Hypothesis would be that nine algorithms perform equally well.
-  + This doesn't appear to be the cases, but our skeptical minds must ask whether this spread could happen by chance.
-  
+
+**SiSEC** dataset.
+
++ Fourteen participants.
++ Nine test conditions (algorithms).
++ Fourteen base audio recordings (8 speech, 6 music).
++ $N = 14 * 9 * 14 = 1764$ total ratings.
+
+----
+
+Ratings range from 0 to 100.
+
+```{r}
+draw(SiSEC$Ratingscore)
+
+```
+
+----
+
+```{r}
+# plot(Ratingscore ~ factor(Condition), data = SiSEC)
+SiSEC |> with(draw(Condition, Ratingscore))
+```
+
+How do approach this using NHST?
+
++ Start from a place of skepticism:
++ What if this is all noise?
+  + All nine algorithms perform actually perform equally well.
+  + The "omnibus" $H_0$.
+
 ---
 
-This is a "basic" one-way ANOVA.
+```{r}
+# plot(Ratingscore ~ factor(Condition), data = SiSEC)
+SiSEC |> with(draw(Condition, Ratingscore))
+```
+
+  
++ Numeric DV:
+  + Model as normal error.
++ Multinomial IV:
+  + One-way Analysis of Variance (ANOVA).
+
+---
+
+#### ANOVA
+
+If $H_0$ true, ratio of between-group and with-group variance should follow the $F(\frac{df_1}{df_2})$ distribution.
+    
++ From 
+   
+```{r, message = FALSE}
+library(gifski) 
+
+save_gif(gif_file = 'images/ANOVAs.gif', delay = .5, progress = FALSE, {
+  for (i in 1:100) {
+    
+    ratings <- SiSEC$Ratingscore |> sample()
+    fit <- lm(ratings ~ SiSEC$Condition)
+    draw(SiSEC$Condition, ratings)
+    mtext(bquote(F[1755]^8 == .(round(summary(fit)$fstatistic[1], 2))), 3, cex = 2)
+  }
+  
+})
+
+knitr::include_graphics('images/ANOVAs.gif')
+
+
+
+```
+
+---    
+    
+    
 
 ```{r}
 fit <- lm(Ratingscore ~ Condition, data = SiSEC)
 
-anova(fit)
+anov <- function(fit) {
+  Fs <- summary(fit)$fstatistic
+  
+  
+  curve(df(x, 8, 1755), 0, Fs, n = 1000, col = 'blue', xlim = c(0, 100),
+        xlab = quote(F[1755]^8), ylab = quote(paste(Density, '|', H[0])),
+        axes = FALSE)
+  curve(df(x, 8, 1755), Fs, 100, n = 1000, col = 'red', xlim = c(0, 100), add =TRUE)
+  axis(1, seq(0, 100, 10), tick = FALSE)
+  axis(2, seq(0, 1, .2), tick = FALSE, las = 1)
+
+  points(Fs[1], df(Fs[1], 8, 1755), col = 'red')
+
+  anova(fit) |> tidy()
+}
+
+anov(fit)
+
+
 
 ```
 
@@ -306,12 +397,32 @@ We'd be more likely to want to know whether a particular algorithm performs bett
 
 If we wanted to compare the latest algorithm (34) to the previous iteration (32), we can reduce this to a $t$-test.
 
-+ The Null Hypothesis is that the performance of Algo32 and Algo34 is the same.
++ $H_0:$ the performance of Algo32 and Algo34 is the same.
 
 ```{r}
 fit <- lm(Ratingscore ~ Condition, data = SiSEC |> subset(Condition %in% c('Algo32', 'Algo34')))
 
-lm(fit) |> summary()
+
+tv <- function(fit) {
+  tval <- summary(fit)$coef[2, 't value']
+  
+  curve(dt(x, 390), tval, -tval, n = 1000, col = 'blue', xlim = c(-4, 4), ylim = c(0, .5),
+        xlab = quote(t[390]), ylab = quote(paste(Density, '|', H[0])),
+        axes = FALSE)
+  curve(dt(x, 390), -4, tval, n = 1000, col = 'red', add =TRUE)
+  curve(dt(x, 390), -tval, 4, n = 1000, col = 'red', add =TRUE)
+  
+  xs <- seq(-4, tval, length.out = 30) 
+  polygon(c(xs, rev(xs)), c(dt(xs, 390), rep(0, length(xs))), col = rgb(1,0,0,.4), border = FALSE)
+  axis(1, -4:4, tick = FALSE)
+  axis(2, seq(0, 1, .1), tick = FALSE, las = 1)
+
+  points(tval, df(tval, 8, 1755), col = 'red')
+
+  anova(fit) |> tidy()
+}
+tv(fit)
+lm(fit) |> summary() |> tidy()
 
 ```
 
@@ -321,23 +432,126 @@ lm(fit) |> summary()
     + We would not conclude that Algorithm 34 is worse than Algorithm 32.
     
     
----
+<!-- --- -->
 
-Perhaps we'd like to know whether the best performing algorithm (22) is really better than the second best (30)?
+<!-- Perhaps we'd like to know whether the best performing algorithm (22) is really better than the second best (30)? -->
+
+<!-- ```{r} -->
+
+<!-- plot(Ratingscore ~ factor(Condition), data = SiSEC) -->
+
+<!-- fit <- lm(Ratingscore ~ Condition, data = SiSEC |> subset(Condition %in% c('Algo22', 'Algo30'))) -->
+
+<!-- lm(fit) |> summary() -->
+
+<!-- ``` -->
+
+## Emotion Data
+
 
 ```{r}
+emote <- fread('../Eerola_emotion/mean_ratings_set1.csv')
 
-plot(Ratingscore ~ factor(Condition), data = SiSEC)
+emote
+```
 
-fit <- lm(Ratingscore ~ Condition, data = SiSEC |> subset(Condition %in% c('Algo22', 'Algo30')))
++ We might, for example, test the hypothesis that perceived energy is related to rension.
 
-lm(fit) |> summary()
+---
+
+
+```{r}
+with(emote, draw(energy, tension, xlab = 'Energy', ylab = 'Tension'))
+
+```
+
++ Numeric DV:
+  + Model as normal error.
++ Numeric IV:
+  + Simple linear regression.
+  + $H_0: \beta = 0$
+  
+----
+
+
+```{r, echo = -1}
+with(emote, draw(energy, tension, xlab = 'Energy', ylab = 'Tension', lm = TRUE))
+
+fit <- lm(tension ~ energy, data = emote)
+
+summary(fit) |> tidy(conf.int = TRUE)
 
 ```
 
 ----
 
+#### Multiple Regression
+
+The simple regression looks at two variables in isolation.
+If we add more independent variables, the independent effect of *each* can be evaluated.
+
+```{r}
+fit2 <- lm(tension ~ energy + anger + fear + valence, data = emote)
+
+```
+
+----
+
+
+```{r}
+fit2 <- lm(tension ~ energy * TARGET, data = emote)
+
+```
+
+#### Logistic Regression
+
+```{r}
+negative <- c('ANGER', 'FEAR', 'LOW VALENCE', "SAD", 'HIGH TENSION')
+
+emote$Negative <- emote$TARGET == negative
+
+glm(Negative ~ valence + energy + tension + anger + fear + happy + sad + tender, data = emote) |> anova()
+
+```
+
+
+# NHST pitfalls
+
+
+In general, NHST is sensitive to the exact procedure you use.
+
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
++ Any procedural decisions made *post-hoc* and affect the validity of results.
++ I.e., if you use the data to to make decisions about stats/tests.
+
+:::
+
+::: {.column width='50%'}
+
++ Stopping condition
+  + When you stop collecting data.
++ Which comparisons you make.
+
+:::
+
+::::
+
+
+
+----
+
 Perhaps we'd like to know whether the best performing algorithm (22) is really better than the rest of the algorithms?
+
+```{r}
+
+SiSEC |> with(draw(Condition, Ratingscore))
+```
+
+---
 
 ```{r}
 
@@ -380,8 +594,10 @@ pvalues <- sapply(1:Nsim, \(i) {
   pvalue
 })
 
-plot(seq(0, 1, length.out = Nsim), sort(pvalues), xlab = 'Quantile', 
-     col = ifelse(sort(pvalues) <= .05, 'red', 'black'))
+plot(seq(0, 1, length.out = Nsim), sort(pvalues), xlab = 'Quantile', pch = 16, cex = .5,
+     col = ifelse(sort(pvalues) <= .05, 'red', 'black'), axes =FALSE, ylab = quote(p))
+axis(1,seq(0,1,.1), tick = FALSE)
+axis(2, seq(0,1,.1), las = 1, tick = FALSE)
 
 abline(h = .05, col = 'red', lty='dashed')
 
@@ -392,33 +608,9 @@ text(Type1errorRate, .1, bquote("" %<-% .(paste0(Type1errorRate * 100, '%'))), c
 
 ```
 
-# NHST pitfalls
 
 
-
-In general, NHST is sensitive to the exact procedure you use.
-
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-+ Any procedural decisions made *post-hoc* and affect the validity of results.
-+ I.e., if you use the data to to make decisions about stats/tests.
-
-:::
-
-::: {.column width='50%'}
-
-+ Stopping condition
-  + When you stop collecting data.
-+ Which comparisons you make.
-
-:::
-
-::::
-
-## Multiple tests
+## Multiple comparisons.
 
 A particularly well known problem is the problem of *multiple tests*.
 
@@ -476,7 +668,7 @@ axis(2, seq(0,1,.1), paste0(seq(0,100,10), '%'), las = 1, tick = FALSE)
   + This is the "family-wise error rate" 
 + This, if we conducted 36 significance tests and consider *one* significant result to be the basis to reject the Null Hypothesis, we would make a Type 1 error more than 40% of the time!
 
-## Correcting for Multiple Comparisons
+### Correcting for Multiple Comparisons
 
 We can "correct" for multiple tests by adjusting our $p$-values (or $\alpha$ level) accordingly.
 
@@ -489,6 +681,47 @@ We can "correct" for multiple tests by adjusting our $p$-values (or $\alpha$ lev
 The main lesson is that, whenever you conduct multiple NHST tests, you need to take them with an extra skeptical grain of salt.
 
 + If you conduct many tests (like hundreds or thousands), some of those will have $p < .05$. 
+
+## Assumptions
+
+We might hypothesis that happiness and sadness ratings should be negatively correlated.
+
++ This could be a simple linear regression.
++ However...
+
+---
+
+The distribution of the errors is not plausible normal.
+
++ Too many 1s.
+
+```{r}
+with(emote, draw(happy, sad, xlab = 'Happy rating', ylab = "Sad rating", lm = TRUE))
+
+```
+
+----
+
+You could rethink how to express the hypothesis in a way that is more consistent with the data.
+
++ Logistic regression, use happiness to predict whether sad rating is or isn't 1.
+
+```{r}
+emote$NotSad <- emote$sad > 1
+
+logfit <- glm(NotSad ~ happy, data = emote)
+
+with(emote, draw(happy, sad, xlab = 'Happy rating', ylab = "Sad rating", lm = TRUE))
+
+xs <- seq(1,9,.01)
+points(xs, plogis(exp(.72753 + xs * -.05287))*9)
+
+
+summary(logfit) 
+
+
+```
+
 
 # Data Independence
 
@@ -575,11 +808,15 @@ A generalized solution the problem of data dependence is through random effects 
 
 We can thus conduct a best-practice version of our omnibus ANOVA test.
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, cache = TRUE}
 library(lme4)
-fitnull <- lmer(Ratingscore ~ 1 + (Condition|Listener) + (Condition|Trial), data = SiSEC, REML = FALSE)
-fit <- lmer(Ratingscore ~ Condition + (Condition|Listener) + (Condition|Trial), data = SiSEC, REML = FALSE)
+library(lmerTest)
+# mlvfitnull <- lmer(Ratingscore ~ 1 + (Condition|Listener) + (Condition|Trial), data = SiSEC, REML = FALSE)
+# mlvfit <- lmer(Ratingscore ~ Condition + (Condition|Listener) + (Condition|Trial), data = SiSEC, REML = FALSE)
+load('fit_quality_mlv.Rd')
+load('fit_quality_mlvnull.Rd')
 
+anova(mlvfitnull, mlvfit, test = 'F')
 
 ```
 
@@ -608,6 +845,7 @@ abline(lm(Ratingscore ~ Order, data = SiSEC))
 ----
 
 We an explicitly incorporate this autocorrelation into our model:
+
 
 ```{r}
 

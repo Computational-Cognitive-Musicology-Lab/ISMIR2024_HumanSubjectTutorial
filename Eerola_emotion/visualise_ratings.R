@@ -5,7 +5,7 @@
 #
 ##############################################################################
 
-d <- read.csv('mean_ratings_set2.csv')
+d <- read.csv('mean_ratings_set1.csv')
 
 library(dplyr)
 library(stringr)

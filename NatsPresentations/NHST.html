@@ -415,7 +415,7 @@ Nat Condit-Schultz
 <li class="fragment">To be <strong>rigorously skeptical</strong> about our data and our models of the data.
 <ul>
 <li class="fragment">Recognize assumptions made about data/models.</li>
-<li class="fragment">Condiser alternative explanations of observed relationships.</li>
+<li class="fragment">Consider alternative explanations of observed relationships.</li>
 <li class="fragment">Try to disprove (falsify) your models.</li>
 </ul></li>
 <li class="fragment">This is what reviewers expect.</li>
@@ -434,17 +434,17 @@ Nat Condit-Schultz
 <li class="fragment">A validly-conducted “significant” test is (essentially) required to make a positive claim about your hypothesis.</li>
 </ul>
 </section>
-<section id="core-idea" class="slide level2 scrollable">
+<section id="core-idea" class="slide level2">
 <h2>Core Idea</h2>
 <ul>
 <li class="fragment">The <em>Null Hypothesis</em> (<span class="math inline">\(H_0\)</span>), is that there are no <strong>true</strong> relationship between independent and dependent variable(s).</li>
-<li class="fragment">Any <em>apparent relationships</em><sup>1</sup> may arise purely by random chance.</li>
+<li class="fragment">Any <em>apparent relationships</em> may arise purely by random chance.</li>
 <li class="fragment">If we claim a relationship is real when it is not we make a Type 1 error.
 <ul>
 <li class="fragment">NHST is a mechanism for limiting Type 1 errors.</li>
 </ul></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>in visualizations, descriptive statistics, or predictive power</p></li></ol></aside></section>
+</section>
 <section id="core-method" class="slide level2 smaller scrollable">
 <h2>Core Method</h2>
 <div class="panel-tabset">
@@ -563,9 +563,12 @@ Nat Condit-Schultz
 <p>The appropriate statistical model/test depends on the type of DV and IVs you have.</p>
 <p>DV ~ <span class="math inline">\(IV_1 + (+ IV₂ + … + IVₙ)\)</span></p>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Numeric DV</a></li><li><a href="#tabset-2-2">Categorical DV</a></li><li><a href="#tabset-2-3">Ordinal DV</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1"></a></li><li><a href="#tabset-2-2">Numeric DV</a></li><li><a href="#tabset-2-3">Categorical DV</a></li><li><a href="#tabset-2-4">Ordinal DV</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
+
+</div>
+<div id="tabset-2-2">
 <table class="caption-top">
 <colgroup>
 <col style="width: 35%">
@@ -625,7 +628,7 @@ Nat Condit-Schultz
 <li class="fragment">Tests are based on <span class="math inline">\(t\)</span> or <span class="math inline">\(F\)</span> sampling distributions.</li>
 </ul>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-2-3">
 <table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 31%">
@@ -661,7 +664,7 @@ Nat Condit-Schultz
 <li class="fragment">Evaluated using log-likelihood ratio test.</li>
 </ul>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-2-4">
 <table class="caption-top">
 <colgroup>
 <col style="width: 46%">
@@ -699,140 +702,122 @@ Nat Condit-Schultz
 <section>
 <section id="examples" class="title-slide slide level1 center">
 <h1>Examples</h1>
-
-</section>
-<section id="fake-data" class="slide level2">
-<h2>Fake Data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>N <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-4"><a href=""></a>X1_R <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N)</span>
-<span id="cb1-5"><a href=""></a>X2_R <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N)</span>
-<span id="cb1-6"><a href=""></a>X3_Cat2 <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">2</span>, N <span class="sc">/</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'On'</span>, <span class="st">'Off'</span>)) <span class="sc">|&gt;</span> <span class="fu">sample</span>()</span>
-<span id="cb1-7"><a href=""></a>X4_Cat5 <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">5</span>, N <span class="sc">/</span> <span class="dv">5</span>, <span class="at">labels =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb1-8"><a href=""></a></span>
-<span id="cb1-9"><a href=""></a>sigma <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-10"><a href=""></a></span>
-<span id="cb1-11"><a href=""></a>Y <span class="ot">&lt;-</span> <span class="fl">5.2</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">*</span> X1_R <span class="sc">+</span> </span>
-<span id="cb1-12"><a href=""></a>  <span class="sc">-</span><span class="fl">11.2</span> <span class="sc">*</span> X1_R <span class="sc">+</span> </span>
-<span id="cb1-13"><a href=""></a>  <span class="fu">as.integer</span>(X3_Cat2) <span class="sc">*</span> <span class="fl">7.2</span> <span class="sc">+</span> </span>
-<span id="cb1-14"><a href=""></a>  (<span class="fu">contrasts</span>(X4_Cat5) <span class="sc">%*%</span> <span class="fu">c</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">5</span>)))[X4_Cat5] <span class="sc">+</span></span>
-<span id="cb1-15"><a href=""></a>  <span class="fu">rnorm</span>(N, <span class="dv">0</span>, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="section-2" class="slide level2 smaller">
-<h2></h2>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Linear</a></li><li><a href="#tabset-3-2">t-test</a></li><li><a href="#tabset-3-3">One-way ANOVA</a></li><li><a href="#tabset-3-4">2 X 5 ANOVA</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)     16.5      1.15     14.3  9.24e-26
-2 X1_R           -10.5      1.15     -9.10 1.11e-14</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-2">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)    15.6       2.20      7.11 1.90e-10
-2 X3_Cat2Off      3.23      3.11      1.04 3.02e- 1</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-3">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  term         df  sumsq meansq statistic p.value
-  &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 X4_Cat5       4  2641.   660.      2.94  0.0242
-2 Residuals    95 21299.   224.     NA    NA     </code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-4">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 6
-  term               df  sumsq meansq statistic p.value
-  &lt;chr&gt;           &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 X3_Cat2             1   260.   260.      1.18  0.280 
-2 X4_Cat5             4  2676.   669.      3.04  0.0211
-3 X3_Cat2:X4_Cat5     4  1223.   306.      1.39  0.243 
-4 Residuals          90 19780.   220.     NA    NA     </code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- ## Fake Data -->
+<!-- ```{r, echo = TRUE} -->
+<!-- N <- 100 -->
+<!-- X1_R <- rnorm(N) -->
+<!-- X2_R <- rnorm(N) -->
+<!-- X3_Cat2 <- gl(2, N / 2, labels = c('On', 'Off')) |> sample() -->
+<!-- X4_Cat5 <- gl(5, N / 5, labels = LETTERS[1:5]) -->
+<!-- sigma <- 10 -->
+<!-- Y <- 5.2 + 1 * X1_R +  -->
+<!--   -11.2 * X1_R +  -->
+<!--   as.integer(X3_Cat2) * 7.2 +  -->
+<!--   (contrasts(X4_Cat5) %*% c(c(1, 3, -10, 5)))[X4_Cat5] + -->
+<!--   rnorm(N, 0, sigma) -->
+<!-- ``` -->
+<!-- ## {.smaller} -->
+<!-- ::: {.panel-tabset} -->
+<!-- ### Linear -->
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X1_R) -->
+<!-- plot(Y ~ X1_R) -->
+<!-- abline(fit) -->
+<!-- fit |> tidy() -->
+<!-- ``` -->
+<!-- ### t-test -->
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X3_Cat2) -->
+<!-- plot(Y ~ X3_Cat2) -->
+<!-- abline(fit) -->
+<!-- fit |> tidy() -->
+<!-- ``` -->
+<!-- ### One-way ANOVA -->
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X4_Cat5) -->
+<!-- plot(Y ~ X4_Cat5) -->
+<!-- fit |> anova() |> tidy() -->
+<!-- ``` -->
+<!-- ### 2 X 5 ANOVA -->
+<!-- ```{r} -->
+<!-- fit <- lm(Y ~ X3_Cat2 * X4_Cat5) -->
+<!-- tapply(Y, list(X3_Cat2, X4_Cat5), mean) |> barplot(beside = TRUE) -->
+<!-- fit |> anova() |> tidy() -->
+<!-- ``` -->
+<!-- ::: -->
 </section>
 <section id="quality-evaluation-data" class="slide level2">
 <h2>Quality Evaluation Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>SiSEC <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'../SiSEC08/SiSEC08_anonymized.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(<span class="fu">grepl</span>(<span class="st">'Algo'</span>, Condition))</span>
-<span id="cb6-2"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Condition), <span class="at">data =</span> SiSEC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>SiSEC <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'../SiSEC08_source_separation/SiSEC08_anonymized.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(<span class="fu">grepl</span>(<span class="st">'Algo'</span>, Condition))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment">The “omnibus” Null Hypothesis would be that nine algorithms perform equally well.
+<p><strong>SiSEC</strong> dataset.</p>
 <ul>
-<li class="fragment">This doesn’t appear to be the cases, but our skeptical minds must ask whether this spread could happen by chance.</li>
+<li class="fragment">Fourteen participants.</li>
+<li class="fragment">Nine test conditions (algorithms).</li>
+<li class="fragment">Fourteen base audio recordings (8 speech, 6 music).</li>
+<li class="fragment"><span class="math inline">\(N = 14 * 9 * 14 = 1764\)</span> total ratings.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Ratings range from 0 to 100.</p>
+
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><p>How do approach this using NHST?</p>
+<ul>
+<li class="fragment">Start from a place of skepticism:</li>
+<li class="fragment">What if this is all noise?
+<ul>
+<li class="fragment">All nine algorithms perform actually perform equally well.</li>
+<li class="fragment">The “omnibus” <span class="math inline">\(H_0\)</span>.</li>
 </ul></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p>This is a “basic” one-way ANOVA.</p>
+
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><ul>
+<li class="fragment">Numeric DV:
+<ul>
+<li class="fragment">Model as normal error.</li>
+</ul></li>
+<li class="fragment">Multinomial IV:
+<ul>
+<li class="fragment">One-way Analysis of Variance (ANOVA).</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h4 id="anova">ANOVA</h4>
+<p>If <span class="math inline">\(H_0\)</span> true, ratio of between-group and with-group variance should follow the <span class="math inline">\(F(\frac{df_1}{df_2})\)</span> distribution.</p>
+<ul>
+<li class="fragment">From</li>
+</ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Variance Table
+<pre><code>[1] "/home/nat/Bridge/Professional/Workshops/ISMIR2024/NatsPresentations/images/ANOVAs.gif"</code></pre>
+</div>
 
-Response: Ratingscore
-            Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-Condition    8 178962 22370.2  80.353 &lt; 2.2e-16 ***
-Residuals 1755 488590   278.4                      
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<img data-src="images/ANOVAs.gif" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  term         df   sumsq meansq statistic    p.value
+  &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+1 Condition     8 178962. 22370.      80.4  2.55e-113
+2 Residuals  1755 488590.   278.      NA   NA        </code></pre>
 </div>
 </div>
-<ul>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">As we suspected, the omnibus Null Hypothesis does not seem very plausible.</li>
 </ul>
 </section>
@@ -845,31 +830,26 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 
 <p>If we wanted to compare the latest algorithm (34) to the previous iteration (32), we can reduce this to a <span class="math inline">\(t\)</span>-test.</p>
 <ul>
-<li class="fragment">The Null Hypothesis is that the performance of Algo32 and Algo34 is the same.</li>
+<li class="fragment"><span class="math inline">\(H_0:\)</span> the performance of Algo32 and Algo34 is the same.</li>
 </ul>
 <div class="cell">
+
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = fit)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--23.398  -9.398   0.602   7.816  42.602 
-
-Coefficients:
-                Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)      23.3980     0.9173  25.507   &lt;2e-16 ***
-ConditionAlgo34  -0.2143     1.2973  -0.165    0.869    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 12.84 on 390 degrees of freedom
-Multiple R-squared:  6.996e-05, Adjusted R-squared:  -0.002494 
-F-statistic: 0.02728 on 1 and 390 DF,  p-value: 0.8689</code></pre>
+<pre><code># A tibble: 2 × 6
+  term         df    sumsq meansq statistic p.value
+  &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+1 Condition     1     4.50   4.50    0.0273   0.869
+2 Residuals   390 64322.   165.     NA       NA    </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term            estimate std.error statistic  p.value
+  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)       23.4       0.917    25.5   3.93e-85
+2 ConditionAlgo34   -0.214     1.30     -0.165 8.69e- 1</code></pre>
 </div>
 </div>
-<ul>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">Two things to notice:
 <ul>
 <li class="fragment">Algorithm 34 actually has slightly <em>lower</em> performance on average (<code>-.2143</code>).</li>
@@ -879,37 +859,129 @@ F-statistic: 0.02728 on 1 and 390 DF,  p-value: 0.8689</code></pre>
 </ul></li>
 </ul></li>
 </ul>
+<!-- --- -->
+<!-- Perhaps we'd like to know whether the best performing algorithm (22) is really better than the second best (30)? -->
+<!-- ```{r} -->
+<!-- plot(Ratingscore ~ factor(Condition), data = SiSEC) -->
+<!-- fit <- lm(Ratingscore ~ Condition, data = SiSEC |> subset(Condition %in% c('Algo22', 'Algo30'))) -->
+<!-- lm(fit) |> summary() -->
+<!-- ``` -->
+</section>
+<section id="emotion-data" class="slide level2">
+<h2>Emotion Data</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>     number valence energy tension anger  fear happy   sad tender      TARGET
+      &lt;int&gt;   &lt;num&gt;  &lt;num&gt;   &lt;num&gt; &lt;num&gt; &lt;num&gt; &lt;num&gt; &lt;num&gt;  &lt;num&gt;      &lt;char&gt;
+  1:      1    4.83   6.83    3.17  1.00  1.00  7.33  1.00   1.00       HAPPY
+  2:      2    4.83   6.17    3.83  1.00  1.00  7.17  1.17   1.83       HAPPY
+  3:      3    5.60   6.20    3.00  1.00  1.00  7.17  1.00   1.00       HAPPY
+  4:      4    4.67   6.33    3.83  1.00  1.00  7.17  1.00   1.00       HAPPY
+  5:      5    6.50   5.00    3.17  1.17  1.00  7.17  1.00   2.83       HAPPY
+ ---                                                                         
+356:    356    4.80   2.40    3.60  1.00  1.00  1.33  6.67   4.50 LOW TENSION
+357:    357    5.00   2.83    3.67  1.00  2.40  1.00  2.60   4.20 LOW TENSION
+358:    358    4.20   2.20    4.00  1.00  1.83  1.67  5.50   4.33 LOW TENSION
+359:    359    4.60   4.20    4.20  1.00  1.33  3.33  2.67   1.00 LOW TENSION
+360:    360    3.20   3.40    5.00  1.33  5.33  1.00  3.00   1.00 LOW TENSION</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">We might, for example, test the hypothesis that perceived energy is related to rension.</li>
+</ul>
 </section>
 <section class="slide level2">
 
-<p>Perhaps we’d like to know whether the best performing algorithm (22) is really better than the second best (30)?</p>
+
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"><ul>
+<li class="fragment">Numeric DV:
+<ul>
+<li class="fragment">Model as normal error.</li>
+</ul></li>
+<li class="fragment">Numeric IV:
+<ul>
+<li class="fragment">Simple linear regression.</li>
+<li class="fragment"><span class="math inline">\(H_0: \beta = 0\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
 <div class="cell">
 
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(tension <span class="sc">~</span> energy, <span class="at">data =</span> emote)</span>
+<span id="cb7-2"><a href=""></a></span>
+<span id="cb7-3"><a href=""></a><span class="fu">summary</span>(fit) <span class="sc">|&gt;</span> <span class="fu">tidy</span>(<span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = fit)
+<pre><code># A tibble: 2 × 7
+  term        estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)    1.42     0.218       6.53 2.30e-10    0.993     1.85 
+2 energy         0.685    0.0504     13.6  3.18e-34    0.586     0.784</code></pre>
+</div>
+</div>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
 
-Residuals:
-    Min      1Q  Median      3Q     Max 
--36.673 -12.673  -3.673   8.327  53.102 
+<h4 id="multiple-regression">Multiple Regression</h4>
+<p>The simple regression looks at two variables in isolation. If we add more independent variables, the independent effect of <em>each</em> can be evaluated.</p>
+</section>
+<section class="slide level2">
 
-Coefficients:
-                Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)       51.673      1.303  39.654  &lt; 2e-16 ***
-ConditionAlgo30   -4.776      1.843  -2.591  0.00992 ** 
+<h4 id="logistic-regression">Logistic Regression</h4>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model: gaussian, link: identity
+
+Response: Negative
+
+Terms added sequentially (first to last)
+
+        Df Deviance Resid. Df Resid. Dev       F     Pr(&gt;F)    
+NULL                      359     27.500                       
+valence  1  1.33354       358     26.166 18.3086 0.00002426 ***
+energy   1  0.13148       357     26.035  1.8051     0.1800    
+tension  1  0.02161       356     26.013  0.2967     0.5863    
+anger    1  0.15314       355     25.860  2.1025     0.1479    
+fear     1  0.16663       354     25.694  2.2877     0.1313    
+happy    1  0.00268       353     25.691  0.0368     0.8480    
+sad      1  0.12211       352     25.569  1.6764     0.1962    
+tender   1  0.00315       351     25.566  0.0432     0.8355    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 18.24 on 390 degrees of freedom
-Multiple R-squared:  0.01693,   Adjusted R-squared:  0.01441 
-F-statistic: 6.715 on 1 and 390 DF,  p-value: 0.00992</code></pre>
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+</section></section>
+<section>
+<section id="nhst-pitfalls" class="title-slide slide level1 center">
+<h1>NHST pitfalls</h1>
+<p>In general, NHST is sensitive to the exact procedure you use.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Any procedural decisions made <em>post-hoc</em> and affect the validity of results.</li>
+<li class="fragment">I.e., if you use the data to to make decisions about stats/tests.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Stopping condition
+<ul>
+<li class="fragment">When you stop collecting data.</li>
+</ul></li>
+<li class="fragment">Which comparisons you make.</li>
+</ul>
+</div>
+</div>
+</section>
 <section class="slide level2">
 
 <p>Perhaps we’d like to know whether the best performing algorithm (22) is really better than the rest of the algorithms?</p>
+
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -955,30 +1027,9 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <p>We can simulate this.</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="nhst-pitfalls" class="title-slide slide level1 center">
-<h1>NHST pitfalls</h1>
-<p>In general, NHST is sensitive to the exact procedure you use.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li class="fragment">Any procedural decisions made <em>post-hoc</em> and affect the validity of results.</li>
-<li class="fragment">I.e., if you use the data to to make decisions about stats/tests.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">Stopping condition
-<ul>
-<li class="fragment">When you stop collecting data.</li>
-</ul></li>
-<li class="fragment">Which comparisons you make.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="multiple-tests" class="slide level2">
-<h2>Multiple tests</h2>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<section id="multiple-comparisons." class="slide level2">
+<h2>Multiple comparisons.</h2>
 <p>A particularly well known problem is the problem of <em>multiple tests</em>.</p>
 <ul>
 <li class="fragment">Anytime you conduct multiple NHSTs, the chance that <em>at least one</em> test will be significant is higher than <span class="math inline">\(\alpha\)</span>.</li>
@@ -988,7 +1039,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <p>A common technique is to conduct “pair-wise” <span class="math inline">\(t\)</span>-tests between every category, so we would know exactly which algorithms perform better than others.</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">In this case there would be 36 possible comparisons.</li>
 </ul>
 </section>
@@ -996,16 +1047,14 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <p>If we simulate this</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">More than forty percent of our (Null Hypothesis) simulations have <em>at least one</em> significant tests.
 <ul>
 <li class="fragment">This is the “family-wise error rate”</li>
 </ul></li>
 <li class="fragment">This, if we conducted 36 significance tests and consider <em>one</em> significant result to be the basis to reject the Null Hypothesis, we would make a Type 1 error more than 40% of the time!</li>
 </ul>
-</section>
-<section id="correcting-for-multiple-comparisons" class="slide level2">
-<h2>Correcting for Multiple Comparisons</h2>
+<h3 id="correcting-for-multiple-comparisons">Correcting for Multiple Comparisons</h3>
 <p>We can “correct” for multiple tests by adjusting our <span class="math inline">\(p\)</span>-values (or <span class="math inline">\(\alpha\)</span> level) accordingly.</p>
 <ul>
 <li class="fragment">The naive <em>Bonferroni correction</em> is simply to use <span class="math inline">\(\frac{\alpha}{T}\)</span>, where <span class="math inline">\(T\)</span> is the number of tests.
@@ -1021,7 +1070,53 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li class="fragment">If you conduct many tests (like hundreds or thousands), some of those will have <span class="math inline">\(p &lt; .05\)</span>.</li>
 </ul>
-</section></section>
+</section>
+<section id="assumptions" class="slide level2">
+<h2>Assumptions</h2>
+<p>We might hypothesis that happiness and sadness ratings should be negatively correlated.</p>
+<ul>
+<li class="fragment">This could be a simple linear regression.</li>
+<li class="fragment">However…</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>The distribution of the errors is not plausible normal.</p>
+<ul>
+<li class="fragment">Too many 1s.</li>
+</ul>
+
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>You could rethink how to express the hypothesis in a way that is more consistent with the data.</p>
+<ul>
+<li class="fragment">Logistic regression, use happiness to predict whether sad rating is or isn’t 1.</li>
+</ul>
+<div class="cell">
+
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = NotSad ~ happy, data = emote)
+
+Coefficients:
+            Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept)  0.72753    0.03936  18.484   &lt; 2e-16 ***
+happy       -0.05287    0.01308  -4.041 0.0000652 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 0.2297146)
+
+    Null deviance: 85.989  on 359  degrees of freedom
+Residual deviance: 82.238  on 358  degrees of freedom
+AIC: 496.1
+
+Number of Fisher Scoring iterations: 2</code></pre>
+</div>
+</div>
+<img data-src="NHST_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="data-independence" class="title-slide slide level1 center">
 <h1>Data Independence</h1>
@@ -1044,12 +1139,12 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="tabset-panel">
 <h3 id="by-participant">By participant</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Listener, <span class="at">levels =</span> ranked), <span class="at">data =</span> SiSEC,</span>
-<span id="cb11-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Listener, <span class="at">levels =</span> ranked), <span class="at">data =</span> SiSEC,</span>
+<span id="cb12-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1059,12 +1154,12 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 </ul>
 <h3 id="by-item">By item</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Trial, <span class="at">levels =</span> ranked), <span class="at">data =</span> SiSEC,</span>
-<span id="cb12-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Trial, <span class="at">levels =</span> ranked), <span class="at">data =</span> SiSEC,</span>
+<span id="cb13-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1136,7 +1231,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
+<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1144,11 +1239,11 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ul>
 <li class="fragment">Participants’ ratings tended to get higher over time!<sup>1</sup>
 <ul>
-<li class="fragment">The data is autocorrelated, with $r =$0.17 at lag 1.</li>
+<li class="fragment">The data is autocorrelated, with $r =$0.18 at lag 1.</li>
 </ul></li>
 <li class="fragment">As before, it means each data point contains less unique information, because they can be predicted from past ratings.</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>The SiSEC data didn’t include order information, so I faked this data.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>The SiSEC data didn’t include order information, so I faked this data.</p></li></ol></aside></section>
 <section class="slide level2">
 
 <p>We an explicitly incorporate this autocorrelation into our model:</p>
@@ -1157,9 +1252,9 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code># A tibble: 3 × 6
   term              df   sumsq meansq statistic    p.value
   &lt;chr&gt;          &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-1 Condition          8 176124. 22016.      80.6  1.58e-113
-2 PreviousRating     1  11444. 11444.      41.9  1.24e- 10
-3 Residuals       1740 475087.   273.      NA   NA        </code></pre>
+1 Condition          8 176427. 22053.      81.3  2.48e-114
+2 PreviousRating     1  14424. 14424.      53.2  4.65e- 13
+3 Residuals       1740 472149.   271.      NA   NA        </code></pre>
 </div>
 </div>
 </section></section>
@@ -1318,7 +1413,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
         rtl: false,
 
         // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'grid',
+        navigationMode: 'default',
 
         // Randomizes the order of slides each time the presentation loads
         shuffle: false,
