@@ -1,0 +1,197 @@
+---
+title: "NHST_models"
+author: "Nathaniel Condit-Schultz"
+date: "2024-11-03"
+output: 
+  html_document:
+    css: NHST_tests.css
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(shiny)
+math <- function(x, full = TRUE) {
+  if (full) {
+    c('$$', '\\begin{align*}', paste0(x, ' \\\\ '), '\\end{align*}', '$$') |>
+    paste(collapse = '\n')
+  } else {
+    paste('$', x, '$')
+  }
+  
+}
+
+
+deets <- function(name = NULL, ...) {
+  tags$details(if (!is.null(name)) tags$summary(name), 
+                ...)
+}
+
+item <- function(model) {
+  tags$div(
+    deets(tags$em(model$Name[1], style = 'font-size:1.2em;'), 
+          if (length(model$Name) > 1) tags$p('a.k.a.', model$Name[-1]),
+          tags$p(deets(tags$p(tags$b('Statistic:'), model$Statistic), 
+                       math(model$Statisticdetails), 
+                       model$StatisticNotes)),
+          tags$p(deets(tags$p(tags$b('Model:')), math(model$Formula))),
+          tags$p(deets(tags$p(tags$b('R code:')), tags$code(paste(model$R, collapse = '\n'))))
+          )) 
+}
+
+```
+
+```{r}
+models <- list(
+  Ttest = list(
+    Model = 'GLM',
+    Name = c("T-test", "Student's t-test"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/Student%27s_t-distribution", 't'),
+    Statisticdetails = c("\\beta \\sim \\mathcal{t}(df)", "df = N - 1"),
+    Formula = c('DV = \\beta_0 + \\beta IV + \\epsilon',
+                '\\epsilon \\sim \\mathcal{N}(0, \\sigma))',
+                'IV \\in \\{0, 1\\}'),
+    R = "lm(DV ~ IV) |> summary()",
+    IV = 'Single Binary variable',
+    IVdetails = c('One level coded 0, one coded 1. (Choice is arbitrary.)'),
+    DV = 'Single Numeric variable',
+    DVdetails = c('Assume that DV is continous, unbounded, numeric variable on ratio/interval scale.')
+    
+  ),
+  ANOVA = list(
+    Model = 'GLM',
+    Name = c("One-way ANOVA"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/F-distribution", 'F'),
+    Statisticdetails = c("\\frac{MSE_{between}}{MSE_{within}} \\sim \\mathcal{F}(\\frac{df_1}{df_2})", 
+                         "df_1 = k - 1", "df_2 = N - k"),
+    Formula = c('DV = \\beta_0 + \\beta IV_1 + \\beta IV_{\\ldots} +  \\beta_{k - 1} + \\epsilon',
+                '\\epsilon \\sim \\mathcal{N}(0, \\sigma))',
+                'IV_k \\in \\{0, 1\\}'),
+    R = "lm(DV ~ IV) |> anova()",
+    IV = 'Single Categorical variable',
+    IVdetails = c('With more than two levels.' ),
+    DV = 'Single Numeric variable',
+    DVdetails = c('Assume that DV is continous, unbounded, numeric variable on ratio/interval scale.')
+  ),
+  LR = list(
+    Model = 'GLM',
+    Name = c("Simple Linear Regression"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/Student%27s_t-distribution", 't'),
+    Statisticdetails = c("\\beta \\sim \\mathcal{t}(df)", "df = N - 1"),
+    Formula = c('DV = \\beta_0 + \\beta IV + \\epsilon',
+                '\\epsilon \\sim \\mathcal{N}(0, \\sigma))',
+                'IV \\in \\mathbb{R}'),
+    R = "lm(DV ~ IV) |> summary()",
+    IV = 'Single Numeric variable',
+    IVdetails = c('Assume that IV is numeric variable on ratio/interval scale.'),
+    DV = 'Single Numeric variable',
+    DVdetails = c('Assume that DV is continous, unbounded, numeric variable on ratio/interval scale.')
+    
+  ),
+   MLR = list(
+    Model = 'GLM',
+    Name = c("Multiple regression"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/Student%27s_t-distribution", 't'),
+    Statisticdetails = c("\\beta_j \\sim \\mathcal{t}(df)", "df = N - 1"),
+    Formula = c('DV = \\beta_0 + \\beta_1 IV_1 + \\beta_{\\ldots} IV_{\\ldots} + \\beta_j IV_j + \\epsilon',
+                '\\epsilon \\sim \\mathcal{N}(0, \\sigma))',
+                'IV_j \\in \\mathbb{R}'),
+    R = "lm(DV ~ IV1 * IV2 * ...) |> summary()",
+    IV = 'Numeric variables',
+    IVdetails = c('Assume that IVs are numeric variables on ratio/interval scale.'),
+    DV = 'Single Numeric variable',
+    DVdetails = c('Assume that DV is continous, unbounded, numeric variable on ratio/interval scale.')
+    
+  ),
+  Logistic = list(
+    Model = 'GLM',
+    Name = c("Logistic regression"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/Chi-squared_distribution", '\\(\\chi^2\\)'),
+    Statisticdetails = c("deviance \\sim \\mathcal{\\chi^2}(1)"),
+    StatisticNotes = tags$p("Test is based on", tags$a(href='https://en.wikipedia.org/wiki/Likelihood-ratio_test', "Log-likelihood ratio test"),
+                          "The deviance is twice the difference in log-likelihood ratio between two models."),
+    Formula = c('DV = (\\beta_0 + \\beta IV + \\epsilon) \\geq 0',
+                '\\epsilon \\sim \\mathcal{Logistic}',
+                'IV \\in \\mathbb{R}'),
+    R = c("H0fit <- glm(DV ~ 1 , family = binomial())",
+          "H1fit <- glm(DV ~ IV, family = binomial())",
+          "anova(H0fit, H1fit)"),
+    IV = 'Single Numeric variable',
+    IVdetails = c('Assume that IV is numeric variable on ratio/interval scale.'),
+    DV = 'Single Binary Variable',
+    DVdetails = c('One level coded 0, one coded 1. (Choice is arbitrary.)', 
+                  'In equation above, DV would be 1 when inequality is true, and 0 otherwise.')
+  ),
+  Poisson = list(
+    Model = 'GLM',
+    Name = c("Poisson Regression"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/Chi-squared_distribution", '\\(\\chi^2\\)'),
+    Statisticdetails = c("deviance \\sim \\mathcal{\\chi^2}(1)"),
+    StatisticNotes = tags$p("Test is based on", tags$a(href='https://en.wikipedia.org/wiki/Likelihood-ratio_test', "Log-likelihood ratio test"),
+                          "The deviance is twice the difference in log-likelihood ratio between two models."),
+    Formula = c('DV \\sim \\mathcal{Poisson}(\\lambda) ',
+                '\\lambda = \\beta_0 + \\beta IV',
+                'DV \\in \\mathbb{N}',
+                'IV \\in \\mathbb{R}'),
+    R = c("H0fit <- glm(DV ~ 1 , family = 'poisson')",
+          "H1fit <- glm(DV ~ IV, family = 'poisson')",
+          "anova(H0fit, H1fit)"),
+    IV = 'Single Numeric variable',
+    IVdetails = c('Assume that IV is numeric variable on ratio/interval scale.'),
+    DV = 'Single Count Variable',
+    DVdetails = c('DV is positive natural numbers including zero.')
+    ),
+   XANOVA = list(
+    Model = 'GLM',
+    Name = c("Two-way ANOVA", "\\(k_j \\times k_j\\) ANOVA (e.g., \\(2 \times 5\\) ANOVA)"),
+    Statistic = tags$a(href = "https://en.wikipedia.org/wiki/F-distribution", 'F'),
+    Statisticdetails = c("\\frac{MSE_{between}}{MSE_{within}} \\sim \\mathcal{F_j}(\\frac{df_1}{df_2})", 
+                         "df_1 = k_j - 1", "df_2 = N - k_j"),
+    Formula = c('DV = \\beta_0 + \\beta IV_1 + \\beta IV_{\\ldots} +  \\beta_{k - 1} + \\epsilon',
+                '\\epsilon \\sim \\mathcal{N}(0, \\sigma))',
+                'IV_k \\in \\{0, 1\\}'),
+    R = "lm(DV ~ IV1 * IV2) |> anova()",
+    IV = 'Two Categorical variables',
+    IVdetails = c('' ),
+    DV = 'Single Numeric variable',
+    DVdetails = c('Assume that DV is continous, unbounded, numeric variable on ratio/interval scale.')
+  )
+  
+)
+
+```
+
+```{r, results='asis'}
+
+rows <- lapply(models, \(mod) mod$IV) |> unique()
+cols <- lapply(models, \(mod) mod$DV) |> unique()
+
+table <- tags$table(do.call(tags$tr, unname(c(list(tags$th('')), lapply(cols, tags$th)))))
+for (i in seq_along(rows)) {
+  table$children[[i + 1]] <- do.call(tags$tr,
+                                     c(list(tags$th(rows[i], style = 'text-align:right;')),
+                                       lapply(rep('', length(cols)), tags$td)))
+}
+
+
+for (mod in models) {
+  table$children
+  i <- which(rows == mod$IV)
+  j <- which(cols == mod$DV)
+  table$children[[i + 1]]$children[[j + 1]]$children[[1]] <- item(mod)
+}
+
+
+table
+
+```
+
+# Glossary
+
++ **df** = degrees of freedom
++ **$\beta_0$** = The model "intercept." The predicted value when all independent variables have value 0.
++ **Ratio scale** = A scale where...
+  + Addition/subtraction is meaningful. Distance is meaningful. Distance between numbers are equivalent.
+  + Multiplication/division is meaningful. Zero is meaningful.

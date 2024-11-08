@@ -1,0 +1,18 @@
+td {
+	padding: 20px;
+}
+
+th { 
+	padding: 30px;
+}
+
+td {
+  border: 1px dashed;
+}
+summary {
+  list-style-type: '⬇ ';
+}
+
+details[open] > summary {
+  list-style-type: '⬆ ';
+}
