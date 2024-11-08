@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="NHST_files/libs/clipboard/clipboard.min.js"></script>
-<script src="NHST_files/libs/quarto-html/tabby.min.js"></script>
-<script src="NHST_files/libs/quarto-html/popper.min.js"></script>
-<script src="NHST_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="NHST_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="NHST_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="NHST_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="NHST_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="NHST_presentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="NHST_presentation_files/libs/quarto-html/tabby.min.js"></script>
+<script src="NHST_presentation_files/libs/quarto-html/popper.min.js"></script>
+<script src="NHST_presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="NHST_presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="NHST_presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="NHST_presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="NHST_presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Nat Condit-Schultz">
@@ -15,8 +15,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="NHST_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="NHST_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="NHST_presentation_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="NHST_presentation_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -56,50 +56,50 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
+        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #f8f8f2;  }
+      { color: #003b4f; background-color: #f1f3f5; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="NHST_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="NHST_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="NHST_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="NHST_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="NHST_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="NHST_presentation_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="NHST_presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="NHST_presentation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="NHST_presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="NHST_presentation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -387,7 +387,7 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -411,14 +411,14 @@ Nat Condit-Schultz
 <section id="what-is-the-goal-of-data-analysis" class="slide level2">
 <h2>What is the goal of data analysis?</h2>
 <ul>
-<li class="fragment">To support <em>valid</em> research claims.</li>
-<li class="fragment">To be <strong>rigorously skeptical</strong> about our data and our models of the data.
+<li class="fragment">To support <em>valid</em> research claims,</li>
+<li class="fragment">by…
 <ul>
-<li class="fragment">Recognize assumptions made about data/models.</li>
-<li class="fragment">Consider alternative explanations of observed relationships.</li>
-<li class="fragment">Try to disprove (falsify) your models.</li>
+<li class="fragment">being <strong>rigorously skeptical</strong> of our own data and analyses;</li>
+<li class="fragment">Considering alternative explanations of observed relationships;</li>
+<li class="fragment">Recognizing and stating our assumptions;</li>
+<li class="fragment">genuinely trying to <strong>falsify</strong> our hypotheses.</li>
 </ul></li>
-<li class="fragment">This is what reviewers expect.</li>
 </ul>
 </section></section>
 <section>
@@ -429,16 +429,23 @@ Nat Condit-Schultz
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
 <ul>
-<li class="fragment">The standard approach to experimental statistics across many fields of research.</li>
-<li class="fragment">A crucial opportunity to falsify your hypothesis.</li>
+<li class="fragment">NHST is…
+<ul>
+<li class="fragment">A crucial opportunity to falsify our hypotheses;</li>
+<li class="fragment"><strong>the</strong> standard approach to experimental statistics across many fields of research;
+<ul>
 <li class="fragment">A validly-conducted “significant” test is (essentially) required to make a positive claim about your hypothesis.</li>
+</ul></li>
+</ul></li>
 </ul>
 </section>
 <section id="core-idea" class="slide level2">
 <h2>Core Idea</h2>
 <ul>
-<li class="fragment">The <em>Null Hypothesis</em> (<span class="math inline">\(H_0\)</span>), is that there are no <strong>true</strong> relationship between independent and dependent variable(s).</li>
-<li class="fragment">Any <em>apparent relationships</em> may arise purely by random chance.</li>
+<li class="fragment">The <em>Null Hypothesis</em> (<span class="math inline">\(H_0\)</span>), is that there are no <strong>true</strong> relationship between independent and dependent variable(s).
+<ul>
+<li class="fragment">Even if <span class="math inline">\(H_0\)</span> is true, <em>apparent relationships may arise purely by random chance</em>.</li>
+</ul></li>
 <li class="fragment">If we claim a relationship is real when it is not we make a Type 1 error.
 <ul>
 <li class="fragment">NHST is a mechanism for limiting Type 1 errors.</li>
@@ -452,48 +459,31 @@ Nat Condit-Schultz
 <div class="tab-content">
 <div id="tabset-1-1">
 <ol type="1">
-<li class="fragment">Pick an “<span class="math inline">\(\alpha\)</span> level” (acceptable Type 1 error rate).</li>
-</ol>
+<li class="fragment">Pick an “<span class="math inline">\(\alpha\)</span> level” (acceptable Type 1 error rate).
 <ul>
 <li class="fragment">Just kidding; <span class="math inline">\(\alpha := 0.05\)</span></li>
-</ul>
-<ol start="2" type="1">
-<li class="fragment">Describe a statistical model of the relationship(s) between experimental variables.</li>
-</ol>
-<ul>
-<li class="fragment">Usually a variant of the General Linear Model.</li>
-<li class="fragment"><span class="math inline">\(\beta_0 + \beta_1X + \epsilon = Y\)</span>
-<ul>
-<li class="fragment">Includes assumptions about distribution of residual error! (<span class="math inline">\(\epsilon\)</span>)</li>
 </ul></li>
-</ul>
-<ol start="3" type="1">
-<li class="fragment">Characterize the Null Hypothesis in the context of that model.</li>
-</ol>
+<li class="fragment">Describe a statistical model of the relationship(s) between experimental variables.
+<ul>
+<li class="fragment"><span class="math inline">\(\beta_0 + \beta_1X + \epsilon = Y\)</span></li>
+</ul></li>
+<li class="fragment">Characterize the Null Hypothesis in the context of that model.
 <ul>
 <li class="fragment">Usually, something like <span class="math inline">\(H_0: \beta_1 = 0\)</span>.</li>
-</ul>
+</ul></li>
+</ol>
 </div>
 <div id="tabset-1-2">
 <ol start="4" type="1">
 <li class="fragment">Gather data.</li>
-<li class="fragment">Compute probability of observed data, or “more extreme” data, given <span class="math inline">\(H_0\)</span>.
+<li class="fragment">Compute probability of observed data, or “more extreme” data, <em>given</em> <span class="math inline">\(H_0\)</span>.
 <ul>
 <li class="fragment">This is a <span class="math inline">\(p\)</span> value.</li>
 </ul></li>
 <li class="fragment">Evaluate:
 <ul>
-<li class="fragment">If <span class="math inline">\(p \leq \alpha\)</span>, then result is considered significant.
-<ul>
-<li class="fragment">Your research claim <em>may</em> be valid.</li>
-</ul></li>
-<li class="fragment">If <span class="math inline">\(p &gt; \alpha\)</span>, then result is not significant.
-<ul>
-<li class="fragment">Your research claim is falsified.
-<ul>
-<li class="fragment">(To argue otherwise will be an uphill battle.)</li>
-</ul></li>
-</ul></li>
+<li class="fragment">If <span class="math inline">\(p \leq \alpha\)</span>, then result is considered “<em>significant</em>.”</li>
+<li class="fragment">If <span class="math inline">\(p &gt; \alpha\)</span> your result is “not significant.”</li>
 </ul></li>
 </ol>
 </div>
@@ -502,254 +492,188 @@ Nat Condit-Schultz
 </section>
 <section id="interpretation" class="slide level2">
 <h2>Interpretation</h2>
-<p>Following this method assures that at most 5% of positive (significant) research claims are Type 1 errors.</p>
+<ul>
+<li class="fragment">If <span class="math inline">\(p \leq \alpha\)</span>,
+<ul>
+<li class="fragment">you may claim that your hypothesis has been supported by the data.</li>
+</ul></li>
+<li class="fragment">If <span class="math inline">\(p &gt; \alpha\)</span>,</li>
+<li class="fragment">you must acknowledge that the data is not consistent with your hypothesis.
+<ul>
+<li class="fragment">Your research claim is (tentatively) falsified.</li>
+<li class="fragment">To argue otherwise will be an uphill battle.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="rationale">Rationale</h3>
+<p>Apply NHSTs assures that at most 5% of positive (significant) research claims are Type 1 errors.</p>
 <ul>
 <li class="fragment">It does not…
 <ul>
 <li class="fragment"><em>Prove</em> anything, either way.</li>
-<li class="fragment">Demonstrate that a relationship (effect) is strong, or important.</li>
+<li class="fragment">Demonstrate that a relationship (effect) is strong or important.</li>
 <li class="fragment">Tell us about Type 2 errors.</li>
 </ul></li>
 </ul>
+</section>
+<section id="practical" class="slide level2 scrollable">
+<h2>Practical</h2>
+<p>What does this all look like in practice?</p>
+<ol type="1">
+<li class="fragment">Determine which “statistical test” is appropriate for your data and <span class="math inline">\(H_0\)</span>.</li>
+<li class="fragment">Find statistics library which includes this test.
+<ul>
+<li class="fragment"><code>R</code> is simplest place to look.</li>
+</ul></li>
+<li class="fragment">Load data into R/Python/etc.</li>
+<li class="fragment">Run test on data.</li>
+<li class="fragment">Interpret output, and put into your paper.
+<ul>
+<li class="fragment">Is the test significant? (yes/no)</li>
+<li class="fragment">Include appropriate details.</li>
+</ul></li>
+</ol>
+</section>
+<section class="slide level2">
+
+<p>I’ll now walk through some examples, using R.</p>
+<ul>
+<li class="fragment">We will start with basic (“baby step”) examples, before finishing with a review of real <em>best practices</em>.</li>
+</ul>
 </section></section>
 <section>
-<section id="statistical-models" class="title-slide slide level1 center">
-<h1>Statistical Models</h1>
-<p>What does this look like in practice?</p>
+<section id="statistical-tests" class="title-slide slide level1 smaller center">
+<h1>Statistical Tests</h1>
+<p>To conduct an NHST, we need to compute <span class="math inline">\(p\)</span> values for our data, given our Null Hypothesis.</p>
 <ul>
-<li class="fragment">Find a statistical model that can represent your independent and dependent variables.
+<li class="fragment">Basically, we need a function <span class="math inline">\(f(\textbf{IV}_{n\times k},\ \textbf{DV}_{n \times j},\ H_0) = f(Data\ |\ H_0) = p\)</span>.
 <ul>
-<li class="fragment"><code>DV ~ IV</code></li>
+<li class="fragment">Where,
+<ul>
+<li class="fragment"><span class="math inline">\(IV_k\)</span> is <span class="math inline">\(k\)</span> independent variables.</li>
+<li class="fragment"><span class="math inline">\(DV_j\)</span> is <span class="math inline">\(j\)</span> dependent variables (<span class="math inline">\(j := 1\)</span> for this talk).</li>
+<li class="fragment"><span class="math inline">\(n\)</span> is the number of data observations.</li>
 </ul></li>
-<li class="fragment">In fact, when you design your experiment in the first place, consider what statistical model to use.</li>
+</ul></li>
+<li class="fragment">Every “statistical test” is such a function.</li>
 </ul>
 </section>
-<section id="section" class="slide level2 smaller">
-<h2></h2>
-<p>There are many standard models/tests:</p>
-<div class="columns">
-<div class="column" style="width:60%;">
+<section class="slide level2">
+
+<p>To compute <span class="math inline">\(p\)</span>, all tests compute a <strong>test statistic</strong> with a known probability distribution.</p>
 <ul>
-<li class="fragment">For many, <span class="math inline">\(p\)</span>-values can be computed trivially.</li>
-</ul>
-</div><div class="column" style="width:40%;">
+<li class="fragment">For example:
 <ul>
-<li class="fragment">Linear regression</li>
-<li class="fragment"><span class="math inline">\(t\)</span>-test</li>
-<li class="fragment">ANOVA</li>
-<li class="fragment">MANOVA</li>
-</ul>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:60%;">
+<li class="fragment"><span class="math inline">\(ANOVA(\textbf{IV}_{i\times k},\ \textbf{DV}_{i}) = F\)</span></li>
+<li class="fragment"><span class="math inline">\(F \sim \mathcal{F}(\frac{k - 1}{n - k})\)</span>
 <ul>
-<li class="fragment">Others require algorithmic “fitting” process (equivalent to “training” in ML).</li>
-</ul>
-</div><div class="column" style="width:40%;">
-<ul>
-<li class="fragment">Logistic regression</li>
-<li class="fragment">Multinomial regression</li>
-<li class="fragment">Multi-level models</li>
-</ul>
-</div>
-</div>
-<ul>
-<li class="fragment">All are variants of General Linear Model.</li>
+<li class="fragment">We can compute <span class="math inline">\(p(F)\)</span>, using the <span class="math inline">\(\mathcal{F}(\frac{k = 1}{n - ik})\)</span> distribution.</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Test statistics can also be simulated using your data (“bootstrapping”).</li>
 </ul>
 </section>
-<section id="section-1" class="slide level2 smaller">
-<h2></h2>
-<p>The appropriate statistical model/test depends on the type of DV and IVs you have.</p>
-<p>DV ~ <span class="math inline">\(IV_1 + (+ IV₂ + … + IVₙ)\)</span></p>
+<section id="model-vs-tests" class="slide level2 smaller">
+<h2>Model vs Tests</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1"></a></li><li><a href="#tabset-2-2">Numeric DV</a></li><li><a href="#tabset-2-3">Categorical DV</a></li><li><a href="#tabset-2-4">Ordinal DV</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Parametric</a></li><li><a href="#tabset-2-2">Non-parametric</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-
+<p>Most statistical tests are based on “parametric” models, modeling relationships between variables and making assumptions about the distribution of error in the data.</p>
+<ul>
+<li class="fragment">Variants of the <em>general linear model</em> are the most common, by far.
+<ul>
+<li class="fragment"><span class="math inline">\(\beta_0 + \beta_1X + \epsilon = Y\)</span></li>
+<li class="fragment"><span class="math inline">\(\epsilon \sim \mathcal{N}(0, \sigma)\)</span></li>
+</ul></li>
+<li class="fragment">Test statistics may either represent particular model parameters (<span class="math inline">\(t\)</span>) or the improvement of fit when comparing two models (<span class="math inline">\(F\)</span>, <span class="math inline">\(\chi^2\)</span>).</li>
+</ul>
 </div>
 <div id="tabset-2-2">
-<table class="caption-top">
-<colgroup>
-<col style="width: 35%">
-<col style="width: 25%">
-<col style="width: 24%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><span class="math inline">\(IV_{k}\)</span></th>
-<th style="text-align: left;">Model</th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Test Statistic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{R}^k\)</span></td>
-<td style="text-align: left;">Linear regression</td>
-<td style="text-align: left;"><span class="math inline">\(k=1 :\)</span> “Simple”</td>
-<td style="text-align: left;"><span class="math inline">\(t\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="math inline">\(k&gt;1 :\)</span> “Multiple”</td>
-<td style="text-align: left;"><span class="math inline">\(t^k\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Cat}\{2\}\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(t\)</span>-test</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="math inline">\(t\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Cat}\{\geq 2\}^k\)</span></td>
-<td style="text-align: left;">ANOVA</td>
-<td style="text-align: left;"><span class="math inline">\(k=1 :\)</span> “One-way”</td>
-<td style="text-align: left;"><span class="math inline">\(F\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="math inline">\(k&gt;1 :\)</span> “{k}-way”</td>
-<td style="text-align: left;"><span class="math inline">\(F^k\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{R}^* \times \mathbb{Cat}^*\)</span></td>
-<td style="text-align: left;">ANCOVA</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="math inline">\(F^k\)</span></td>
-</tr>
-</tbody>
-</table>
+<p>Other tests are “non-parametric,” making fewer/no assumptions about the data.</p>
 <ul>
-<li class="fragment">These models all assume a normally-distributed DV.</li>
-<li class="fragment">Tests are based on <span class="math inline">\(t\)</span> or <span class="math inline">\(F\)</span> sampling distributions.</li>
-</ul>
-</div>
-<div id="tabset-2-3">
-<table class="caption-top" style="width:100%;">
-<colgroup>
-<col style="width: 31%">
-<col style="width: 22%">
-<col style="width: 33%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><span class="math inline">\(DV_{k}\)</span></th>
-<th style="text-align: left;">Model</th>
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Test Statistic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Cat}\{2\}\)</span></td>
-<td style="text-align: left;">Logistic regression</td>
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Cat}(IV) :\)</span> “Logistic ANOVA”</td>
-<td style="text-align: left;"><span class="math inline">\(\chi^2\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Cat}\{&gt;2\}\)</span></td>
-<td style="text-align: left;">Multinomial regression</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><span class="math inline">\(\chi^2\)</span></td>
-</tr>
-</tbody>
-</table>
+<li class="fragment">They are less <em>powerful</em>, but more <em>robust</em> (“safer”).</li>
+<li class="fragment">Examples include…
 <ul>
-<li class="fragment">In these models, a latent linear variable is mapped to discrete categories.</li>
-<li class="fragment">Evaluated using log-likelihood ratio test.</li>
-</ul>
-</div>
-<div id="tabset-2-4">
-<table class="caption-top">
-<colgroup>
-<col style="width: 46%">
-<col style="width: 33%">
-<col style="width: 19%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><span class="math inline">\(DV_{k}\)</span></th>
-<th style="text-align: left;">Model</th>
-<th style="text-align: left;">Test Statistic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Ord}\{&gt;2\}\)</span></td>
-<td style="text-align: left;">Ordinal logit regression</td>
-<td style="text-align: left;"><span class="math inline">\(\chi^2\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\mathbb{Cat}\{&gt;2\}\)</span></td>
-<td style="text-align: left;">Oridnal probit regression</td>
-<td style="text-align: left;"><span class="math inline">\(\chi^2\)</span></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li class="fragment">In these models, a latent linear variable is mapped to ordinal categories.</li>
-<li class="fragment">Evaluated using log-likelihood ratio test.</li>
+<li class="fragment"><a href="https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test">Pearson’s <span class="math inline">\(\chi^2\)</span> test</a>.</li>
+<li class="fragment">The [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test].</li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
+</section>
+<section id="choosing-a-test" class="slide level2">
+<h2>Choosing a Test</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">General considerations</a></li><li><a href="#tabset-3-2">Independent Variable(s)</a></li><li><a href="#tabset-3-3">Dependent Variable</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<p>Start with linear models.</p>
+<ul>
+<li class="fragment">The choice of test depends on the nature of your independent and dependent variables.</li>
+<li class="fragment">Generally, the general linear model can accommodate any combinations, so we’re always choosing variants of the same thing.</li>
+</ul>
+</div>
+<div id="tabset-3-2">
+<p>Generally, any combination of independent variables can be used.</p>
+<ul>
+<li class="fragment">Categorical, numeric, etc.
+<ul>
+<li class="fragment">The interpretation of model parameters changes, but the test is the same.</li>
+</ul></li>
+<li class="fragment">Interactions?</li>
+<li class="fragment">Covariates.
+<ul>
+<li class="fragment">Include any covariates that make sense, so the model can control for them.</li>
+</ul></li>
+</ul>
+</div>
+<div id="tabset-3-3">
+<p>The main question is the nature of your dependent variable.</p>
+<ul>
+<li class="fragment">What kind of variable?
+<ul>
+<li class="fragment">Continuous, real numbers?</li>
+<li class="fragment">Categories? Ordered categories?</li>
+<li class="fragment">Rank/Count data?</li>
+</ul></li>
+<li class="fragment">What does error look like?
+<ul>
+<li class="fragment">Is normal distribution plausible model?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>In R, we write <code>lm(DV ~ IV)</code>.</p>
+<p>Additional variables, can be added:</p>
+<ul>
+<li class="fragment"><code>lm(DV ~ IV1 + IV2)</code></li>
+<li class="fragment"><code>lm(DV ~ IV1 + IV2 + IV1:IV2)</code></li>
+<li class="fragment">The default assumption is that DV is a continuous variable, with normal error.</li>
+<li class="fragment">The IVs can be any types of variables.
+<ul>
+<li class="fragment">If the IVs are categorical, we have a <span class="math inline">\(t\)</span>-test (single binary IV) or ANOVA.</li>
+<li class="fragment">If the DVs are continuous, we have a linear regression, or multiple regression.</li>
+<li class="fragment">We can mix categorical/continuous as well.</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="examples" class="title-slide slide level1 center">
 <h1>Examples</h1>
-<!-- ## Fake Data -->
-<!-- ```{r, echo = TRUE} -->
-<!-- N <- 100 -->
-<!-- X1_R <- rnorm(N) -->
-<!-- X2_R <- rnorm(N) -->
-<!-- X3_Cat2 <- gl(2, N / 2, labels = c('On', 'Off')) |> sample() -->
-<!-- X4_Cat5 <- gl(5, N / 5, labels = LETTERS[1:5]) -->
-<!-- sigma <- 10 -->
-<!-- Y <- 5.2 + 1 * X1_R +  -->
-<!--   -11.2 * X1_R +  -->
-<!--   as.integer(X3_Cat2) * 7.2 +  -->
-<!--   (contrasts(X4_Cat5) %*% c(c(1, 3, -10, 5)))[X4_Cat5] + -->
-<!--   rnorm(N, 0, sigma) -->
-<!-- ``` -->
-<!-- ## {.smaller} -->
-<!-- ::: {.panel-tabset} -->
-<!-- ### Linear -->
-<!-- ```{r} -->
-<!-- fit <- lm(Y ~ X1_R) -->
-<!-- plot(Y ~ X1_R) -->
-<!-- abline(fit) -->
-<!-- fit |> tidy() -->
-<!-- ``` -->
-<!-- ### t-test -->
-<!-- ```{r} -->
-<!-- fit <- lm(Y ~ X3_Cat2) -->
-<!-- plot(Y ~ X3_Cat2) -->
-<!-- abline(fit) -->
-<!-- fit |> tidy() -->
-<!-- ``` -->
-<!-- ### One-way ANOVA -->
-<!-- ```{r} -->
-<!-- fit <- lm(Y ~ X4_Cat5) -->
-<!-- plot(Y ~ X4_Cat5) -->
-<!-- fit |> anova() |> tidy() -->
-<!-- ``` -->
-<!-- ### 2 X 5 ANOVA -->
-<!-- ```{r} -->
-<!-- fit <- lm(Y ~ X3_Cat2 * X4_Cat5) -->
-<!-- tapply(Y, list(X3_Cat2, X4_Cat5), mean) |> barplot(beside = TRUE) -->
-<!-- fit |> anova() |> tidy() -->
-<!-- ``` -->
-<!-- ::: -->
+
 </section>
 <section id="quality-evaluation-data" class="slide level2">
 <h2>Quality Evaluation Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>SiSEC <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'../SiSEC08_source_separation/SiSEC08_anonymized.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(<span class="fu">grepl</span>(<span class="st">'Algo'</span>, Condition))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>SiSEC <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'../SiSEC08_source_separation/SiSEC08_parsed.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(<span class="fu">grepl</span>(<span class="st">'Algo'</span>, Algorithm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>SiSEC</strong> dataset.</p>
 <ul>
@@ -761,33 +685,54 @@ Nat Condit-Schultz
 </section>
 <section class="slide level2">
 
-<p>Ratings range from 0 to 100.</p>
-
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><p>How do approach this using NHST?</p>
+<p>How do approach this using NHST?</p>
 <ul>
-<li class="fragment">Start from a place of skepticism:</li>
-<li class="fragment">What if this is all noise?
+<li class="fragment">First things first: <strong>what is the Null Hypothesis?</strong>.</li>
+<li class="fragment">Presumed hypothesis is that some algorithms perform better than others.</li>
+<li class="fragment">Therefore, <span class="math inline">\(H_0\)</span>: <em>All nine algorithms actually perform equally well</em>.
 <ul>
-<li class="fragment">All nine algorithms perform actually perform equally well.</li>
-<li class="fragment">The “omnibus” <span class="math inline">\(H_0\)</span>.</li>
+<li class="fragment">This called the “omnibus null hypothesis.”</li>
 </ul></li>
 </ul>
 </section>
 <section class="slide level2">
 
-
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment">Numeric DV:
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Dependent Variable</a></li><li><a href="#tabset-4-2">Independent Variable(s)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p>Ratings range from 0 to 100.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 <ul>
-<li class="fragment">Model as normal error.</li>
+<li class="fragment">Continuous numeric DV, with plausibly normal distribution.</li>
+</ul>
+</div>
+<div id="tabset-4-2">
+<p>Main IV is categorical with nine levels (nine algorithms).</p>
+<ul>
+<li class="fragment">Possible covariate is the type of stimuli: music vs speech (binary variable).</li>
+<li class="fragment">There could plausibly be interactions between algorithm and target/type.
+<ul>
+<li class="fragment">The Null Hypothesis would have these interactions as 0.</li>
 </ul></li>
-<li class="fragment">Multinomial IV:
+</ul>
+</div>
+</div>
+</div>
 <ul>
-<li class="fragment">One-way Analysis of Variance (ANOVA).</li>
+<li class="fragment">This variant of the linear model is called ANOVA.
+<ul>
+<li class="fragment"><span class="math inline">\(9\times 4 \times 2\)</span> ANOVA (though not fully factorial).</li>
+<li class="fragment">The ANOVA is based on a <span class="math inline">\(F\)</span> test, comparing the fit of the model with/without each variable.</li>
+<li class="fragment"><span class="math inline">\(H_0\)</span> is that the mean-value for the DV is the same in all nine IV levels.</li>
 </ul></li>
 </ul>
 </section>
@@ -795,191 +740,421 @@ Nat Condit-Schultz
 
 <h4 id="anova">ANOVA</h4>
 <p>If <span class="math inline">\(H_0\)</span> true, ratio of between-group and with-group variance should follow the <span class="math inline">\(F(\frac{df_1}{df_2})\)</span> distribution.</p>
-<ul>
-<li class="fragment">From</li>
-</ul>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "/home/nat/Bridge/Professional/Workshops/ISMIR2024/NatsPresentations/images/ANOVAs.gif"</code></pre>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/ANOVAs.gif" width="800"></p>
+</figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/ANOVAs_F.gif" width="800"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
 
-</div>
-<img data-src="images/ANOVAs.gif" class="r-stretch"></section>
+
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">lm</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">*</span> Type, <span class="at">data =</span> SiSEC) <span class="sc">|&gt;</span> <span class="fu">anova</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Df</th>
+<th style="text-align: right;">Sum Sq</th>
+<th style="text-align: right;">Mean Sq</th>
+<th style="text-align: left;">F value</th>
+<th style="text-align: left;">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Algorithm</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">178,961.85</td>
+<td style="text-align: right;">22,370.23</td>
+<td style="text-align: left;">89.39</td>
+<td style="text-align: left;">1.94e-124</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Type</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">27,335.74</td>
+<td style="text-align: right;">27,335.74</td>
+<td style="text-align: left;">109.23</td>
+<td style="text-align: left;">7.7e-25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Algorithm:Type</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">24,305.39</td>
+<td style="text-align: right;">3,038.17</td>
+<td style="text-align: left;">12.14</td>
+<td style="text-align: left;">5.2e-17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">1,746</td>
+<td style="text-align: right;">436,948.47</td>
+<td style="text-align: right;">250.26</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
 
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  term         df   sumsq meansq statistic    p.value
-  &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-1 Condition     8 178962. 22370.      80.4  2.55e-113
-2 Residuals  1755 488590.   278.      NA   NA        </code></pre>
 </div>
-</div>
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">As we suspected, the omnibus Null Hypothesis does not seem very plausible.</li>
 </ul>
-</section>
-<section class="slide level2">
-
-<p>However, in typical MIR projects, asking whether all the algorithms perform the same wouldn’t really be the thing that interests us.</p>
-<p>We’d be more likely to want to know whether a particular algorithm performs better than the other algorithms, or better than a the previous “best” algorithm.</p>
-</section>
-<section class="slide level2">
-
-<p>If we wanted to compare the latest algorithm (34) to the previous iteration (32), we can reduce this to a <span class="math inline">\(t\)</span>-test.</p>
-<ul>
-<li class="fragment"><span class="math inline">\(H_0:\)</span> the performance of Algo32 and Algo34 is the same.</li>
-</ul>
-<div class="cell">
-
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 6
-  term         df    sumsq meansq statistic p.value
-  &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 Condition     1     4.50   4.50    0.0273   0.869
-2 Residuals   390 64322.   165.     NA       NA    </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term            estimate std.error statistic  p.value
-  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)       23.4       0.917    25.5   3.93e-85
-2 ConditionAlgo34   -0.214     1.30     -0.165 8.69e- 1</code></pre>
-</div>
-</div>
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment">Two things to notice:
-<ul>
-<li class="fragment">Algorithm 34 actually has slightly <em>lower</em> performance on average (<code>-.2143</code>).</li>
-<li class="fragment">However, the test is not significant, so the Null Hypothesis cannot be rejected.
-<ul>
-<li class="fragment">We would not conclude that Algorithm 34 is worse than Algorithm 32.</li>
-</ul></li>
-</ul></li>
-</ul>
-<!-- --- -->
-<!-- Perhaps we'd like to know whether the best performing algorithm (22) is really better than the second best (30)? -->
-<!-- ```{r} -->
-<!-- plot(Ratingscore ~ factor(Condition), data = SiSEC) -->
-<!-- fit <- lm(Ratingscore ~ Condition, data = SiSEC |> subset(Condition %in% c('Algo22', 'Algo30'))) -->
-<!-- lm(fit) |> summary() -->
-<!-- ``` -->
 </section>
 <section id="emotion-data" class="slide level2">
 <h2>Emotion Data</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>     number valence energy tension anger  fear happy   sad tender      TARGET
-      &lt;int&gt;   &lt;num&gt;  &lt;num&gt;   &lt;num&gt; &lt;num&gt; &lt;num&gt; &lt;num&gt; &lt;num&gt;  &lt;num&gt;      &lt;char&gt;
-  1:      1    4.83   6.83    3.17  1.00  1.00  7.33  1.00   1.00       HAPPY
-  2:      2    4.83   6.17    3.83  1.00  1.00  7.17  1.17   1.83       HAPPY
-  3:      3    5.60   6.20    3.00  1.00  1.00  7.17  1.00   1.00       HAPPY
-  4:      4    4.67   6.33    3.83  1.00  1.00  7.17  1.00   1.00       HAPPY
-  5:      5    6.50   5.00    3.17  1.17  1.00  7.17  1.00   2.83       HAPPY
- ---                                                                         
-356:    356    4.80   2.40    3.60  1.00  1.00  1.33  6.67   4.50 LOW TENSION
-357:    357    5.00   2.83    3.67  1.00  2.40  1.00  2.60   4.20 LOW TENSION
-358:    358    4.20   2.20    4.00  1.00  1.83  1.67  5.50   4.33 LOW TENSION
-359:    359    4.60   4.20    4.20  1.00  1.33  3.33  2.67   1.00 LOW TENSION
-360:    360    3.20   3.40    5.00  1.33  5.33  1.00  3.00   1.00 LOW TENSION</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>emote <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">'../Eerola_emotion/mean_ratings_set1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>Eerola’s <strong>Music and emotion stimulus sets consisting of film soundtracks</strong>.</p>
 <ul>
-<li class="fragment">We might, for example, test the hypothesis that perceived energy is related to rension.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment">Numeric DV:
+<li class="fragment">Stimuli with twelve target emotions
 <ul>
-<li class="fragment">Model as normal error.</li>
+<li class="fragment">Happy, Sad, Tender, Fear, Anger, Surprise, High Valence, Low Valence, High Energy, Low Energy, High Tension, Low Tension</li>
 </ul></li>
-<li class="fragment">Numeric IV:
+<li class="fragment">Eight rated emotional dimensions
 <ul>
-<li class="fragment">Simple linear regression.</li>
-<li class="fragment"><span class="math inline">\(H_0: \beta = 0\)</span></li>
+<li class="fragment">Valence, Energy, Tension, Anger, Fear, Happy, Sad, Tender</li>
+<li class="fragment">Scale of 1–9</li>
 </ul></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<div class="cell">
-
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(tension <span class="sc">~</span> energy, <span class="at">data =</span> emote)</span>
-<span id="cb7-2"><a href=""></a></span>
-<span id="cb7-3"><a href=""></a><span class="fu">summary</span>(fit) <span class="sc">|&gt;</span> <span class="fu">tidy</span>(<span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  term        estimate std.error statistic  p.value conf.low conf.high
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-1 (Intercept)    1.42     0.218       6.53 2.30e-10    0.993     1.85 
-2 energy         0.685    0.0504     13.6  3.18e-34    0.586     0.784</code></pre>
-</div>
-</div>
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<h4 id="multiple-regression">Multiple Regression</h4>
-<p>The simple regression looks at two variables in isolation. If we add more independent variables, the independent effect of <em>each</em> can be evaluated.</p>
+<p><em>Hypothesis</em>: Perceived energy is related to tension.</p>
+<p>How do approach this using NHST?</p>
+<ul>
+<li class="fragment"><span class="math inline">\(H_0\)</span>: There is no relationship between energy and tension ratings.</li>
+</ul>
 </section>
 <section class="slide level2">
 
-<h4 id="logistic-regression">Logistic Regression</h4>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Dependent Variable</a></li><li><a href="#tabset-5-2">Independent Variable(s)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p>Energy ratings from 0 to 9.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Analysis of Deviance Table
-
-Model: gaussian, link: identity
-
-Response: Negative
-
-Terms added sequentially (first to last)
-
-        Df Deviance Resid. Df Resid. Dev       F     Pr(&gt;F)    
-NULL                      359     27.500                       
-valence  1  1.33354       358     26.166 18.3086 0.00002426 ***
-energy   1  0.13148       357     26.035  1.8051     0.1800    
-tension  1  0.02161       356     26.013  0.2967     0.5863    
-anger    1  0.15314       355     25.860  2.1025     0.1479    
-fear     1  0.16663       354     25.694  2.2877     0.1313    
-happy    1  0.00268       353     25.691  0.0368     0.8480    
-sad      1  0.12211       352     25.569  1.6764     0.1962    
-tender   1  0.00315       351     25.566  0.0432     0.8355    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-</section></section>
+</div>
+<ul>
+<li class="fragment">Sort-of continuous numeric DV, with (sort of) plausibly normal distribution?</li>
+</ul>
+</div>
+<div id="tabset-5-2">
+<p>Main IV is tension, but all eight emotion ratings are correlated:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">cor</span>(emote[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Valence</th>
+<th style="text-align: left;">Energy</th>
+<th style="text-align: left;">Tension</th>
+<th style="text-align: left;">Anger</th>
+<th style="text-align: left;">Fear</th>
+<th style="text-align: left;">Happy</th>
+<th style="text-align: left;">Sad</th>
+<th style="text-align: left;">Tender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Valence</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Energy</td>
+<td style="text-align: left;">-0.40</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tension</td>
+<td style="text-align: left;">-0.91</td>
+<td style="text-align: left;">0.58</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Anger</td>
+<td style="text-align: left;">-0.71</td>
+<td style="text-align: left;">0.48</td>
+<td style="text-align: left;">0.73</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fear</td>
+<td style="text-align: left;">-0.86</td>
+<td style="text-align: left;">0.35</td>
+<td style="text-align: left;">0.83</td>
+<td style="text-align: left;">0.68</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Happy</td>
+<td style="text-align: left;">0.56</td>
+<td style="text-align: left;">0.23</td>
+<td style="text-align: left;">-0.46</td>
+<td style="text-align: left;">-0.42</td>
+<td style="text-align: left;">-0.55</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sad</td>
+<td style="text-align: left;">0.32</td>
+<td style="text-align: left;">-0.69</td>
+<td style="text-align: left;">-0.41</td>
+<td style="text-align: left;">-0.41</td>
+<td style="text-align: left;">-0.38</td>
+<td style="text-align: left;">-0.36</td>
+<td style="text-align: left;">1.00</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tender</td>
+<td style="text-align: left;">0.76</td>
+<td style="text-align: left;">-0.60</td>
+<td style="text-align: left;">-0.83</td>
+<td style="text-align: left;">-0.53</td>
+<td style="text-align: left;">-0.64</td>
+<td style="text-align: left;">0.25</td>
+<td style="text-align: left;">0.34</td>
+<td style="text-align: left;">1.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li class="fragment">These correlations could lead to spurious results.
+<ul>
+<li class="fragment">We can control for them by including all seven independent predictors;</li>
+<li class="fragment">This isolates the effect of tension, independent of other ratings.</li>
+</ul></li>
+<li class="fragment">There could plausibly be interactions as well…</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">This variant of the linear model is called Multiple Regression.
+<ul>
+<li class="fragment">If we don’t include interactions, we can test the effect using the <span class="math inline">\(t\)</span> statistic associated with the tension variable.
+<ul>
+<li class="fragment"><span class="math inline">\(H_0\)</span> is that the “slope” between tension and energy is zero (<span class="math inline">\(b_{tension} = 0\)</span>).</li>
+</ul></li>
+<li class="fragment">However, in more complex cases, it would be easier to again use an <span class="math inline">\(F\)</span> test, comparing the fit of the model with/without each variable.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h4 id="linear-regression">Linear Regression</h4>
+<p>If <span class="math inline">\(H_0\)</span> is true, standardized regression coefficient should follow Student’s <span class="math inline">\(t(df)\)</span> distribution.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/ts.gif" width="1000"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/ts_t.gif" width="800"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">lm</span>(energy <span class="sc">~</span> tension <span class="sc">+</span> valence <span class="sc">+</span> anger <span class="sc">+</span> fear <span class="sc">+</span> happy <span class="sc">+</span> sad <span class="sc">+</span> tender , <span class="at">data =</span> emote[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">0.1431626</td>
+<td style="text-align: right;">-0.30</td>
+<td style="text-align: right;">2.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">valence</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">4.44</td>
+<td style="text-align: right;">0.0000121</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">tension</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">8.52</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">0.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">anger</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">5.09</td>
+<td style="text-align: right;">0.0000006</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fear</td>
+<td style="text-align: right;">-0.16</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">-3.84</td>
+<td style="text-align: right;">0.0001477</td>
+<td style="text-align: right;">-0.24</td>
+<td style="text-align: right;">-0.08</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">happy</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">5.63</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sad</td>
+<td style="text-align: right;">-0.23</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">-6.19</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">-0.30</td>
+<td style="text-align: right;">-0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tender</td>
+<td style="text-align: right;">-0.19</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">-5.19</td>
+<td style="text-align: right;">0.0000004</td>
+<td style="text-align: right;">-0.27</td>
+<td style="text-align: right;">-0.12</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+<!-- #### Logistic Regression -->
+<!-- ```{r} -->
+<!-- negative <- c('ANGER', 'FEAR', 'LOW VALENCE', "SAD", 'HIGH TENSION') -->
+<!-- emote$Negative <- emote$TARGET == negative -->
+<!-- glm(Negative ~ valence + energy + tension + anger + fear + happy + sad + tender, data = emote) |> anova() -->
+<!-- ``` -->
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-17-1.png" width="800" class="r-stretch"></section></section>
 <section>
 <section id="nhst-pitfalls" class="title-slide slide level1 center">
 <h1>NHST pitfalls</h1>
-<p>In general, NHST is sensitive to the exact procedure you use.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li class="fragment">Any procedural decisions made <em>post-hoc</em> and affect the validity of results.</li>
-<li class="fragment">I.e., if you use the data to to make decisions about stats/tests.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">Stopping condition
-<ul>
-<li class="fragment">When you stop collecting data.</li>
-</ul></li>
-<li class="fragment">Which comparisons you make.</li>
-</ul>
-</div>
-</div>
+<p>Let’s explore some potential, known challenges with NHST.</p>
 </section>
 <section class="slide level2">
 
-<p>Perhaps we’d like to know whether the best performing algorithm (22) is really better than the rest of the algorithms?</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"><p>What if we want to know if the best algorithm is significantly better than the other aglorithms as a whole?</p>
+</section>
 <section class="slide level2">
 
 <div class="cell">
@@ -989,19 +1164,21 @@ Call:
 lm(formula = fit)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--36.79 -11.01  -1.79   9.21  63.21 
+    Min      1Q  Median      3Q     Max 
+-47.452 -10.557  -1.557   9.035  66.035 
 
 Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   36.7902     0.4771   77.11   &lt;2e-16 ***
-BestAlgoTRUE  14.8833     1.4314   10.40   &lt;2e-16 ***
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)              40.5565     0.7094  57.170  &lt; 2e-16 ***
+BestAlgoTRUE             21.8958     2.1282  10.288  &lt; 2e-16 ***
+Typespeech               -6.5911     0.9384  -7.023 3.08e-12 ***
+BestAlgoTRUE:Typespeech -12.2719     2.8153  -4.359 1.38e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 18.89 on 1762 degrees of freedom
-Multiple R-squared:  0.05781,   Adjusted R-squared:  0.05728 
-F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 18.39 on 1760 degrees of freedom
+Multiple R-squared:  0.1084,    Adjusted R-squared:  0.1069 
+F-statistic: 71.32 on 3 and 1760 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <ul>
@@ -1025,9 +1202,31 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section class="slide level2">
 
-<p>We can simulate this.</p>
+<p>We can simulate this:</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>In general, NHST is sensitive to the exact procedure you use.</p>
+<ul>
+<li class="fragment">Any procedural decisions are made <em>post-hoc</em>, they can affect the validity of results.</li>
+<li class="fragment">I.e., <em>if you use the data to to make decisions about stats/tests</em>, the <span class="math inline">\(p\)</span>-value won’t be accurate.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Common pitfalls:</p>
+<ul>
+<li class="fragment">Post-hoc <strong>stopping condition</strong>
+<ul>
+<li class="fragment">If you decide when to stop collecting data based on the data.</li>
+</ul></li>
+<li class="fragment">Post-hoc <strong>comparisons</strong>
+<ul>
+<li class="fragment">When you decide which comparisons to make/test.</li>
+</ul></li>
+</ul>
+</section>
 <section id="multiple-comparisons." class="slide level2">
 <h2>Multiple comparisons.</h2>
 <p>A particularly well known problem is the problem of <em>multiple tests</em>.</p>
@@ -1039,7 +1238,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <p>A common technique is to conduct “pair-wise” <span class="math inline">\(t\)</span>-tests between every category, so we would know exactly which algorithms perform better than others.</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">In this case there would be 36 possible comparisons.</li>
 </ul>
 </section>
@@ -1047,7 +1246,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 
 <p>If we simulate this</p>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">More than forty percent of our (Null Hypothesis) simulations have <em>at least one</em> significant tests.
 <ul>
 <li class="fragment">This is the “family-wise error rate”</li>
@@ -1086,7 +1285,7 @@ F-statistic: 108.1 on 1 and 1762 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li class="fragment">Too many 1s.</li>
 </ul>
 
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
 <section class="slide level2">
 
 <p>You could rethink how to express the hypothesis in a way that is more consistent with the data.</p>
@@ -1116,7 +1315,7 @@ AIC: 496.1
 Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 </div>
-<img data-src="NHST_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section></section>
 <section>
 <section id="data-independence" class="title-slide slide level1 center">
 <h1>Data Independence</h1>
@@ -1139,12 +1338,10 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="tabset-panel">
 <h3 id="by-participant">By participant</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Listener, <span class="at">levels =</span> ranked), <span class="at">data =</span> SiSEC,</span>
-<span id="cb12-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1154,12 +1351,12 @@ Number of Fisher Scoring iterations: 2</code></pre>
 </ul>
 <h3 id="by-item">By item</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">plot</span>(Ratingscore <span class="sc">~</span> <span class="fu">factor</span>(Trial, <span class="at">levels =</span> ranked), <span class="at">data =</span> SiSEC,</span>
-<span id="cb13-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">with</span>(SiSEC, <span class="fu">draw</span>(<span class="at">bg =</span> <span class="st">'#ffffff00'</span>, <span class="fu">factor</span>(Target), Ratingscore), <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb8-2"><a href=""></a>     <span class="at">xlab =</span> <span class="st">'Target'</span>, <span class="at">ylab =</span> <span class="st">"Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1173,7 +1370,7 @@ Number of Fisher Scoring iterations: 2</code></pre>
 
 <p>In a well-designed experiment like this, every combination of all levels is measured.</p>
 <ul>
-<li class="fragment">I.e., every participant heard every item processed by every algortithm.</li>
+<li class="fragment">I.e., every participant heard every item processed by every algorithm.</li>
 <li class="fragment">This “full factorial” design minimized the impact of data dependence on our results.
 <ul>
 <li class="fragment">However, fully-factorial designs are not always feasible.</li>
@@ -1231,7 +1428,7 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1239,7 +1436,7 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <ul>
 <li class="fragment">Participants’ ratings tended to get higher over time!<sup>1</sup>
 <ul>
-<li class="fragment">The data is autocorrelated, with $r =$0.18 at lag 1.</li>
+<li class="fragment">The data is autocorrelated, with <span class="math inline">\(r =\)</span> 0.18 at lag 1.</li>
 </ul></li>
 <li class="fragment">As before, it means each data point contains less unique information, because they can be predicted from past ratings.</li>
 </ul>
@@ -1248,13 +1445,61 @@ Number of Fisher Scoring iterations: 2</code></pre>
 
 <p>We an explicitly incorporate this autocorrelation into our model:</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-  term              df   sumsq meansq statistic    p.value
-  &lt;chr&gt;          &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
-1 Condition          8 176427. 22053.      81.3  2.48e-114
-2 PreviousRating     1  14424. 14424.      53.2  4.65e- 13
-3 Residuals       1740 472149.   271.      NA   NA        </code></pre>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">sumsq</th>
+<th style="text-align: right;">meansq</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Algorithm</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">175487.38</td>
+<td style="text-align: right;">21935.9231</td>
+<td style="text-align: right;">89.28377</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Type</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">28353.22</td>
+<td style="text-align: right;">28353.2233</td>
+<td style="text-align: right;">115.40352</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PreviousRating</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10004.07</td>
+<td style="text-align: right;">10004.0682</td>
+<td style="text-align: right;">40.71864</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Algorithm:Type</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">23050.38</td>
+<td style="text-align: right;">2881.2981</td>
+<td style="text-align: right;">11.72748</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">1731</td>
+<td style="text-align: right;">425285.39</td>
+<td style="text-align: right;">245.6877</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section></section>
@@ -1301,7 +1546,7 @@ Number of Fisher Scoring iterations: 2</code></pre>
 <li class="fragment">Look out for dependent data
 <ul>
 <li class="fragment">Incorporate random effects to account fo repeated measures.</li>
-<li class="fragment">Explicitely model other sources of dependence.</li>
+<li class="fragment">Explicitly model other sources of dependence.</li>
 </ul></li>
 <li class="fragment">Post-hoc
 <ul>
@@ -1325,19 +1570,19 @@ Number of Fisher Scoring iterations: 2</code></pre>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="NHST_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="NHST_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="NHST_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="NHST_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="NHST_presentation_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1352,7 +1597,7 @@ Number of Fisher Scoring iterations: 2</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -1497,7 +1742,7 @@ Number of Fisher Scoring iterations: 2</code></pre>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1200,
 
         height: 700,
 
