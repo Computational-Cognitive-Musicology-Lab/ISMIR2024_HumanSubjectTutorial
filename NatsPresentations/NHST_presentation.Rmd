@@ -16,6 +16,7 @@ author: "Nat Condit-Schultz"
 ---
 
 ```{r}
+library(data.table)
 library(stringr)
 library(broom)
 library(humdrumR)
@@ -26,12 +27,15 @@ par(bg = "#fdf6e3")
 
 ## What is the goal of data analysis?
 
++ Extracting **Truth** from data?
+  + **NO!**
 + To support *valid* research claims,
-+ by...
-  + being **rigorously skeptical** of our own data and analyses;
-  + Considering alternative explanations of observed relationships;
-  + Recognizing and stating our assumptions;
-  + genuinely trying to **falsify** our hypotheses.
+  + **YES!**
+  + by...
+    + being **rigorously skeptical** of our own data and analyses;
+    + considering alternative explanations of observed relationships;
+    + recognizing and stating our assumptions;
+    + genuinely trying to **falsify** our hypotheses.
 
 # Null Hypothesis Significance Tests
 
@@ -40,7 +44,7 @@ par(bg = "#fdf6e3")
 + NHST is...
   + A crucial opportunity to falsify our hypotheses;
   + **the** standard approach to experimental statistics across many fields of research;
-    + A validly-conducted "significant" test is (essentially) required to make a positive claim about your hypothesis.
+    + A validly-conducted "significant" test is (essentially) required to publish a positive claim about your hypothesis.
 
 
 ## Core Idea
@@ -71,8 +75,8 @@ par(bg = "#fdf6e3")
 5. Compute probability of observed data, or “more extreme” data, *given* $H_0$.
    + This is a $p$ value.
 6. Evaluate:
-   + If $p \leq \alpha$, then result is considered "*significant*."
-   + If $p > \alpha$ your result is "not significant."
+   + If $p \leq \alpha$, your result is considered "*significant*."
+   + If $p > \alpha$, your result is "not significant."
 
 
 :::
@@ -81,7 +85,7 @@ par(bg = "#fdf6e3")
 
 + If $p \leq \alpha$, 
   + you may claim that your hypothesis has been supported by the data.
- + If $p > \alpha$, 
++ If $p > \alpha$, 
   + you must acknowledge that the data is not consistent with your hypothesis.
     + Your research claim is (tentatively) falsified.
     + To argue otherwise will be an uphill battle.
@@ -90,7 +94,7 @@ par(bg = "#fdf6e3")
 
 ### Rationale
 
-Apply NHSTs assures that at most 5% of positive (significant) research claims are Type 1 errors.
+Comprehensive use of NHSTs assures that at most 5% of positive (significant) research claims are Type 1 errors.
 
 + It does not...
   + *Prove* anything, either way.
@@ -122,14 +126,14 @@ I'll now walk through some examples, using R.
 # Statistical Tests {.smaller}
 
 
-To conduct an NHST, we need to compute $p$ values for our data, given our Null Hypothesis.
+To conduct a NHST, we need to compute $p$ values for our data, given our Null Hypothesis.
 
 + Basically, we need a function $f(\textbf{IV}_{n\times k},\ \textbf{DV}_{n \times j},\ H_0) = f(Data\ |\ H_0) = p$.
   + Where,
     + $IV_k$ is $k$ independent variables.
     + $DV_j$ is $j$ dependent variables ($j := 1$ for this talk).
     + $n$ is the number of data observations.
-+ Every "statistical test" is such a function.
++ Every "statistical test" is based on such a function.
 
 ---
 
@@ -137,13 +141,13 @@ To conduct an NHST, we need to compute $p$ values for our data, given our Null H
 To compute $p$, all tests compute a **test statistic** with a known probability distribution.
 
 + For example: 
-  + $ANOVA(\textbf{IV}_{i\times k},\ \textbf{DV}_{i}) = F$
+  + $ANOVA(\textbf{IV}_{n\times k},\ \textbf{DV}_{n}) = F$
   + $F \sim \mathcal{F}(\frac{k - 1}{n - k})$
-    + We can compute $p(F)$, using the $\mathcal{F}(\frac{k = 1}{n - ik})$ distribution.
+    + We can compute $p(F)$, using the $\mathcal{F}(\frac{k - 1}{n - k})$ distribution.
 + Test statistics can also be simulated using your data ("bootstrapping").
 
 
-## Model vs Tests {.smaller}
+## (Non)parametric?
 
 ::: {.panel-tabset}
 
@@ -163,7 +167,7 @@ Other tests are "non-parametric," making fewer/no assumptions about the data.
 + They are less *powerful*, but more *robust* ("safer").
 + Examples include...
   + [Pearson's $\chi^2$ test](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test).
-  + The [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test].
+  + The [Mann-Whitney U test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 
 
 :::
@@ -177,11 +181,9 @@ Other tests are "non-parametric," making fewer/no assumptions about the data.
 
 ### General considerations 
 
-Start with linear models. 
+The choice of test depends on the nature of your independent and dependent variables.
 
-+ The choice of test depends on the nature of your independent and dependent variables.
-+ Generally, the general linear model can accommodate any combinations, so we're always choosing variants of the same thing.
-
++ Generally, the general linear model can accommodate various combinations of variables, so various GLM-based tests are the default approach.
 
 
 ### Independent Variable(s)
@@ -191,7 +193,7 @@ Generally, any combination of independent variables can be used.
 + Categorical, numeric, etc.
   + The interpretation of model parameters changes, but the test is the same.
 + Interactions? 
-+ Covariates.
++ Covariates?
   + Include any covariates that make sense, so the model can control for them.
 
 
@@ -251,12 +253,13 @@ SiSEC <- SiSEC[order(SiSEC$Listener, SiSEC$Order), ]
 
 ---
 
-How do approach this using NHST?
+How do we approach this using NHST?
 
-+ First things first: **what is the Null Hypothesis?**.
++ First things first: **what is the Null Hypothesis?**
 + Presumed hypothesis is that some algorithms perform better than others.
 + Therefore, $H_0$: *All nine algorithms actually perform equally well*.
   + This called the "omnibus null hypothesis."
++ What is appropriate test?
 
 ----
 
@@ -277,8 +280,7 @@ draw(SiSEC$Ratingscore, col = 2, xlab = 'Quality rating')
 
 ### Independent Variable(s)
 
-Main IV is categorical with nine levels (nine algorithms).
-
++ Main IV is categorical with nine levels (nine algorithms).
 + Possible covariate is the type of stimuli: music vs speech (binary variable).
 + There could plausibly be interactions between algorithm and target/type.
   + The Null Hypothesis would have these interactions as 0.
@@ -289,9 +291,9 @@ Main IV is categorical with nine levels (nine algorithms).
 
 
 + This variant of the linear model is called ANOVA. 
-  + $9\times 4 \times 2$ ANOVA (though not fully factorial).
+  + $9\times 2$ ANOVA 
   + The ANOVA is based on a $F$ test, comparing the fit of the model with/without each variable.
-  + $H_0$ is that the mean-value for the DV is the same in all nine IV levels.
+  + $H_0$ is that the mean value for the DV is the same in all nine IV levels.
 
 
 ---
@@ -403,21 +405,21 @@ emote <- fread('../Eerola_emotion/mean_ratings_set1.csv')
 Eerola's **Music and emotion stimulus sets consisting of film soundtracks**.
 
 
-+ Stimuli with twelve target emotions
-  + `r unique(emote$TARGET |> str_to_title()) |> paste(collapse = ', ')`
-+ Eight rated emotional dimensions
-  + `r paste(str_to_title(colnames(emote)[2:9]), collapse = ', ')`
-  + Scale of 1--9
++ Stimuli with twelve target emotions.
+  + `r unique(emote$TARGET |> str_to_title()) |> paste(collapse = ', ')`.
++ Eight rated emotional dimensions.
+  + `r paste(str_to_title(colnames(emote)[2:9]), collapse = ', ')`.
+  + Scale of 1--9.
 
 ---
 
 
 *Hypothesis*: Perceived energy is related to tension.
 
-How do approach this using NHST?
+How do we approach this using NHST?
 
 + $H_0$: There is no relationship between energy and tension ratings.
-
++ What is appropriate test?
     
 ----
 
@@ -463,11 +465,14 @@ cortab |> knitr::kable()
 
 :::
 
+---
 
-+ This variant of the linear model is called Multiple Regression. 
-  + If we don't include interactions, we can test the effect using the $t$ statistic associated with the tension variable.
-    + $H_0$ is that the "slope" between tension and energy is zero ($b_{tension} = 0$).
-  + However, in more complex cases, it would be easier to again use an $F$ test, comparing the fit of the model with/without each variable.
+
+This variant of the linear model is called Multiple Regression. 
+  
++ If we don't include interactions, we can test the effect using the $t$ statistic associated with the tension variable.
+  + $H_0$ is that the "slope" between tension and energy is zero ($b_{tension} = 0$).
++ However, in more complex cases, it would be easier to again use an $F$ test, comparing the fit of the model with/without each variable.
 
 
     
@@ -590,6 +595,101 @@ points(Ts, dt(Ts, 352), col = 'red')
 <!-- ``` -->
 
 
+## Rethinking assumptions
+
+So far, we've happily made the "normal assumption" that the residual our dependent variable is normally distributed, with a fixed variance.
+
++ Both *ANOVA* and *Multiple Regression* assume this.
++ Luckily, these tests are known to be "robust" to minor violations of these assumptions.
++ However, we need to be vigilant!
+
+---
+
+We might hypothesize that the emotion *fear* is caused by tension. 
+
++ This could be modeled as another (multiple) linear regression.
++ However...
+
+
+----
+
+The fear ratings are severely clustered at 1 (`r paste0('%', round(mean(emote$fear == 1)*100))` of ratings).
+
+```{r}
+
+with(emote, draw(tension, fear, lm = T))
+
+```
+
++ As skeptics, we should question whether it makes sense to model these variables as a linear relationship.
++ We might consider alternative ways of characterizing this relationship.
+
+---
+
+A simple approach would be the recharacterize our fear variable as a binary variable: 1, or not 1.
+
+```{r}
+
+with(emote, draw(tension, fear, lm = T, col = ifelse(fear >1, 'red', 'black'), alpha=.6))
+
+```
+
++ For our new *binary* DV, (linear) multiple regression doesn't make sense.
++ Instead, we can use a (multiple) *Logistic Regression* model, which models binomial error.
+  + In `R`, this can be fit using `glm(DV ~ IV + ..., family = binomial())`.
+
+----
+
+
+```{r, echo = TRUE, eval = FALSE, comment = ""}
+emote$AnyFear <- emote$fear > 1
+
+logFit <- glm(AnyFear ~ energy + tension + valence + anger +  happy + sad + tender, 
+              data = emote, family = binomial())
+
+anova(logFit, test = 'Chisq')
+```
+
+```{r}
+emote$AnyFear <- emote$fear > 1
+
+logFit <- glm(AnyFear ~ energy + tension + valence + anger +  happy + sad + tender, 
+              data = emote, family = binomial())
+
+anova(logFit, test = 'Chisq') |> knitr::kable()
+```
+
++ Logistic regression is tested using a $\chi^2$ test statistic.
+
+---
+
+Logistic regression maps a latent linear regression into a probability.
+
+```{r}
+par(bg = '#ffffff00')
+with(emote, plot(tension, as.integer(AnyFear), pch = 16, axes = FALSE, xlim=c(1,9),
+                 col = ifelse(AnyFear, 'red', 'black'), xlab = 'Tension rating', ylab = "Fear or Not"))
+axis(1, seq(1, 9), tick = FALSE)
+axis(2, c(0, 1), c('Not fear', 'Fear'), tick = FALSE, las = 1)
+
+xs <- seq(1,9,.01)
+newdata <- with(emote, data.frame(tension = xs, 
+                                  energy = mean(energy),
+                                  valence = mean(valence),
+                                  anger = mean(anger),
+                                  happy = mean(happy),
+                                  sad = mean(sad),
+                                  tender = mean(tender)))
+                                  
+points(xs, predict(logFit, newdata=newdata, type = 'response'), type = 'l')
+
+
+
+
+```
+
+
+
 # NHST pitfalls
 
 
@@ -597,11 +697,15 @@ Let's explore some potential, known challenges with NHST.
 
 ----
 
-```{r}
-SiSEC |> with(draw(Algorithm, Ratingscore, bg = '#ffffff00'))
+In an ANOVA, the omnibus test is not really very interesting.
+We often want to ask questions about more specific differences between categories.
+
+```{r out.width=800}
+SiSEC |> with(draw(Algorithm, Ratingscore, bg = '#ffffff00', pch = 16))
 ```
 
-What if we want to know if the best algorithm is significantly better than the other aglorithms as a whole?
+
+For example, what if we want to know if the *best* algorithm is significantly better than the *rest* of the algorithms as a whole?
 
 ----
 
@@ -614,8 +718,15 @@ SiSEC$BestAlgo <- SiSEC$Algorithm == 'Algo22'
 
 fit <- lm(Ratingscore ~ BestAlgo * Type, data = SiSEC)
 
-lm(fit) |> summary()
+lm(fit) |> summary() |>   tidy(conf.int = TRUE) -> tab
 
+
+tab$estimate <- round(tab$estimate, 2)
+tab$std.error <- round(tab$std.error, 2)
+tab$statistic <- round(tab$statistic, 2)
+tab$conf.low <- round(tab$conf.low, 2)
+tab$conf.high <- round(tab$conf.high, 2)
+tab  |> knitr::kable()
 ```
 
 + This is significant.
@@ -627,12 +738,13 @@ lm(fit) |> summary()
 
 Imagine that the Null Hypothesis *were* true: all algorithms performed equally well.
 
-+ Every time we sample responses, one algorithm will perform best in the sample.
++ Every time we sample responses, one algorithm would always perform "best" in the sample, just by chance.
   + By picking this one out, we are (by definition) biasing the result.
   
 ---
 
-We can simulate this:
+We can simulate this; I sampled from the null hypothesis 1000 times, each time comparing the highest group to the rest and computing a $p$ value.
+The result is this:
 
 ```{r, cache = TRUE}
 Nsim <- 1000
@@ -651,8 +763,8 @@ Nsim <- 1000
 # save(pvalues, file = 'simulation_bestrest.Rd')
 load('simulation_bestrest.Rd')
 
-plot(seq(0, 1, length.out = Nsim), sort(pvalues), xlab = 'Quantile', pch = 16, cex = .5,
-     col = ifelse(sort(pvalues) <= .05, 'red', 'black'), axes =FALSE, ylab = quote(p))
+plot(seq(0, 1, length.out = Nsim), sort(pvalues), xlab = 'Quantile (True p)', pch = 16, cex = .5,
+     col = ifelse(sort(pvalues) <= .05, 'red', 'black'), axes =FALSE, ylab = 'Predicted p')
 axis(1,seq(0,1,.1), tick = FALSE)
 axis(2, seq(0,1,.1), las = 1, tick = FALSE)
 
@@ -665,41 +777,42 @@ text(Type1errorRate, .1, bquote("" %<-% .(paste0(Type1errorRate * 100, '%'))), c
 
 ```
 
++ $p < .05$ in more than 20% of simulations! 
 
----
+
+### Procedure sensitivity
 
 In general, NHST is sensitive to the exact procedure you use.
 
-+ Any procedural decisions are made *post-hoc*, they can affect the validity of results.
-+ I.e., *if you use the data to to make decisions about stats/tests*, the $p$-value won't be accurate.
++ Any procedural decisions that are made *post-hoc* can affect the validity of results.
++ I.e., *if you use your data to to make decisions about the stats/tests*, your $p$-values won't be accurate.
 
 ----
 
-Common pitfalls:
-
+The two most common issues are:
 
 + Post-hoc **stopping condition**
   + If you decide when to stop collecting data based on the data.
 + Post-hoc **comparisons**
   + When you decide which comparisons to make/test.
-
++ However, as I've demonstrated above, there are other ways post-hoc decisions can invalidate $p$ values.
 
 
 ## Multiple comparisons.
 
 
 
-A particularly well known problem is the problem of *multiple tests*.
+A particularly well known problem is the problem of *multiple comparisons* (or "multiple tests").
 
 + Anytime you conduct multiple NHSTs, the chance that *at least one* test will be significant is higher than $\alpha$.
+  + This called the *family-wise error rate*: i.e., the rate of "at least one" Type 1 error in a group.
 
 ----
 
-A common technique is to conduct "pair-wise" $t$-tests between every category, so we would know exactly which algorithms perform better than others.
+For ANOVA-like data, it is very common to conduct "pair-wise" $t$-tests between every category, so we would know exactly which algorithms perform better than others.
 
-```{r, echo = FALSE}
-plot(Ratingscore ~ factor(Algorithm), data = SiSEC)
-
+```{r out.width=800}
+SiSEC |> with(draw(Algorithm, Ratingscore, bg = '#ffffff00', pch = 16))
 ```
 
 + In this case there would be 36 possible comparisons.
@@ -707,9 +820,9 @@ plot(Ratingscore ~ factor(Algorithm), data = SiSEC)
 
 ---
 
-If we simulate this
+If we simulate this:
 
-```{r cache=TRUE}
+```{r cache=TRUE, out.width=600, fig.width=8}
 library(combinat)
 Nsim <- 1000
 pairs <- combn(unique(SiSEC$Algorithm), 2, simplify = FALSE)
@@ -743,59 +856,21 @@ axis(2, seq(0,1,.1), paste0(seq(0,100,10), '%'), las = 1, tick = FALSE)
   + This is the "family-wise error rate" 
 + This, if we conducted 36 significance tests and consider *one* significant result to be the basis to reject the Null Hypothesis, we would make a Type 1 error more than 40% of the time!
 
+---
+
 ### Correcting for Multiple Comparisons
 
 We can "correct" for multiple tests by adjusting our $p$-values (or $\alpha$ level) accordingly.
 
 + The naive *Bonferroni correction* is simply to use $\frac{\alpha}{T}$, where $T$ is the number of tests. 
   + This highly conservative (overly cautious), because our tests are not statistically independent from each other.
-  + There are many other approachess, such as Tukey's Method.
+  + There are many other approaches, such as Tukey's Method.
 
 ---
 
 The main lesson is that, whenever you conduct multiple NHST tests, you need to take them with an extra skeptical grain of salt.
 
 + If you conduct many tests (like hundreds or thousands), some of those will have $p < .05$. 
-
-## Assumptions
-
-We might hypothesis that happiness and sadness ratings should be negatively correlated.
-
-+ This could be a simple linear regression.
-+ However...
-
----
-
-The distribution of the errors is not plausible normal.
-
-+ Too many 1s.
-
-```{r}
-with(emote, draw(happy, sad, xlab = 'Happy rating', ylab = "Sad rating", lm = TRUE))
-
-```
-
-----
-
-You could rethink how to express the hypothesis in a way that is more consistent with the data.
-
-+ Logistic regression, use happiness to predict whether sad rating is or isn't 1.
-
-```{r}
-emote$NotSad <- emote$sad > 1
-
-logfit <- glm(NotSad ~ happy, data = emote)
-
-with(emote, draw(happy, sad, xlab = 'Happy rating', ylab = "Sad rating", lm = TRUE))
-
-xs <- seq(1,9,.01)
-points(xs, plogis(exp(.72753 + xs * -.05287))*9)
-
-
-summary(logfit) 
-
-
-```
 
 
 # Data Independence
@@ -810,20 +885,18 @@ The most common source of data dependence is *repeated measures*:
 
 + Repeated measurements from the same human participants.
 + Repeated responses to the same stimuli ("items").
+  + Repeats of instrument, musical passage, speaker, dialog, etc.
 
 ---
 
-Take a look at your quality ratings again:
-
-::: {.tabset-panel}
+::: {.panel-tabset}
 
 ### By participant
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, out.width=1000}
 par(las=2, cex.axis=.6)
-with(SiSEC, draw(bg = '#ffffff00', factor(Listener), Ratingscore), pch = 16,
+with(SiSEC, draw(bg = '#ffffff00',quantiles = c(), factor(Listener), Ratingscore, pch = 16),
      xlab = 'Participant', ylab = "Rating")
-
 
 ```
 
@@ -831,14 +904,16 @@ with(SiSEC, draw(bg = '#ffffff00', factor(Listener), Ratingscore), pch = 16,
 
 ### By item
 
-```{r, echo = -1:-2}
+
+```{r, echo = FALSE,out.width=1000}
 
 par(las=2, cex.axis=.6)
-with(SiSEC, draw(bg = '#ffffff00', factor(Target), Ratingscore), pch = 16,
+with(SiSEC, draw(bg = '#ffffff00', quantiles = c(), factor(paste0(Source, ':', Target)), Ratingscore, pch = 16),
      xlab = 'Target', ylab = "Rating")
 
 
 ```
+
 + Again, the specific measurement items vary quite a lot in average rating, *across all algorithms*.
 
 :::
@@ -858,44 +933,89 @@ Even in a fully-factorial design, data dependence can be problematic.
 
 + If I inspect five data points from a given participant, I can use that data to guess what their other data points will be.
   + Thus, each individual data point communicates less information.
-  + Thus, the amount of information in the data is actually less than the apparent sample size.
+  + Thus, the amount of information in the data is actually less than the apparent sample size (`r format(nrow(SiSEC), big.mark=',')`) would indicate.
     + This can make statistical models underestimate the true uncertainty of estimated statistics.
     
 ## Random-Effects Models
 
-A generalized solution the problem of data dependence is through random effects models.
+A generalized solution the problem of data dependence is through **mixed effects models**.
+Also called "multilevel models" or "random-effects models."
 
-+ In these models, multiple sources of random error are explicitely modeled:
++ In these models, multiple sources of random error are explicitly modeled:
   + A random sample of participants.
   + A random sample of measurement items.
-  + Within participants/items, random residual error.
-+ We can represent:
-  + variation in baselines between participants/items using *random intercepts*.
-  + variation in the effects of independent variables using *random slopes*.
+  + Random residual error.
   
-  
-+ We can use the `lme4` package to fit random-effects models for various versions of the GLM.
+---
 
+Mixed-effects models include:
+
++ *Fixed effects*:
+  + These are the "normal" effects we've been using already.
++ *Random effects*:
+  + Variation in baselines between participants/items using *random intercepts*.
+  + Variation in the effects of independent variables using *random slopes*.
+  
+---
+
+Random effects represent variables that were sampled randomly.
+
++ For example, your participants are a random sample of listeners.
++ The musical excerpts you use, are a random sample of (potential) excerpts.
+  
+----
+  
+We can use the `lme4` package to fit random-effects models for various versions of the GLM.
+
++ The syntax builds on the basic R syntax, by simple adding random effects terms to the equation:
+  + Random intercepts: `DV + IV + (1 | Group)`
+  + Random slopes: `DV + IV + (IV | Group)`
+  
+---
+
+#### Maximal model
+
++ The best-practice is to include random slopes for all independent variables in all repeated measure groups:
+  + `RatingScore ~ Algorithm + Type + (Algorithm + Type | Listener) + (Algorithm + Type | Target)`
++ However, it may be impossible to fit these "maximal" models if your data is not large enough, so we resort to only random intercepts:
+  +  `RatingScore ~ Algorithm + Type + (1 | Listener) + (1 | Target)`
 
 ---
 
-We can thus conduct a best-practice version of our omnibus ANOVA test.
+### Best-practice
 
-```{r, eval = FALSE, cache = TRUE}
+This brings us to the best-practice version of our omnibus ANOVA test:
+
+```{r echo = TRUE, eval = FALSE, comment = ""}
 library(lme4)
 library(lmerTest)
-# mlvfitnull <- lmer(Ratingscore ~ 1 + (Algorithm|Listener) + (Algorithm|Trial), data = SiSEC, REML = FALSE)
-# mlvfit <- lmer(Ratingscore ~ Algorithm + (Algorithm|Listener) + (Algorithm|Trial), data = SiSEC, REML = FALSE)
-load('fit_quality_mlv.Rd')
-load('fit_quality_mlvnull.Rd')
 
-anova(mlvfitnull, mlvfit, test = 'F')
+mixedFit <- lmer(Ratingscore ~ Algorithm + Type + (Algorithm | Listener) + (Algorithm | Target),
+                 data = SiSEC)
+
+anova(mixedFit)
+```
+
+```{r, eval = TRUE, cache = TRUE, echo = FALSE}
+
+# mlvfitnull <- lmer(Ratingscore ~ 1        + Type + (Algorithm | Listener) + (Algorithm | Target),
+                   # data = SiSEC, REML = FALSE)
+# mlvfit    <- lmer(Ratingscore ~ Algorithm + Type + (Algorithm | Listener) + (Algorithm | Target),
+                  # data = SiSEC, REML = FALSE)
+# load('fit_quality_mlv.Rd')
+load('fit_quality_mlv.Rd')
+
+anova(mlvfit, test = 'F') |> knitr::kable()
 
 ```
 
 + The difference between algorithm ratings is still statistically significant.
-  + The $F$ statistic for this new model ($F \approx 10$) is much smaller than for the naive ANOVA we conducted earlier ($F \approx 80$), because this model more accurately reflects the true uncertainty in the data.
+  + However, the $F$ statistic for this new model ($F \approx 10$) is much smaller than for the naive ANOVA we conducted earlier ($F \approx 90$), because this model more accurately reflects the true uncertainty in the data.
 + We've been good skeptics!
+
+---
+
+
 
 ## Non-random dependence
 
@@ -903,7 +1023,11 @@ anova(mlvfitnull, mlvfit, test = 'F')
 
 Another possibility is for data-dependence to be non-random.
 
-For example, we might look at how participants' ratings evolved over the course of their experimental session and see something like:
+
++ A good example is *order effects*.
+  + For example, we might look at how participants' ratings evolved over the course of their experimental session and see something like...
+
+---
 
 ```{r}
 
@@ -911,22 +1035,37 @@ with(SiSEC, draw(Order, Ratingscore, lm = TRUE, col = 2, bg = '#FFFFFF00'))
 
 ```
 
+
+
 + Participants' ratings tended to get higher over time!^[The SiSEC data didn't include order information, so I faked this data.]
   + The data is autocorrelated, with $r =$ `r with(SiSEC, cor(head(Ratingscore, -1), tail(Ratingscore, -1))) |> round(2)` at lag 1.
-+ As before, it means each data point contains less unique information, because they can be predicted from past ratings.
++ As before, it means each data point contains less unique information, because each can be predicted from past ratings.
 
 ----
 
 We an explicitly incorporate this autocorrelation into our model:
 
 
+```{r echo = TRUE, eval = FALSE, comment = ""}
+lm(Ratingscore ~ Algorithm * Type + Order, data = SiSEC) |> anova()
+```
+
 ```{r}
 
-SiSEC <- within(SiSEC, PreviousRating <- unlist(tapply(Ratingscore, Listener, \(rs) c(NA, head(rs, -1)) )))
+# SiSEC <- within(SiSEC, PreviousRating <- unlist(tapply(Ratingscore, Listener, \(rs) c(NA, head(rs, -1)) )))
 
-anova(lm(Ratingscore ~ Algorithm * Type +  PreviousRating, data = SiSEC)) |> tidy() |> knitr::kable()
+lm(Ratingscore ~ Algorithm * Type +  Order, data = SiSEC) -> fitorder
 
+anova(fitorder) -> tab 
+
+tab[1:4, 'Pr(>F)'] <- format(tab[1:4, 'Pr(>F)'], scientific = TRUE)  |> str_replace('\\.([0-9][0-9])[0-9]*', '.\\1')
+tab[,'F value'] <- round(tab[, 'F value'], 2)
+tab[is.na(tab)] <- ''
+
+tab |> knitr::kable(digits = 2, format.args = list(big.mark = ','))
 ```
+
++ Accounting for the order effect actually increased the $F$ value for algorithm!
 
 # Effect Size
 
@@ -940,11 +1079,12 @@ A statistically significant effect tells us nothing about how strong an effect i
 
 Effect size should be reported independently of statistical tests.
 
-+ Use graphs to visualize effect size in meaningful way.
-+ Report standardized metrics:
-  + $r$, $R^2$, $\beta$, coefficient of variation, Coen's $d$
++ *Use graphs to visualize effect size in meaningful way*.
++ Report standardized metrics, appropriate for your model/test:
+  + $r$, $R^2$
+  + $\beta$, coefficient of variation, Coen's $d$
 + Report non-standardized metrics:
-  + $b$
+  + $b$ (regression slopes)
 
 ---
 
@@ -957,12 +1097,12 @@ Do not use $p$ values as effect-size metrics.
 # Summary
 
 + NHST is important first step in evaluating experimental results
-+ Find model appropriate for your variables
++ Select a model appropriate for your variables
 + Look out for dependent data
-  + Incorporate random effects to account fo repeated measures.
+  + Incorporate random effects to account for repeated measures.
   + Explicitly model other sources of dependence.
-+ Post-hoc
-  + Do not make decisions based on data.
-    + Stopping condition
-    + Post-hoc comparisons
-  + Correct for multiple tests
++ *Do not* make test decisions based on data (*post-hoc*).
+  + Stopping condition
+  + Multiple comparisons
+    + Correct for multiple tests
++ Don't interpret significance tests as measure of effect size.
