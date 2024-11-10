@@ -174,7 +174,7 @@ coef(gold_fit)
 
 -   There are two major approaches to factor analysis.
     -   **Exploratory factor analysis** (EFA)
-    -   **Confirmatory factor aanlysis** (CFA)
+    -   **Confirmatory factor analysis** (CFA)
 -   The names are (very) misleading! Either approach can be used both for exploratory and for confirmatory research approaches.
 
 ## Fitting PCA
