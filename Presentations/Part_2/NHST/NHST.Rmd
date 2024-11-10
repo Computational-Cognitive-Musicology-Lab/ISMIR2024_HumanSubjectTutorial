@@ -238,7 +238,7 @@ I'll now walk through some examples, using R.
 ## Quality Evaluation Data
 
 ```{r, echo = 1}
-SiSEC <- read.csv('../../Data/SiSEC08_source_separation/SiSEC08_parsed.csv') |> subset(grepl('Algo', Algorithm))
+SiSEC <- read.csv('../../../Data/SiSEC08_source_separation/SiSEC08_parsed.csv') |> subset(grepl('Algo', Algorithm))
 
 par(cex.axis = .6, pch = 16, cex = .5)
 
@@ -405,7 +405,7 @@ points(Fs[1], df(Fs[1], 8, 1755), col = 'red')
 
 
 ```{r, echo = 1}
-emote <- fread('../../Data/Eerola_emotion/mean_ratings_set2.csv')
+emote <- fread('../../../Data/Eerola_emotion/mean_ratings_set2.csv')
 ```
 
 Eerola's **Music and emotion stimulus sets consisting of film soundtracks**.
@@ -683,7 +683,7 @@ For this tutorial, we gathered data from you, rating some of the same excerpts u
 
 
 ```{r}
-emote_ours <- fread('../../Data/ISMIR2024_data/emotion_data')
+emote_ours <- fread('../../../Data/ISMIR2024_data/emotion_data')
 emote_ours$Scale <- stringr::str_to_title(emote_ours$Scale)
 
 emote2 <- emote |> filter(Number %in% emote_ours$Excerpt) 

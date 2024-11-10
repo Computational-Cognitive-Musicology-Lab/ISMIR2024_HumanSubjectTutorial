@@ -694,7 +694,7 @@ Nat Condit-Schultz
 <section id="quality-evaluation-data" class="slide level2">
 <h2>Quality Evaluation Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>SiSEC <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'../../Data/SiSEC08_source_separation/SiSEC08_parsed.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(<span class="fu">grepl</span>(<span class="st">'Algo'</span>, Algorithm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>SiSEC <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'../../../Data/SiSEC08_source_separation/SiSEC08_parsed.csv'</span>) <span class="sc">|&gt;</span> <span class="fu">subset</span>(<span class="fu">grepl</span>(<span class="st">'Algo'</span>, Algorithm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>SiSEC</strong> dataset.</p>
 <ul>
@@ -848,7 +848,7 @@ Nat Condit-Schultz
 <section id="emotion-data" class="slide level2">
 <h2>Emotion Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>emote <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">'../../Data/Eerola_emotion/mean_ratings_set2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>emote <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">'../../../Data/Eerola_emotion/mean_ratings_set2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Eerola’s <strong>Music and emotion stimulus sets consisting of film soundtracks</strong>.</p>
 <ul>
@@ -1042,9 +1042,6 @@ Nat Condit-Schultz
 <h4 id="linear-regression">Linear Regression</h4>
 <p>If <span class="math inline">\(H_0\)</span> is true, standardized regression coefficient should follow Student’s <span class="math inline">\(t(df)\)</span> distribution.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "/home/nat/Bridge/Professional/Workshops/ISMIR2024/Presentations/3 - NHST/images/ts.gif"</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1054,9 +1051,6 @@ Nat Condit-Schultz
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "/home/nat/Bridge/Professional/Workshops/ISMIR2024/Presentations/3 - NHST/images/ts_t.gif"</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1073,7 +1067,7 @@ Nat Condit-Schultz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">lm</span>(Energy <span class="sc">~</span> Tension <span class="sc">+</span> Valence <span class="sc">+</span> Anger <span class="sc">+</span> Fear <span class="sc">+</span> Happy <span class="sc">+</span> Sad <span class="sc">+</span> Tender , <span class="at">data =</span> emote[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">lm</span>(Energy <span class="sc">~</span> Tension <span class="sc">+</span> Valence <span class="sc">+</span> Anger <span class="sc">+</span> Fear <span class="sc">+</span> Happy <span class="sc">+</span> Sad <span class="sc">+</span> Tender , <span class="at">data =</span> emote[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1185,10 +1179,10 @@ Nat Condit-Schultz
 <li class="fragment">We could divide the target emotions into positive and negative categories.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>emote_valence <span class="ot">&lt;-</span> emote <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">'MODERATE'</span>, TARGET))</span>
-<span id="cb8-2"><a href=""></a>emote_valence<span class="sc">$</span>POSITIVE <span class="ot">&lt;-</span> emote_valence<span class="sc">$</span>TARGET <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"HAPPY_HIGH"</span>, <span class="st">"TENDER_HIGH"</span>, </span>
-<span id="cb8-3"><a href=""></a>                                                      <span class="st">"VALENCE POS HIGH"</span>, <span class="st">"ENERGY POS HIGH"</span>, </span>
-<span id="cb8-4"><a href=""></a>                                                      <span class="st">"TENSION POS HIGH"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>emote_valence <span class="ot">&lt;-</span> emote <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">'MODERATE'</span>, TARGET))</span>
+<span id="cb6-2"><a href=""></a>emote_valence<span class="sc">$</span>POSITIVE <span class="ot">&lt;-</span> emote_valence<span class="sc">$</span>TARGET <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"HAPPY_HIGH"</span>, <span class="st">"TENDER_HIGH"</span>, </span>
+<span id="cb6-3"><a href=""></a>                                                      <span class="st">"VALENCE POS HIGH"</span>, <span class="st">"ENERGY POS HIGH"</span>, </span>
+<span id="cb6-4"><a href=""></a>                                                      <span class="st">"TENSION POS HIGH"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -1205,9 +1199,9 @@ Nat Condit-Schultz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">glm</span>(POSITIVE <span class="sc">~</span> Anger  <span class="sc">+</span> Valence <span class="sc">+</span> Tension <span class="sc">+</span> Fear <span class="sc">+</span> Happy <span class="sc">+</span> Sad <span class="sc">+</span> Tender,</span>
-<span id="cb9-2"><a href=""></a>    <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
-<span id="cb9-3"><a href=""></a>    <span class="at">data =</span> emote_valence) <span class="sc">|&gt;</span> <span class="fu">anova</span>(<span class="at">test =</span> <span class="st">'Chisq'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">glm</span>(POSITIVE <span class="sc">~</span> Anger  <span class="sc">+</span> Valence <span class="sc">+</span> Tension <span class="sc">+</span> Fear <span class="sc">+</span> Happy <span class="sc">+</span> Sad <span class="sc">+</span> Tender,</span>
+<span id="cb7-2"><a href=""></a>    <span class="at">family =</span> <span class="fu">binomial</span>(),</span>
+<span id="cb7-3"><a href=""></a>    <span class="at">data =</span> emote_valence) <span class="sc">|&gt;</span> <span class="fu">anova</span>(<span class="at">test =</span> <span class="st">'Chisq'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1692,13 +1686,13 @@ Nat Condit-Schultz
 <h3 id="best-practice">Best-practice</h3>
 <p>This brings us to the best-practice version of our omnibus ANOVA test:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">library</span>(lme4)</span>
-<span id="cb10-2"><a href=""></a><span class="fu">library</span>(lmerTest)</span>
-<span id="cb10-3"><a href=""></a></span>
-<span id="cb10-4"><a href=""></a>mixedFit <span class="ot">&lt;-</span> <span class="fu">lmer</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">+</span> Type <span class="sc">+</span> (Algorithm <span class="sc">|</span> Listener) <span class="sc">+</span> (Algorithm <span class="sc">|</span> Target),</span>
-<span id="cb10-5"><a href=""></a>                 <span class="at">data =</span> SiSEC)</span>
-<span id="cb10-6"><a href=""></a></span>
-<span id="cb10-7"><a href=""></a><span class="fu">anova</span>(mixedFit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">library</span>(lme4)</span>
+<span id="cb8-2"><a href=""></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a>mixedFit <span class="ot">&lt;-</span> <span class="fu">lmer</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">+</span> Type <span class="sc">+</span> (Algorithm <span class="sc">|</span> Listener) <span class="sc">+</span> (Algorithm <span class="sc">|</span> Target),</span>
+<span id="cb8-5"><a href=""></a>                 <span class="at">data =</span> SiSEC)</span>
+<span id="cb8-6"><a href=""></a></span>
+<span id="cb8-7"><a href=""></a><span class="fu">anova</span>(mixedFit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1773,7 +1767,7 @@ Nat Condit-Schultz
 <ul>
 <li class="fragment">Participants’ ratings tended to get higher over time!<sup>1</sup>
 <ul>
-<li class="fragment">The data is autocorrelated, with <span class="math inline">\(r =\)</span> 0.21 at lag 1.</li>
+<li class="fragment">The data is autocorrelated, with <span class="math inline">\(r =\)</span> 0.24 at lag 1.</li>
 </ul></li>
 <li class="fragment">As before, it means each data point contains less unique information, because each can be predicted from past ratings.</li>
 </ul>
@@ -1782,7 +1776,7 @@ Nat Condit-Schultz
 
 <p>We an explicitly incorporate this autocorrelation into our model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">lm</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">*</span> Type <span class="sc">+</span> Order, <span class="at">data =</span> SiSEC) <span class="sc">|&gt;</span> <span class="fu">anova</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">lm</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">*</span> Type <span class="sc">+</span> Order, <span class="at">data =</span> SiSEC) <span class="sc">|&gt;</span> <span class="fu">anova</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1803,38 +1797,38 @@ Nat Condit-Schultz
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">178,961.85</td>
 <td style="text-align: right;">22,370.23</td>
-<td style="text-align: left;">99.67</td>
-<td style="text-align: left;">8.68e-137</td>
+<td style="text-align: left;">98.33</td>
+<td style="text-align: left;">3.36e-135</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Type</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">27,335.74</td>
 <td style="text-align: right;">27,335.74</td>
-<td style="text-align: left;">121.79</td>
-<td style="text-align: left;">2.02e-27</td>
+<td style="text-align: left;">120.15</td>
+<td style="text-align: left;">4.37e-27</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Order</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">51,323.47</td>
-<td style="text-align: right;">51,323.47</td>
-<td style="text-align: left;">228.67</td>
-<td style="text-align: left;">1.22e-48</td>
+<td style="text-align: right;">46,708.78</td>
+<td style="text-align: right;">46,708.78</td>
+<td style="text-align: left;">205.31</td>
+<td style="text-align: left;">4.15e-44</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Algorithm:Type</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">18,271.67</td>
-<td style="text-align: right;">2,283.96</td>
-<td style="text-align: left;">10.18</td>
-<td style="text-align: left;">5.61e-14</td>
+<td style="text-align: right;">17,550.17</td>
+<td style="text-align: right;">2,193.77</td>
+<td style="text-align: left;">9.64</td>
+<td style="text-align: left;">3.71e-13</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Residuals</td>
 <td style="text-align: right;">1,745</td>
-<td style="text-align: right;">391,658.71</td>
-<td style="text-align: right;">224.45</td>
+<td style="text-align: right;">396,994.90</td>
+<td style="text-align: right;">227.50</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
