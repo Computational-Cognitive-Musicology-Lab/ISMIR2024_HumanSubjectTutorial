@@ -402,17 +402,16 @@ points(Fs[1], df(Fs[1], 8, 1755), col = 'red')
 
 
 ```{r, echo = 1}
-emote <- fread('../Eerola_emotion/mean_ratings_set1.csv')
+emote <- fread('../Eerola_emotion/mean_ratings_set2.csv')
 ```
 
 Eerola's **Music and emotion stimulus sets consisting of film soundtracks**.
 
 
-+ Stimuli with twelve target emotions.
-  + `r unique(emote$TARGET |> str_to_title()) |> paste(collapse = ', ')`.
-+ Eight rated emotional dimensions.
++ Eight emotional dimensions
   + `r paste(str_to_title(colnames(emote)[2:9]), collapse = ', ')`.
-  + Scale of 1--9.
++ 110 excerpts, validated to match these eight target categories.
++ Participants rated each emotion on scale of 1--9.
 
 ---
 
@@ -435,7 +434,7 @@ Energy ratings from 0 to 9.
 
 ```{r}
 par(bg = "#FFFFFF00")
-draw(, emote$energy, col = 2, ylab = 'Energy rating', ylim = c(1, 9))
+draw(, emote$Energy, col = 2, ylab = 'Energy rating', ylim = c(1, 9))
 
 ```
 
@@ -538,12 +537,12 @@ knitr::include_graphics('images/ts_t.gif')
 
 ```{r}
 
-with(emote, draw(tension, energy, xlab = 'Tension', ylab = 'Energy', alpha = 1,
+with(emote, draw(Tension, Energy, xlab = 'Tension', ylab = 'Energy', alpha = 1,
                  col = 2, bg = '#ffffff00', lm = T))
 
-fit <- lm(energy ~ ., data = emote[ , 2:9])
+fit <- lm(Energy ~ ., data = emote[ , 2:9])
 xs <- seq(1, 9, .1)
-pred <- predict(fit, newdata = do.call('data.frame', c(list(tension = xs), colMeans(emote[, c(2,4:9)]))), interval = 'confidence')
+pred <- predict(fit, newdata = do.call('data.frame', c(list(Tension = xs), colMeans(emote[, c(2,4:9)]))), interval = 'confidence')
 
 points(xs, pred[, 'fit'], type = 'l', lwd = 2, col = 2)
 points(xs, pred[, 'lwr'], type = 'l', lwd = 1, col = 2, lty = 'dashed')
@@ -555,11 +554,11 @@ points(xs, pred[, 'upr'], type = 'l', lwd = 1, col = 2, lty = 'dashed')
 
 
 ```{r, echo = TRUE, results='hide'}
-lm(energy ~ tension + valence + anger + fear + happy + sad + tender , data = emote[ , 2:9]) |> summary()
+lm(Energy ~ Tension + Valence + Anger + Fear + Happy + Sad + Tender , data = emote[ , 2:9]) |> summary()
 ```
 
 ```{r, out.width = 800}
-fit <- lm(energy ~ . , data = emote[ , 2:9])
+fit <- lm(Energy ~ . , data = emote[ , 2:9])
 
 summary(fit) |> tidy(conf.int = TRUE) -> tab
 
@@ -571,7 +570,7 @@ tab$conf.high <- round(tab$conf.high, 2)
 tab  |> knitr::kable()
 
 
-Ts <- coef(summary(fit))['tension', 't value']
+Ts <- coef(summary(fit))['Tension', 't value']
 
 par(bg = '#ffffff00')
 curve(dt(x, 352), -5, Ts, n = 1000, col = 'blue', xlim = c(-5, 15),
@@ -588,125 +587,106 @@ points(Ts, dt(Ts, 352), col = 'red')
 
 <!-- #### Logistic Regression -->
 
-<!-- ```{r} -->
-<!-- negative <- c('ANGER', 'FEAR', 'LOW VALENCE', "SAD", 'HIGH TENSION') -->
+<!-- How well did Eerola's participants' judgement of valence match with the target valence? -->
 
-<!-- emote$Negative <- emote$TARGET == negative -->
+<!-- + We could divide the target emotions into positive and negative categories. -->
 
-<!-- glm(Negative ~ valence + energy + tension + anger + fear + happy + sad + tender, data = emote) |> anova() -->
+<!-- ```{r, echo = TRUE, comment = '', eval = TRUE} -->
+<!-- emote_valence <- emote |> filter(!grepl('MODERATE', TARGET))  -->
+<!-- emote_valence$POSITIVE <- emote_valence$TARGET %in% c("HAPPY_HIGH", "TENDER_HIGH", "VALENCE POS HIGH", "ENERGY POS HIGH", "TENSION POS HIGH" ) -->
+
 
 <!-- ``` -->
 
+<!-- ---- -->
 
-## Rethinking assumptions
+<!-- For our new *binary* DV, (linear) multiple regression doesn't make sense. -->
 
-So far, we've happily made the "normal assumption" that the residual our dependent variable is normally distributed, with a fixed variance.
-
-+ Both *ANOVA* and *Multiple Regression* assume this.
-+ Luckily, these tests are known to be "robust" to minor violations of these assumptions.
-+ However, we need to be vigilant!
-
----
-
-We might hypothesize that the emotion *fear* is caused by tension. 
-
-+ This could be modeled as another (multiple) linear regression.
-+ However...
+<!-- + Instead, we can use a (multiple) *Logistic Regression* model, which models binomial error. -->
+<!--   + In `R`, this can be fit using `glm(DV ~ IV + ..., family = binomial())`. -->
 
 
-----
+<!-- ```{r echo = TRUE, eval = FALSE, comment = ""} -->
+<!-- glm(POSITIVE ~ Anger  + Valence + Tension + Fear + Happy + Sad + Tender,  -->
+<!--     family = binomial(), -->
+<!--     data = emote_valence) |> anova(test = 'Chisq') -->
 
-The fear ratings are severely clustered at 1 (`r paste0(round(mean(emote$fear == 1)*100), '%')` of ratings).
+<!-- ``` -->
 
-```{r}
+<!-- ```{r} -->
+<!-- emote_valence <- emote |> filter(!grepl('MODERATE', TARGET))  -->
+<!-- emote_valence$POSITIVE <- emote_valence$TARGET %in% c("HAPPY_HIGH", "TENDER_HIGH", "VALENCE POS HIGH", "ENERGY POS HIGH", "TENSION POS HIGH" ) -->
 
-with(emote, draw(tension, fear, lm = T))
+<!-- glm(POSITIVE ~ Anger  + Valence + Tension + Fear + Happy + Sad + Tender,  -->
+<!--     family = binomial(), -->
+<!--     data = emote_valence) |> anova(test = 'Chisq') |> knitr::kable() -->
 
-```
+<!-- ``` -->
 
-+ As skeptics, we should question whether it makes sense to model these variables as a linear relationship.
-+ We might consider alternative ways of characterizing this relationship.
-
----
-
-A simple approach would be the recharacterize our fear variable as a binary variable: 1, or not 1.
-
-```{r}
-
-with(emote, draw(tension, fear, lm = T, col = ifelse(fear >1, 'red', 'black'), alpha=.6))
-
-```
-
-+ For our new *binary* DV, (linear) multiple regression doesn't make sense.
-+ Instead, we can use a (multiple) *Logistic Regression* model, which models binomial error.
-  + In `R`, this can be fit using `glm(DV ~ IV + ..., family = binomial())`.
-
-----
+<!-- + Logistic regression is tested using a $\chi^2$ test statistic. -->
 
 
-```{r, echo = TRUE, eval = FALSE, comment = ""}
-emote$AnyFear <- emote$fear > 1
+<!-- --- -->
 
-logFit <- glm(AnyFear ~ energy + tension + valence + anger +  happy + sad + tender, 
-              data = emote, family = binomial())
 
-anova(logFit, test = 'Chisq')
-```
+<!-- Logistic regression maps a latent linear regression into a probability. -->
 
-```{r}
-emote$AnyFear <- emote$fear > 1
+<!-- ```{r} -->
+<!-- par(bg = '#ffffff00') -->
+<!-- with(emote, plot(Valence, as.integer(POSITIVE), pch = 16, axes = FALSE, xlim=c(1,9), -->
+<!--                  col = ifelse(POSITIVE, 'blue', 'black'), xlab = 'Valence rating', ylab = "Valence of Target")) -->
+<!-- axis(1, seq(1, 9), tick = FALSE) -->
+<!-- axis(2, c(0, 1), c('Negative Target', 'Positive Target'), tick = FALSE, las = 1) -->
 
-logFit <- glm(AnyFear ~ energy + tension + valence + anger +  happy + sad + tender, 
-              data = emote, family = binomial())
+<!-- logFit <- glm(POSITIVE ~ Anger  + Valence + Tension + Fear + Happy + Sad + Tender,  -->
+<!--     family = binomial(), -->
+<!--     data = emote_valence) -->
 
-anova(logFit, test = 'Chisq') |> knitr::kable()
-```
+<!-- xs <- seq(1,9,.01) -->
+<!-- newdata <- with(emote, data.frame(Tension = xs, -->
+<!--                                   Fear = mean(Fear), -->
+<!--                                   Energy = mean(Energy), -->
+<!--                                   Valence = mean(Valence), -->
+<!--                                   Anger = mean(Anger), -->
+<!--                                   Happy = mean(Happy), -->
+<!--                                   Sad = mean(Sad), -->
+<!--                                   Tender = mean(Tender))) -->
 
-+ Logistic regression is tested using a $\chi^2$ test statistic.
-
----
-
-Logistic regression maps a latent linear regression into a probability.
-
-```{r}
-par(bg = '#ffffff00')
-with(emote, plot(tension, as.integer(AnyFear), pch = 16, axes = FALSE, xlim=c(1,9),
-                 col = ifelse(AnyFear, 'red', 'black'), xlab = 'Tension rating', ylab = "Fear or Not"))
-axis(1, seq(1, 9), tick = FALSE)
-axis(2, c(0, 1), c('Not fear', 'Fear'), tick = FALSE, las = 1)
-
-xs <- seq(1,9,.01)
-newdata <- with(emote, data.frame(tension = xs, 
-                                  energy = mean(energy),
-                                  valence = mean(valence),
-                                  anger = mean(anger),
-                                  happy = mean(happy),
-                                  sad = mean(sad),
-                                  tender = mean(tender)))
-                                  
-points(xs, predict(logFit, newdata=newdata, type = 'response'), type = 'l')
+<!-- points(xs, predict(logFit, newdata=newdata, type = 'response'), type = 'l') -->
 
 
 
 
-```
+<!-- ``` -->
 
 
 
 # Our Data
 
+For this tutorial, we gathered data from you, rating some of the same excerpts used in the Eerola dataset!
+
++ Let's see how our data, based on a much smaller sample size, compare to Eerola's.
+
+
+
+
 ```{r}
 emote_ours <- fread('emotion_data')
+emote_ours$Scale <- stringr::str_to_title(emote_ours$Scale)
 
+emote2 <- emote |> filter(Number %in% emote_ours$Excerpt) 
+emotions <- colnames(emote)[2:9]
 ```
 
+---
+
+### By excerpt
+
 ```{r}
-emotions <- colnames(emote2)[2:9]
 
 for (emotion in emotions) {
-  emote2 <- emote |> filter(number %in% emote_ours$Excerpt) 
 emote_ours$Excerpt <- as.integer(factor(emote_ours$Excerpt))
-emote2$Excerpt <- as.integer(factor(emote2$number))
+emote2$Excerpt <- as.integer(factor(emote2$Number))
 
 emote_ours |> filter(Scale == emotion) |> group_by(Excerpt) |> 
   summarize(MU = mean(Rating)) |>
@@ -729,6 +709,7 @@ emote2 |>
 }
 
 ```
+
 
 
 # NHST pitfalls

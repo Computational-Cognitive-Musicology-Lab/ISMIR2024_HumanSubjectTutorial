@@ -836,13 +836,13 @@ Nat Condit-Schultz
 <section id="emotion-data" class="slide level2">
 <h2>Emotion Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>emote <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">'../Eerola_emotion/mean_ratings_set1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>emote <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">'../Eerola_emotion/mean_ratings_set2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Eerola’s <strong>Music and emotion stimulus sets consisting of film soundtracks</strong>.</p>
 <ul>
 <li class="fragment">Stimuli with twelve target emotions.
 <ul>
-<li class="fragment">Happy, Sad, Tender, Fear, Anger, Surprise, High Valence, Low Valence, High Energy, Low Energy, High Tension, Low Tension.</li>
+<li class="fragment">Anger_high, Anger_moderate, Fear_high, Fear_moderate, Happy_high, Happy_moderate, Sad_high, Sad_moderate, Tender_high, Tender_moderate, Valence Pos High, Valence Pos Moderate, Valence Neg Moderate, Valence Neg High, Energy Pos High, Energy Pos Moderate, Energy Neg Moderate, Energy Neg High, Tension Pos High, Tension Pos Moderate, Tension Neg Moderate, Tension Neg High.</li>
 </ul></li>
 <li class="fragment">Eight rated emotional dimensions.
 <ul>
@@ -888,6 +888,17 @@ Nat Condit-Schultz
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -904,7 +915,7 @@ Nat Condit-Schultz
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Valence</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -915,8 +926,8 @@ Nat Condit-Schultz
 </tr>
 <tr class="even">
 <td style="text-align: left;">Energy</td>
-<td style="text-align: left;">-0.40</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.087</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -926,9 +937,9 @@ Nat Condit-Schultz
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Tension</td>
-<td style="text-align: left;">-0.91</td>
-<td style="text-align: left;">0.58</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.827</td>
+<td style="text-align: left;">0.577</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -937,10 +948,10 @@ Nat Condit-Schultz
 </tr>
 <tr class="even">
 <td style="text-align: left;">Anger</td>
-<td style="text-align: left;">-0.71</td>
-<td style="text-align: left;">0.48</td>
-<td style="text-align: left;">0.73</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.713</td>
+<td style="text-align: left;">0.476</td>
+<td style="text-align: left;">0.748</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -948,47 +959,47 @@ Nat Condit-Schultz
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Fear</td>
-<td style="text-align: left;">-0.86</td>
-<td style="text-align: left;">0.35</td>
-<td style="text-align: left;">0.83</td>
-<td style="text-align: left;">0.68</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.913</td>
+<td style="text-align: left;">0.286</td>
+<td style="text-align: left;">0.865</td>
+<td style="text-align: left;">0.692</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Happy</td>
-<td style="text-align: left;">0.56</td>
-<td style="text-align: left;">0.23</td>
-<td style="text-align: left;">-0.46</td>
-<td style="text-align: left;">-0.42</td>
-<td style="text-align: left;">-0.55</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">0.800</td>
+<td style="text-align: left;">0.435</td>
+<td style="text-align: left;">-0.418</td>
+<td style="text-align: left;">-0.417</td>
+<td style="text-align: left;">-0.608</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Sad</td>
-<td style="text-align: left;">0.32</td>
-<td style="text-align: left;">-0.69</td>
-<td style="text-align: left;">-0.41</td>
-<td style="text-align: left;">-0.41</td>
-<td style="text-align: left;">-0.38</td>
-<td style="text-align: left;">-0.36</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">-0.032</td>
+<td style="text-align: left;">-0.791</td>
+<td style="text-align: left;">-0.371</td>
+<td style="text-align: left;">-0.302</td>
+<td style="text-align: left;">-0.273</td>
+<td style="text-align: left;">-0.487</td>
+<td style="text-align: left;">1.000</td>
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Tender</td>
-<td style="text-align: left;">0.76</td>
-<td style="text-align: left;">-0.60</td>
-<td style="text-align: left;">-0.83</td>
-<td style="text-align: left;">-0.53</td>
-<td style="text-align: left;">-0.64</td>
-<td style="text-align: left;">0.25</td>
-<td style="text-align: left;">0.34</td>
-<td style="text-align: left;">1.00</td>
+<td style="text-align: left;">0.630</td>
+<td style="text-align: left;">-0.641</td>
+<td style="text-align: left;">-0.869</td>
+<td style="text-align: left;">-0.577</td>
+<td style="text-align: left;">-0.669</td>
+<td style="text-align: left;">0.158</td>
+<td style="text-align: left;">0.358</td>
+<td style="text-align: left;">1.000</td>
 </tr>
 </tbody>
 </table>
@@ -1047,7 +1058,7 @@ Nat Condit-Schultz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">lm</span>(energy <span class="sc">~</span> tension <span class="sc">+</span> valence <span class="sc">+</span> anger <span class="sc">+</span> fear <span class="sc">+</span> happy <span class="sc">+</span> sad <span class="sc">+</span> tender , <span class="at">data =</span> emote[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">lm</span>(Energy <span class="sc">~</span> Tension <span class="sc">+</span> Valence <span class="sc">+</span> Anger <span class="sc">+</span> Fear <span class="sc">+</span> Happy <span class="sc">+</span> Sad <span class="sc">+</span> Tender , <span class="at">data =</span> emote[ , <span class="dv">2</span><span class="sc">:</span><span class="dv">9</span>]) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1075,75 +1086,75 @@ Nat Condit-Schultz
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">0.89</td>
-<td style="text-align: right;">0.60</td>
-<td style="text-align: right;">1.47</td>
-<td style="text-align: right;">0.1431626</td>
-<td style="text-align: right;">-0.30</td>
-<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">-4.02</td>
+<td style="text-align: right;">1.29</td>
+<td style="text-align: right;">-3.10</td>
+<td style="text-align: right;">0.0024836</td>
+<td style="text-align: right;">-6.58</td>
+<td style="text-align: right;">-1.45</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">valence</td>
-<td style="text-align: right;">0.30</td>
-<td style="text-align: right;">0.07</td>
-<td style="text-align: right;">4.44</td>
-<td style="text-align: right;">0.0000121</td>
-<td style="text-align: right;">0.17</td>
-<td style="text-align: right;">0.44</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">tension</td>
-<td style="text-align: right;">0.61</td>
-<td style="text-align: right;">0.07</td>
-<td style="text-align: right;">8.52</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.47</td>
-<td style="text-align: right;">0.75</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">anger</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">5.09</td>
-<td style="text-align: right;">0.0000006</td>
-<td style="text-align: right;">0.10</td>
-<td style="text-align: right;">0.23</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">fear</td>
-<td style="text-align: right;">-0.16</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">-3.84</td>
-<td style="text-align: right;">0.0001477</td>
-<td style="text-align: right;">-0.24</td>
-<td style="text-align: right;">-0.08</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">happy</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">5.63</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.15</td>
+<td style="text-align: left;">Valence</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">0.0000532</td>
 <td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.85</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">sad</td>
-<td style="text-align: right;">-0.23</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">-6.19</td>
+<td style="text-align: left;">Tension</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">9.73</td>
 <td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">-0.30</td>
-<td style="text-align: right;">-0.16</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.98</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">tender</td>
+<td style="text-align: left;">Anger</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">8.26</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fear</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">0.4607458</td>
+<td style="text-align: right;">-0.11</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Happy</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">6.22</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sad</td>
+<td style="text-align: right;">-0.06</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">-0.86</td>
+<td style="text-align: right;">0.3929958</td>
 <td style="text-align: right;">-0.19</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">-5.19</td>
-<td style="text-align: right;">0.0000004</td>
-<td style="text-align: right;">-0.27</td>
-<td style="text-align: right;">-0.12</td>
+<td style="text-align: right;">0.07</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tender</td>
+<td style="text-align: right;">-0.06</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">-0.74</td>
+<td style="text-align: right;">0.4628048</td>
+<td style="text-align: right;">-0.20</td>
+<td style="text-align: right;">0.09</td>
 </tr>
 </tbody>
 </table>
@@ -1156,146 +1167,132 @@ Nat Condit-Schultz
 <!-- emote$Negative <- emote$TARGET == negative -->
 <!-- glm(Negative ~ valence + energy + tension + anger + fear + happy + sad + tender, data = emote) |> anova() -->
 <!-- ``` -->
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-17-1.png" width="800" class="r-stretch"></section>
-<section id="rethinking-assumptions" class="slide level2">
-<h2>Rethinking assumptions</h2>
-<p>So far, we’ve happily made the “normal assumption” that the residual our dependent variable is normally distributed, with a fixed variance.</p>
+<!-- ## Rethinking assumptions -->
+<!-- So far, we've happily made the "normal assumption" that the residual our dependent variable is normally distributed, with a fixed variance. -->
+<!-- + Both *ANOVA* and *Multiple Regression* assume this. -->
+<!-- + Luckily, these tests are known to be "robust" to minor violations of these assumptions. -->
+<!-- + However, we need to be vigilant! -->
+<!-- --- -->
+<!-- We might hypothesize that the emotion *fear* is caused by tension.  -->
+<!-- + This could be modeled as another (multiple) linear regression. -->
+<!-- + However... -->
+<!-- ---- -->
+<!-- The fear ratings are severely clustered at 1 (NaN% of ratings). -->
+<!-- ```{r} -->
+<!-- with(emote, draw(Tension, Fear, lm = T)) -->
+<!-- ``` -->
+<!-- + As skeptics, we should question whether it makes sense to model these variables as a linear relationship. -->
+<!-- + We might consider alternative ways of characterizing this relationship. -->
+<!-- --- -->
+<!-- A simple approach would be the recharacterize our fear variable as a binary variable: 1, or not 1. -->
+<!-- ```{r} -->
+<!-- with(emote, draw(Tension, Fear, lm = T, col = ifelse(Fear >1, 'red', 'black'), alpha=.6)) -->
+<!-- ``` -->
+<!-- + For our new *binary* DV, (linear) multiple regression doesn't make sense. -->
+<!-- + Instead, we can use a (multiple) *Logistic Regression* model, which models binomial error. -->
+<!--   + In `R`, this can be fit using `glm(DV ~ IV + ..., family = binomial())`. -->
+<!-- ---- -->
+<!-- ```{r, echo = TRUE, eval = FALSE, comment = ""} -->
+<!-- emote$AnyFear <- emote$fear > 1 -->
+<!-- logFit <- glm(AnyFear ~ energy + tension + valence + anger +  happy + sad + tender,  -->
+<!--               data = emote, family = binomial()) -->
+<!-- anova(logFit, test = 'Chisq') -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- emote$AnyFear <- emote$fear > 1 -->
+<!-- logFit <- glm(AnyFear ~ energy + tension + valence + anger +  happy + sad + tender,  -->
+<!--               data = emote, family = binomial()) -->
+<!-- anova(logFit, test = 'Chisq') |> knitr::kable() -->
+<!-- ``` -->
+<!-- + Logistic regression is tested using a $\chi^2$ test statistic. -->
+<!-- --- -->
+<!-- Logistic regression maps a latent linear regression into a probability. -->
+<!-- ```{r} -->
+<!-- par(bg = '#ffffff00') -->
+<!-- with(emote, plot(tension, as.integer(AnyFear), pch = 16, axes = FALSE, xlim=c(1,9), -->
+<!--                  col = ifelse(AnyFear, 'red', 'black'), xlab = 'Tension rating', ylab = "Fear or Not")) -->
+<!-- axis(1, seq(1, 9), tick = FALSE) -->
+<!-- axis(2, c(0, 1), c('Not fear', 'Fear'), tick = FALSE, las = 1) -->
+<!-- xs <- seq(1,9,.01) -->
+<!-- newdata <- with(emote, data.frame(tension = xs,  -->
+<!--                                   energy = mean(energy), -->
+<!--                                   valence = mean(valence), -->
+<!--                                   anger = mean(anger), -->
+<!--                                   happy = mean(happy), -->
+<!--                                   sad = mean(sad), -->
+<!--                                   tender = mean(tender))) -->
+<!-- points(xs, predict(logFit, newdata=newdata, type = 'response'), type = 'l') -->
+<!-- ``` -->
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-17-1.png" width="800" class="r-stretch"></section></section>
+<section>
+<section id="our-data" class="title-slide slide level1 center">
+<h1>Our Data</h1>
+<p>For this tutorial, we gathered data from you, rating some of the same excerpts used in the Eerola dataset!</p>
 <ul>
-<li class="fragment">Both <em>ANOVA</em> and <em>Multiple Regression</em> assume this.</li>
-<li class="fragment">Luckily, these tests are known to be “robust” to minor violations of these assumptions.</li>
-<li class="fragment">However, we need to be vigilant!</li>
+<li class="fragment">Let’s see how our data, based on a much smaller sample size, compare to Eerola’s.</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<p>We might hypothesize that the emotion <em>fear</em> is caused by tension.</p>
-<ul>
-<li class="fragment">This could be modeled as another (multiple) linear regression.</li>
-<li class="fragment">However…</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>The fear ratings are severely clustered at 1 (42% of ratings).</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment">As skeptics, we should question whether it makes sense to model these variables as a linear relationship.</li>
-<li class="fragment">We might consider alternative ways of characterizing this relationship.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>A simple approach would be the recharacterize our fear variable as a binary variable: 1, or not 1.</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment">For our new <em>binary</em> DV, (linear) multiple regression doesn’t make sense.</li>
-<li class="fragment">Instead, we can use a (multiple) <em>Logistic Regression</em> model, which models binomial error.
-<ul>
-<li class="fragment">In <code>R</code>, this can be fit using <code>glm(DV ~ IV + ..., family = binomial())</code>.</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>emote<span class="sc">$</span>AnyFear <span class="ot">&lt;-</span> emote<span class="sc">$</span>fear <span class="sc">&gt;</span> <span class="dv">1</span></span>
-<span id="cb6-2"><a href=""></a></span>
-<span id="cb6-3"><a href=""></a>logFit <span class="ot">&lt;-</span> <span class="fu">glm</span>(AnyFear <span class="sc">~</span> energy <span class="sc">+</span> tension <span class="sc">+</span> valence <span class="sc">+</span> anger <span class="sc">+</span>  happy <span class="sc">+</span> sad <span class="sc">+</span> tender, </span>
-<span id="cb6-4"><a href=""></a>              <span class="at">data =</span> emote, <span class="at">family =</span> <span class="fu">binomial</span>())</span>
-<span id="cb6-5"><a href=""></a></span>
-<span id="cb6-6"><a href=""></a><span class="fu">anova</span>(logFit, <span class="at">test =</span> <span class="st">'Chisq'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Df</th>
-<th style="text-align: right;">Deviance</th>
-<th style="text-align: right;">Resid. Df</th>
-<th style="text-align: right;">Resid. Dev</th>
-<th style="text-align: right;">Pr(&gt;Chi)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">NULL</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">359</td>
-<td style="text-align: right;">490.3194</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">energy</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">14.310687</td>
-<td style="text-align: right;">358</td>
-<td style="text-align: right;">476.0087</td>
-<td style="text-align: right;">0.0001550</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">tension</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">301.393667</td>
-<td style="text-align: right;">357</td>
-<td style="text-align: right;">174.6150</td>
-<td style="text-align: right;">0.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">valence</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">12.595368</td>
-<td style="text-align: right;">356</td>
-<td style="text-align: right;">162.0197</td>
-<td style="text-align: right;">0.0003867</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">anger</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">6.445941</td>
-<td style="text-align: right;">355</td>
-<td style="text-align: right;">155.5737</td>
-<td style="text-align: right;">0.0111206</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">happy</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4.845774</td>
-<td style="text-align: right;">354</td>
-<td style="text-align: right;">150.7279</td>
-<td style="text-align: right;">0.0277139</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">sad</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2.106670</td>
-<td style="text-align: right;">353</td>
-<td style="text-align: right;">148.6213</td>
-<td style="text-align: right;">0.1466582</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">tender</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">19.140974</td>
-<td style="text-align: right;">352</td>
-<td style="text-align: right;">129.4803</td>
-<td style="text-align: right;">0.0000121</td>
-</tr>
-</tbody>
-</table>
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</figure>
 </div>
 </div>
-<ul>
-<li class="fragment">Logistic regression is tested using a <span class="math inline">\(\chi^2\)</span> test statistic.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>Logistic regression maps a latent linear regression into a probability.</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section></section>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-3.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-4.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-5.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-6.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-7.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-8.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="nhst-pitfalls" class="title-slide slide level1 center">
 <h1>NHST pitfalls</h1>
@@ -1305,7 +1302,7 @@ Nat Condit-Schultz
 
 <p>In an ANOVA, the omnibus test is not really very interesting. We often want to ask questions about more specific differences between categories.</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="800" class="r-stretch"><p>For example, what if we want to know if the <em>best</em> algorithm is significantly better than the <em>rest</em> of the algorithms as a whole?</p>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-20-1.png" width="800" class="r-stretch"><p>For example, what if we want to know if the <em>best</em> algorithm is significantly better than the <em>rest</em> of the algorithms as a whole?</p>
 </section>
 <section class="slide level2">
 
@@ -1396,7 +1393,7 @@ Nat Condit-Schultz
 
 <p>We can simulate this; I sampled from the null hypothesis 1000 times, each time comparing the highest group to the rest and computing a <span class="math inline">\(p\)</span> value. The result is this:</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment"><span class="math inline">\(p &lt; .05\)</span> in more than 20% of simulations!</li>
 </ul>
 </section>
@@ -1424,8 +1421,8 @@ Nat Condit-Schultz
 <li class="fragment">However, as I’ve demonstrated above, there are other ways post-hoc decisions can invalidate <span class="math inline">\(p\)</span> values.</li>
 </ul>
 </section>
-<section id="multiple-comparisons." class="slide level2">
-<h2>Multiple comparisons.</h2>
+<section id="multiple-comparisons" class="slide level2">
+<h2>Multiple comparisons</h2>
 <p>A particularly well known problem is the problem of <em>multiple comparisons</em> (or “multiple tests”).</p>
 <ul>
 <li class="fragment">Anytime you conduct multiple NHSTs, the chance that <em>at least one</em> test will be significant is higher than <span class="math inline">\(\alpha\)</span>.
@@ -1438,7 +1435,7 @@ Nat Condit-Schultz
 
 <p>For ANOVA-like data, it is very common to conduct “pair-wise” <span class="math inline">\(t\)</span>-tests between every category, so we would know exactly which algorithms perform better than others.</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-26-1.png" width="800" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="800" class="r-stretch"><ul>
 <li class="fragment">In this case there would be 36 possible comparisons.</li>
 </ul>
 </section>
@@ -1446,7 +1443,7 @@ Nat Condit-Schultz
 
 <p>If we simulate this:</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-27-1.png" width="600" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-24-1.png" width="600" class="r-stretch"><ul>
 <li class="fragment">More than forty percent of our (Null Hypothesis) simulations have <em>at least one</em> significant tests.
 <ul>
 <li class="fragment">This is the “family-wise error rate”</li>
@@ -1502,7 +1499,7 @@ Nat Condit-Schultz
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-28-1.png" width="1000"></p>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="1000"></p>
 </figure>
 </div>
 </div>
@@ -1516,7 +1513,7 @@ Nat Condit-Schultz
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-29-1.png" width="1000"></p>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-26-1.png" width="1000"></p>
 </figure>
 </div>
 </div>
@@ -1618,13 +1615,13 @@ Nat Condit-Schultz
 <h3 id="best-practice">Best-practice</h3>
 <p>This brings us to the best-practice version of our omnibus ANOVA test:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">library</span>(lme4)</span>
-<span id="cb7-2"><a href=""></a><span class="fu">library</span>(lmerTest)</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a>mixedFit <span class="ot">&lt;-</span> <span class="fu">lmer</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">+</span> Type <span class="sc">+</span> (Algorithm <span class="sc">|</span> Listener) <span class="sc">+</span> (Algorithm <span class="sc">|</span> Target),</span>
-<span id="cb7-5"><a href=""></a>                 <span class="at">data =</span> SiSEC)</span>
-<span id="cb7-6"><a href=""></a></span>
-<span id="cb7-7"><a href=""></a><span class="fu">anova</span>(mixedFit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(lme4)</span>
+<span id="cb6-2"><a href=""></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a>mixedFit <span class="ot">&lt;-</span> <span class="fu">lmer</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">+</span> Type <span class="sc">+</span> (Algorithm <span class="sc">|</span> Listener) <span class="sc">+</span> (Algorithm <span class="sc">|</span> Target),</span>
+<span id="cb6-5"><a href=""></a>                 <span class="at">data =</span> SiSEC)</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="fu">anova</span>(mixedFit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1670,6 +1667,10 @@ Nat Condit-Schultz
 </ul></li>
 <li class="fragment">We’ve been good skeptics!</li>
 </ul>
+<!-- --- -->
+<!-- For our emotion data, we don't have participant information. -->
+<!-- However, we do have information about the (random) experimental stimuli. -->
+<!-- xxx -->
 </section>
 <section id="non-random-dependence" class="slide level2">
 <h2>Non-random dependence</h2>
@@ -1687,7 +1688,7 @@ Nat Condit-Schultz
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+<p><img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1704,7 +1705,7 @@ Nat Condit-Schultz
 
 <p>We an explicitly incorporate this autocorrelation into our model:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">lm</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">*</span> Type <span class="sc">+</span> Order, <span class="at">data =</span> SiSEC) <span class="sc">|&gt;</span> <span class="fu">anova</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">lm</span>(Ratingscore <span class="sc">~</span> Algorithm <span class="sc">*</span> Type <span class="sc">+</span> Order, <span class="at">data =</span> SiSEC) <span class="sc">|&gt;</span> <span class="fu">anova</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -1725,38 +1726,38 @@ Nat Condit-Schultz
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">178,961.85</td>
 <td style="text-align: right;">22,370.23</td>
-<td style="text-align: left;">99.71</td>
-<td style="text-align: left;">7.69e-137</td>
+<td style="text-align: left;">100.01</td>
+<td style="text-align: left;">3.42e-137</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Type</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">27,335.74</td>
 <td style="text-align: right;">27,335.74</td>
-<td style="text-align: left;">121.85</td>
-<td style="text-align: left;">1.96e-27</td>
+<td style="text-align: left;">122.21</td>
+<td style="text-align: left;">1.66e-27</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Order</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">48,784.01</td>
-<td style="text-align: right;">48,784.01</td>
-<td style="text-align: left;">217.45</td>
-<td style="text-align: left;">1.80e-46</td>
+<td style="text-align: right;">51,913.38</td>
+<td style="text-align: right;">51,913.38</td>
+<td style="text-align: left;">232.09</td>
+<td style="text-align: left;">2.68e-49</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Algorithm:Type</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">20,985.45</td>
-<td style="text-align: right;">2,623.18</td>
-<td style="text-align: left;">11.69</td>
-<td style="text-align: left;">2.56e-16</td>
+<td style="text-align: right;">19,018.48</td>
+<td style="text-align: right;">2,377.31</td>
+<td style="text-align: left;">10.63</td>
+<td style="text-align: left;">1.12e-14</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Residuals</td>
 <td style="text-align: right;">1,745</td>
-<td style="text-align: right;">391,484.39</td>
-<td style="text-align: right;">224.35</td>
+<td style="text-align: right;">390,321.99</td>
+<td style="text-align: right;">223.68</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
