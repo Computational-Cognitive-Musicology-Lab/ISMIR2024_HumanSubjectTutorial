@@ -693,6 +693,44 @@ points(xs, predict(logFit, newdata=newdata, type = 'response'), type = 'l')
 
 
 
+# Our Data
+
+```{r}
+emote_ours <- fread('emotion_data')
+
+```
+
+```{r}
+emotions <- colnames(emote2)[2:9]
+
+for (emotion in emotions) {
+  emote2 <- emote |> filter(number %in% emote_ours$Excerpt) 
+emote_ours$Excerpt <- as.integer(factor(emote_ours$Excerpt))
+emote2$Excerpt <- as.integer(factor(emote2$number))
+
+emote_ours |> filter(Scale == emotion) |> group_by(Excerpt) |> 
+  summarize(MU = mean(Rating)) |>
+  with({
+    plot(MU ~ Excerpt, axes = FALSE, ylim = c(1,9), type ='b',
+         xlab = 'Excerpt', ylab = emotion, pch = 16)
+    axis(1, Excerpt, tick = FALSE)
+    axis(2, 1:9, tick = FALSE, las = 1)
+     legend('topright', pch = c(16, 1), bty='n', col = c('black', 'blue'), legend = c('ISMIR2024', 'Eerola'))
+    
+    })
+  
+
+emote2 |>
+  with({ 
+    
+     points(Excerpt, emote2[[emotion]], ylim = c(1,9), type='b', col = 'blue')
+    })
+  
+}
+
+```
+
+
 # NHST pitfalls
 
 
@@ -1018,8 +1056,12 @@ anova(mlvfit, test = 'F') |> knitr::kable()
   + However, the $F$ statistic for this new model ($F \approx 10$) is much smaller than for the naive ANOVA we conducted earlier ($F \approx 90$), because this model more accurately reflects the true uncertainty in the data.
 + We've been good skeptics!
 
----
+<!-- --- -->
 
+<!-- For our emotion data, we don't have participant information. -->
+<!-- However, we do have information about the (random) experimental stimuli. -->
+
+<!-- xxx -->
 
 
 ## Non-random dependence
