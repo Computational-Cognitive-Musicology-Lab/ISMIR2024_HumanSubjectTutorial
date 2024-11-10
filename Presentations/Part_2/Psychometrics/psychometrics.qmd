@@ -86,7 +86,8 @@ $$
 \mathbf{P}[x_{ni} = x] = \frac{\mathrm{e}^{\sum_{k=0}^{x}(\theta_n - \delta_{ki})}}{\sum_{x'=0}^{X_i} \mathrm{e}^{\sum_{k=0}^{x'}(\theta_n - \delta_{ki})}} 
 $$
 
-Like the 1PL binary model, the partial credit model also has specific objectivity. When the distance between scale points is restricted to be the same for every item, we call this the **rating scale model**.
+Like the 1PL binary model, the partial credit model also has specific objectivity.
+When the distance between scale points is restricted to be the same for every item, we call this the **rating scale model**.
 
 ## Loading the Goldsmiths Data
 
@@ -122,30 +123,32 @@ wide_gold <-
   column_to_rownames("Person")
 gold_fit <-  mirt::mirt(wide_gold, itemtype = "Rasch")
 ```
----
+
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
 plot(gold_fit, type = "posteriorTheta")
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
 plot(gold_fit, type = "score")
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
 plot(gold_fit, type = "itemscore")
 ```
----
+
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
 plot(gold_fit, type = "trace")
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
 coef(gold_fit)
@@ -155,9 +158,9 @@ coef(gold_fit)
 
 ## It's All About (Co)-variance!
 
-- Principal component analysis seeks to explain the **variance and covariance** in a dataset with small number of components.
-- Factor analysis seeks to explain the **covariance only** in a dataset, also with a small number of components.
-- Conceptually, they are similar, but the causal model is different.
+-   Principal component analysis seeks to explain the **variance and covariance** in a dataset with small number of components.
+-   Factor analysis seeks to explain the **covariance only** in a dataset, also with a small number of components.
+-   Conceptually, they are similar, but the causal model is different.
 
 ## Principal Component Analysis
 
@@ -169,10 +172,10 @@ coef(gold_fit)
 
 ## EFA vs. CFA
 
-- There are two major approaches to factor analysis.
-  - **Exploratory factor analysis** (EFA)
-  - **Confirmatory factor aanlysis** (CFA)
-- The names are (very) misleading! Either approach can be used both for exploratory and for confirmatory research approaches.
+-   There are two major approaches to factor analysis.
+    -   **Exploratory factor analysis** (EFA)
+    -   **Confirmatory factor aanlysis** (CFA)
+-   The names are (very) misleading! Either approach can be used both for exploratory and for confirmatory research approaches.
 
 ## Fitting PCA
 
@@ -181,6 +184,7 @@ library(psych)
 gold_pca <- principal(wide_gold, 3)
 gold_pca
 ```
+
 ## Fitting EFA
 
 ```{r, echo = TRUE}
@@ -194,7 +198,7 @@ gold_fa
 fa.parallel(wide_gold)
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE, results = "hide"}
 VSS(wide_gold)
@@ -217,7 +221,7 @@ gold_cfa <-
   )
 ```
 
----
+------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
 summary(gold_cfa, header = FALSE)
@@ -231,7 +235,7 @@ qgraph::qgraph(qgraph::cor_auto(wide_gold), graph = "pcor", threshold = 0.99)
 
 ## Structural equation models
 
-- CFA models a subclass of **structural equation models** (SEMs)
-- SEMs allow researchers to define arbitrary relationships among variables: not just factors explaining indicators.
-- SEMs are flexible but complex!
-- The bibliography has some references for the interested.
+-   CFA models a subclass of **structural equation models** (SEMs)
+-   SEMs allow researchers to define arbitrary relationships among variables: not just factors explaining indicators.
+-   SEMs are flexible but complex!
+-   The bibliography has some references for the interested.
