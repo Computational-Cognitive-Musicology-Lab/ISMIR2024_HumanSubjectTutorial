@@ -676,7 +676,8 @@ Nat Condit-Schultz
 <section>
 <section id="examples" class="title-slide slide level1 center">
 <h1>Examples</h1>
-
+<p>https://posit.cloud/content/8798770</p>
+<p>(Need to make a free account.)</p>
 </section>
 <section id="quality-evaluation-data" class="slide level2">
 <h2>Quality Evaluation Data</h2>
@@ -1155,183 +1156,9 @@ Nat Condit-Schultz
 <!-- emote$Negative <- emote$TARGET == negative -->
 <!-- glm(Negative ~ valence + energy + tension + anger + fear + happy + sad + tender, data = emote) |> anova() -->
 <!-- ``` -->
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-17-1.png" width="800" class="r-stretch"></section></section>
-<section>
-<section id="nhst-pitfalls" class="title-slide slide level1 center">
-<h1>NHST pitfalls</h1>
-<p>Let’s explore some potential, known challenges with NHST.</p>
-</section>
-<section class="slide level2">
-
-<p>In an ANOVA, the omnibus test is not really very interesting. We often want to ask questions about more specific differences between categories.</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-18-1.png" width="800" class="r-stretch"><p>For example, what if we want to know if the <em>best</em> algorithm is significantly better than the <em>rest</em> of the algorithms as a whole?</p>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top">
-<colgroup>
-<col style="width: 29%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">conf.low</th>
-<th style="text-align: right;">conf.high</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">40.56</td>
-<td style="text-align: right;">0.71</td>
-<td style="text-align: right;">57.17</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">39.17</td>
-<td style="text-align: right;">41.95</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BestAlgoTRUE</td>
-<td style="text-align: right;">21.90</td>
-<td style="text-align: right;">2.13</td>
-<td style="text-align: right;">10.29</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">17.72</td>
-<td style="text-align: right;">26.07</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Typespeech</td>
-<td style="text-align: right;">-6.59</td>
-<td style="text-align: right;">0.94</td>
-<td style="text-align: right;">-7.02</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">-8.43</td>
-<td style="text-align: right;">-4.75</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">BestAlgoTRUE:Typespeech</td>
-<td style="text-align: right;">-12.27</td>
-<td style="text-align: right;">2.82</td>
-<td style="text-align: right;">-4.36</td>
-<td style="text-align: right;">0.0000138</td>
-<td style="text-align: right;">-17.79</td>
-<td style="text-align: right;">-6.75</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<ul>
-<li class="fragment">This is significant.</li>
-<li class="fragment">However, there is a problem…
-<ul>
-<li class="fragment">We did not identify this “best algorithm” <em>a priori</em>.</li>
-<li class="fragment">And the NHST is sensitive to this.</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>Imagine that the Null Hypothesis <em>were</em> true: all algorithms performed equally well.</p>
-<ul>
-<li class="fragment">Every time we sample responses, one algorithm would always perform “best” in the sample, just by chance.
-<ul>
-<li class="fragment">By picking this one out, we are (by definition) biasing the result.</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>We can simulate this; I sampled from the null hypothesis 1000 times, each time comparing the highest group to the rest and computing a <span class="math inline">\(p\)</span> value. The result is this:</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"><ul>
-<li class="fragment"><span class="math inline">\(p &lt; .05\)</span> in more than 20% of simulations!</li>
-</ul>
-<h3 id="procedure-sensitivity">Procedure sensitivity</h3>
-<p>In general, NHST is sensitive to the exact procedure you use.</p>
-<ul>
-<li class="fragment">Any procedural decisions that are made <em>post-hoc</em> can affect the validity of results.</li>
-<li class="fragment">I.e., <em>if you use your data to to make decisions about the stats/tests</em>, your <span class="math inline">\(p\)</span>-values won’t be accurate.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>The two most common issues are:</p>
-<ul>
-<li class="fragment">Post-hoc <strong>stopping condition</strong>
-<ul>
-<li class="fragment">If you decide when to stop collecting data based on the data.</li>
-</ul></li>
-<li class="fragment">Post-hoc <strong>comparisons</strong>
-<ul>
-<li class="fragment">When you decide which comparisons to make/test.</li>
-</ul></li>
-<li class="fragment">However, as I’ve demonstrated above, there are other ways post-hoc decisions can invalidate <span class="math inline">\(p\)</span> values.</li>
-</ul>
-</section>
-<section id="multiple-comparisons." class="slide level2">
-<h2>Multiple comparisons.</h2>
-<p>A particularly well known problem is the problem of <em>multiple comparisons</em> (or “multiple tests”).</p>
-<ul>
-<li class="fragment">Anytime you conduct multiple NHSTs, the chance that <em>at least one</em> test will be significant is higher than <span class="math inline">\(\alpha\)</span>.
-<ul>
-<li class="fragment">This called the <em>family-wise error rate</em>: i.e., the rate of “at least one” Type 1 error in a group.</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>For ANOVA-like data, it is very common to conduct “pair-wise” <span class="math inline">\(t\)</span>-tests between every category, so we would know exactly which algorithms perform better than others.</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-21-1.png" width="800" class="r-stretch"><ul>
-<li class="fragment">In this case there would be 36 possible comparisons.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>If we simulate this:</p>
-
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="600" class="r-stretch"><ul>
-<li class="fragment">More than forty percent of our (Null Hypothesis) simulations have <em>at least one</em> significant tests.
-<ul>
-<li class="fragment">This is the “family-wise error rate”</li>
-</ul></li>
-<li class="fragment">This, if we conducted 36 significance tests and consider <em>one</em> significant result to be the basis to reject the Null Hypothesis, we would make a Type 1 error more than 40% of the time!</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="correcting-for-multiple-comparisons">Correcting for Multiple Comparisons</h3>
-<p>We can “correct” for multiple tests by adjusting our <span class="math inline">\(p\)</span>-values (or <span class="math inline">\(\alpha\)</span> level) accordingly.</p>
-<ul>
-<li class="fragment">The naive <em>Bonferroni correction</em> is simply to use <span class="math inline">\(\frac{\alpha}{T}\)</span>, where <span class="math inline">\(T\)</span> is the number of tests.
-<ul>
-<li class="fragment">This highly conservative (overly cautious), because our tests are not statistically independent from each other.</li>
-<li class="fragment">There are many other approaches, such as Tukey’s Method.</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p>The main lesson is that, whenever you conduct multiple NHST tests, you need to take them with an extra skeptical grain of salt.</p>
-<ul>
-<li class="fragment">If you conduct many tests (like hundreds or thousands), some of those will have <span class="math inline">\(p &lt; .05\)</span>.</li>
-</ul>
-</section>
-<section id="assumptions" class="slide level2">
-<h2>Assumptions</h2>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-17-1.png" width="800" class="r-stretch"></section>
+<section id="rethinking-assumptions" class="slide level2">
+<h2>Rethinking assumptions</h2>
 <p>So far, we’ve happily made the “normal assumption” that the residual our dependent variable is normally distributed, with a fixed variance.</p>
 <ul>
 <li class="fragment">Both <em>ANOVA</em> and <em>Multiple Regression</em> assume this.</li>
@@ -1349,9 +1176,9 @@ Nat Condit-Schultz
 </section>
 <section class="slide level2">
 
-<p>The fear ratings are severely clustered at 1 (%42 of ratings).</p>
+<p>The fear ratings are severely clustered at 1 (42% of ratings).</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">As skeptics, we should question whether it makes sense to model these variables as a linear relationship.</li>
 <li class="fragment">We might consider alternative ways of characterizing this relationship.</li>
 </ul>
@@ -1360,7 +1187,7 @@ Nat Condit-Schultz
 
 <p>A simple approach would be the recharacterize our fear variable as a binary variable: 1, or not 1.</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"><ul>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">For our new <em>binary</em> DV, (linear) multiple regression doesn’t make sense.</li>
 <li class="fragment">Instead, we can use a (multiple) <em>Logistic Regression</em> model, which models binomial error.
 <ul>
@@ -1460,11 +1287,192 @@ Nat Condit-Schultz
 </table>
 </div>
 </div>
+<ul>
+<li class="fragment">Logistic regression is tested using a <span class="math inline">\(\chi^2\)</span> test statistic.</li>
+</ul>
 </section>
 <section class="slide level2">
 
+<p>Logistic regression maps a latent linear regression into a probability.</p>
 
-<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="nhst-pitfalls" class="title-slide slide level1 center">
+<h1>NHST pitfalls</h1>
+<p>Let’s explore some potential, known challenges with NHST.</p>
+</section>
+<section class="slide level2">
+
+<p>In an ANOVA, the omnibus test is not really very interesting. We often want to ask questions about more specific differences between categories.</p>
+
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-23-1.png" width="800" class="r-stretch"><p>For example, what if we want to know if the <em>best</em> algorithm is significantly better than the <em>rest</em> of the algorithms as a whole?</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">40.56</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">57.17</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">39.17</td>
+<td style="text-align: right;">41.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BestAlgoTRUE</td>
+<td style="text-align: right;">21.90</td>
+<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">10.29</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">17.72</td>
+<td style="text-align: right;">26.07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Typespeech</td>
+<td style="text-align: right;">-6.59</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">-7.02</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">-8.43</td>
+<td style="text-align: right;">-4.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BestAlgoTRUE:Typespeech</td>
+<td style="text-align: right;">-12.27</td>
+<td style="text-align: right;">2.82</td>
+<td style="text-align: right;">-4.36</td>
+<td style="text-align: right;">0.0000138</td>
+<td style="text-align: right;">-17.79</td>
+<td style="text-align: right;">-6.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li class="fragment">This is significant.</li>
+<li class="fragment">However, there is a problem…
+<ul>
+<li class="fragment">We did not identify this “best algorithm” <em>a priori</em>.</li>
+<li class="fragment">And the NHST is sensitive to this.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Imagine that the Null Hypothesis <em>were</em> true: all algorithms performed equally well.</p>
+<ul>
+<li class="fragment">Every time we sample responses, one algorithm would always perform “best” in the sample, just by chance.
+<ul>
+<li class="fragment">By picking this one out, we are (by definition) biasing the result.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>We can simulate this; I sampled from the null hypothesis 1000 times, each time comparing the highest group to the rest and computing a <span class="math inline">\(p\)</span> value. The result is this:</p>
+
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"><ul>
+<li class="fragment"><span class="math inline">\(p &lt; .05\)</span> in more than 20% of simulations!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="procedural-sensitivity">Procedural sensitivity</h3>
+<p>In general, NHST is sensitive to the exact procedure you use.</p>
+<ul>
+<li class="fragment">Any procedural decisions that are made <em>post-hoc</em> can affect the validity of results.</li>
+<li class="fragment">I.e., <em>if you use your data to to make decisions about the stats/tests</em>, your <span class="math inline">\(p\)</span>-values won’t be accurate.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>The two most common issues are:</p>
+<ul>
+<li class="fragment">Post-hoc <strong>stopping condition</strong>
+<ul>
+<li class="fragment">If you decide when to stop collecting data based on the data.</li>
+</ul></li>
+<li class="fragment">Post-hoc <strong>comparisons</strong>
+<ul>
+<li class="fragment">When you decide which comparisons to make/test.</li>
+</ul></li>
+<li class="fragment">However, as I’ve demonstrated above, there are other ways post-hoc decisions can invalidate <span class="math inline">\(p\)</span> values.</li>
+</ul>
+</section>
+<section id="multiple-comparisons." class="slide level2">
+<h2>Multiple comparisons.</h2>
+<p>A particularly well known problem is the problem of <em>multiple comparisons</em> (or “multiple tests”).</p>
+<ul>
+<li class="fragment">Anytime you conduct multiple NHSTs, the chance that <em>at least one</em> test will be significant is higher than <span class="math inline">\(\alpha\)</span>.
+<ul>
+<li class="fragment">This called the <em>family-wise error rate</em>: i.e., the rate of “at least one” Type 1 error in a group.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>For ANOVA-like data, it is very common to conduct “pair-wise” <span class="math inline">\(t\)</span>-tests between every category, so we would know exactly which algorithms perform better than others.</p>
+
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-26-1.png" width="800" class="r-stretch"><ul>
+<li class="fragment">In this case there would be 36 possible comparisons.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>If we simulate this:</p>
+
+<img data-src="NHST_presentation_files/figure-revealjs/unnamed-chunk-27-1.png" width="600" class="r-stretch"><ul>
+<li class="fragment">More than forty percent of our (Null Hypothesis) simulations have <em>at least one</em> significant tests.
+<ul>
+<li class="fragment">This is the “family-wise error rate”</li>
+</ul></li>
+<li class="fragment">This, if we conducted 36 significance tests and consider <em>one</em> significant result to be the basis to reject the Null Hypothesis, we would make a Type 1 error more than 40% of the time!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="correcting-for-multiple-comparisons">Correcting for Multiple Comparisons</h3>
+<p>We can “correct” for multiple tests by adjusting our <span class="math inline">\(p\)</span>-values (or <span class="math inline">\(\alpha\)</span> level) accordingly.</p>
+<ul>
+<li class="fragment">The naive <em>Bonferroni correction</em> is simply to use <span class="math inline">\(\frac{\alpha}{T}\)</span>, where <span class="math inline">\(T\)</span> is the number of tests.
+<ul>
+<li class="fragment">This highly conservative (overly cautious), because our tests are not statistically independent from each other.</li>
+<li class="fragment">There are many other approaches, such as Tukey’s Method.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>The main lesson is that, whenever you conduct multiple NHST tests, you need to take them with an extra skeptical grain of salt.</p>
+<ul>
+<li class="fragment">If you conduct many tests (like hundreds or thousands), some of those will have <span class="math inline">\(p &lt; .05\)</span>.</li>
+</ul>
+</section></section>
 <section>
 <section id="data-independence" class="title-slide slide level1 center">
 <h1>Data Independence</h1>
@@ -1687,7 +1695,7 @@ Nat Condit-Schultz
 <ul>
 <li class="fragment">Participants’ ratings tended to get higher over time!<sup>1</sup>
 <ul>
-<li class="fragment">The data is autocorrelated, with <span class="math inline">\(r =\)</span> 0.23 at lag 1.</li>
+<li class="fragment">The data is autocorrelated, with <span class="math inline">\(r =\)</span> 0.21 at lag 1.</li>
 </ul></li>
 <li class="fragment">As before, it means each data point contains less unique information, because each can be predicted from past ratings.</li>
 </ul>
@@ -1717,38 +1725,38 @@ Nat Condit-Schultz
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">178,961.85</td>
 <td style="text-align: right;">22,370.23</td>
-<td style="text-align: left;">99.34</td>
-<td style="text-align: left;">2.12e-136</td>
+<td style="text-align: left;">99.71</td>
+<td style="text-align: left;">7.69e-137</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Type</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">27,335.74</td>
 <td style="text-align: right;">27,335.74</td>
-<td style="text-align: left;">121.39</td>
-<td style="text-align: left;">2.44e-27</td>
+<td style="text-align: left;">121.85</td>
+<td style="text-align: left;">1.96e-27</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Order</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">51,493.27</td>
-<td style="text-align: right;">51,493.27</td>
-<td style="text-align: left;">228.67</td>
-<td style="text-align: left;">1.22e-48</td>
+<td style="text-align: right;">48,784.01</td>
+<td style="text-align: right;">48,784.01</td>
+<td style="text-align: left;">217.45</td>
+<td style="text-align: left;">1.80e-46</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Algorithm:Type</td>
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">16,809.43</td>
-<td style="text-align: right;">2,101.18</td>
-<td style="text-align: left;">9.33</td>
-<td style="text-align: left;">1.12e-12</td>
+<td style="text-align: right;">20,985.45</td>
+<td style="text-align: right;">2,623.18</td>
+<td style="text-align: left;">11.69</td>
+<td style="text-align: left;">2.56e-16</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Residuals</td>
 <td style="text-align: right;">1,745</td>
-<td style="text-align: right;">392,951.15</td>
-<td style="text-align: right;">225.19</td>
+<td style="text-align: right;">391,484.39</td>
+<td style="text-align: right;">224.35</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>

@@ -228,6 +228,9 @@ Additional variables, can be added:
 
 # Examples
 
+https://posit.cloud/content/8798770
+
+(Need to make a free account.)
 
 ## Quality Evaluation Data
 
@@ -613,7 +616,7 @@ We might hypothesize that the emotion *fear* is caused by tension.
 
 ----
 
-The fear ratings are severely clustered at 1 (`r paste0('%', round(mean(emote$fear == 1)*100))` of ratings).
+The fear ratings are severely clustered at 1 (`r paste0(round(mean(emote$fear == 1)*100), '%')` of ratings).
 
 ```{r}
 
@@ -780,7 +783,9 @@ text(Type1errorRate, .1, bquote("" %<-% .(paste0(Type1errorRate * 100, '%'))), c
 + $p < .05$ in more than 20% of simulations! 
 
 
-### Procedure sensitivity
+---
+
+### Procedural sensitivity
 
 In general, NHST is sensitive to the exact procedure you use.
 
@@ -798,7 +803,7 @@ The two most common issues are:
 + However, as I've demonstrated above, there are other ways post-hoc decisions can invalidate $p$ values.
 
 
-## Multiple comparisons.
+## Multiple comparisons
 
 
 
