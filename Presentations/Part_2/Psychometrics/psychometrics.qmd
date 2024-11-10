@@ -210,9 +210,9 @@ VSS(wide_gold)
 library(lavaan)
 gold_cfa <- 
   cfa(
-    model = "f1 =~ Gold_1_1 + Gold_1_2 + Gold_1_3
+    model = "f1 =~ practice_1 + peak_practice_1 + instruments_1 
+                   + Gold_1_1 + Gold_1_2 + Gold_1_3
                    + Gold_1_4 + Gold_1_5 + Gold_1_6
-                   + Gold_1_7 + Gold_1_8 + Gold_1_9
                    + Gold_1_7 + Gold_1_8 + Gold_1_9
                    + Gold_1_10 + Gold_1_11 + Gold_1_12
                    + Gold_1_13 + Gold_1_14 + Gold_1_15",
@@ -225,6 +225,13 @@ gold_cfa <-
 
 ```{r, echo = TRUE}
 summary(gold_cfa, header = FALSE)
+```
+
+---
+
+```{r, echo = TRUE}
+library(semPlot)
+semPaths(gold_cfa, what = "par")
 ```
 
 ## Network Models
