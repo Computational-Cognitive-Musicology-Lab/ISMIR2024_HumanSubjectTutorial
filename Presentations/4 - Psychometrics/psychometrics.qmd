@@ -1,0 +1,237 @@
+---
+title: "A Quick Introduction to Item Response Theory and Factor Analysis"
+author: "John Ashley Burgoyne"
+format:
+  revealjs:
+    theme: serif
+    slide-number: c/t
+    show-slide-number: all
+    transition: slide
+    scrollable: true
+    footer: "ISMIR 2024: Humans at the Center of MIR --- Psychometrics"
+    navigation-mode: vertical
+    width: 1200
+editor: visual
+---
+
+# Item Response Theory (IRT)
+
+## Item Response Theory
+
+-   Item response theory (IRT) arose in psychometrics as an alternative to classical test theory (CTT)
+-   The primary advantage of IRT models over CTT models is that IRT models allow difficulties to be estimated at the item (question) level as opposed to the test level.
+-   IRT models are useful for much more than tests: they can be appropriate almost anywhere people are responding to distinct stimuli.
+
+## One-Parameter (Rasch) Model (1PL)
+
+The simplest IRT model is the Rasch model, which estimates the probability of person $n$ giving a correct response to item $i$ based on a person ability parameter $\theta_n$ and an item difficulty parameter $\delta_n$.
+
+$$
+\mathbf{P}[x_{ni} = 1] = \frac{\mathrm{e}^{(\theta_n - \delta_i)}}{1 + \mathrm{e}^{(\theta_n - \delta_i)}} 
+$$
+
+This model can be fit as a logistic regression with one term for the participant and one term for the item.
+It is the only model for binary responses that has **specific objectivity**.
+
+## Specific Objectivity
+
+There exists a comparison function $U : (0, 1) \times (0, 1) \mapsto \mathbb{R}$ such that:
+
+-   $U(x, y)$ is strictly increasing in $x$ for all $y$ and strictly decreasing in $y$ for all $x$;
+
+-   for any two subjects $m$ and $n$, $U\left(f(\theta_m, \delta_i), f(\theta_n, \delta_i)\right)$ is the same for all stimuli $i$;
+
+-   for any two stimuli $i$ and $j$, $U\left(f(\theta_n, \delta_i), f(\theta_n, \delta_j)\right)$ is the same for all participants $n$; and
+
+-   $U$ is a function of conditional or unconditional response likelihoods over the response space.
+
+## Two-Parameter Model (2PL)
+
+The so-called two-parameter model adds a **discrimination parameter** $\alpha_i$ to each item, which reflects how sharply an item discriminates between high-ability and low-ability participants.
+They represent an ideal score to assign to each item on a test for maximum reliability.
+
+$$
+\mathbf{P}[x_{ni} = 1] = \frac{\mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}{1 + \mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}
+$$The 2PL is probably the most commonly used IRT model.
+It is easy to code yourself and there are many software packages for it.
+
+## Discrimination
+
+![](2PL.png){fig-align="center"}
+
+## Three-Parameter Model (3PL)
+
+The three-parameter model adds a **guessing parameter** $\gamma \in [0, 1]$ in situations where even participants with infinitely low ability might be expected to guess correctly.
+This parameter can be fixed across an entire test or experiment (e.g., in the case of multiple-choice items) or can be estimated individually per item.
+
+$$
+\mathbf{P}[x_{ni} = 1] = \gamma_i + (1 - \gamma_i) \frac{\mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}{1 + \mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}
+$$
+
+Although the 3PL is also widely used, the guessing parameter often causes as many problems as it solves.
+
+## Four-Parameter Model (4PL)
+
+The four-parameter model is less common but is useful in situations where even participants with infinitely high ability might be expected to make mistakes.
+It adds a ceiling parameter $\zeta \in [0, 1]$ on the maximum possible probability.
+
+$$\mathbf{P}[x_{ni} = 1] = \gamma_i + (\zeta_i - \gamma_i) \frac{\mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}{1 + \mathrm{e}^{\alpha_i(\theta_n - \delta_i)}}$$
+
+## Partial Credit Model
+
+The partial credit model handles situations where we have rating scales, like the Goldsmiths Music Sophistication Index.
+In essence, it is fitting separate logistic regressions between every pair of **adjacent** categories on the rating scale.
+
+$$
+\mathbf{P}[x_{ni} = x] = \frac{\mathrm{e}^{\sum_{k=0}^{x}(\theta_n - \delta_{ki})}}{\sum_{x'=0}^{X_i} \mathrm{e}^{\sum_{k=0}^{x'}(\theta_n - \delta_{ki})}} 
+$$
+
+Like the 1PL binary model, the partial credit model also has specific objectivity. When the distance between scale points is restricted to be the same for every item, we call this the **rating scale model**.
+
+## Loading the Goldsmiths Data
+
+```{r, echo = TRUE}
+library(tidyverse)
+library(readr)
+gold <- 
+  read_delim(
+    "gold.tsv", 
+    delim = "\t", escape_double = FALSE, 
+    trim_ws = TRUE) |> 
+  # Set baseline to zero
+  mutate(Rating = Rating - 1) |> 
+  # Reverse negative items
+  mutate(
+    Rating = 
+      if_else(
+        Item 
+          %in% c("Gold_1_7", "Gold_1_9", "Gold_1_11", "Gold_1_13", "Gold_1_14"),
+        6 - Rating,
+        Rating
+      )
+  )
+```
+
+## Fitting IRT Models
+
+```{r, echo = TRUE, results = "hide"}
+library(mirt)
+wide_gold <-
+  gold |> 
+  pivot_wider(names_from = "Item", values_from = "Rating") |> 
+  column_to_rownames("Person")
+gold_fit <-  mirt::mirt(wide_gold, itemtype = "Rasch")
+```
+---
+
+```{r, echo = TRUE}
+plot(gold_fit, type = "posteriorTheta")
+```
+
+---
+
+```{r, echo = TRUE}
+plot(gold_fit, type = "score")
+```
+
+---
+
+```{r, echo = TRUE}
+plot(gold_fit, type = "itemscore")
+```
+---
+
+```{r, echo = TRUE}
+plot(gold_fit, type = "trace")
+```
+
+---
+
+```{r, echo = TRUE}
+coef(gold_fit)
+```
+
+# Factor Analysis
+
+## It's All About (Co)-variance!
+
+- Principal component analysis seeks to explain the **variance and covariance** in a dataset with small number of components.
+- Factor analysis seeks to explain the **covariance only** in a dataset, also with a small number of components.
+- Conceptually, they are similar, but the causal model is different.
+
+## Principal Component Analysis
+
+![](PCA.jpg)
+
+## Factor Analysis
+
+![](FA.jpg)
+
+## EFA vs. CFA
+
+- There are two major approaches to factor analysis.
+  - **Exploratory factor analysis** (EFA)
+  - **Confirmatory factor aanlysis** (CFA)
+- The names are (very) misleading! Either approach can be used both for exploratory and for confirmatory research approaches.
+
+## Fitting PCA
+
+```{r, echo = TRUE}
+library(psych)
+gold_pca <- principal(wide_gold, 3)
+gold_pca
+```
+## Fitting EFA
+
+```{r, echo = TRUE}
+gold_fa <- fa(wide_gold, 3)
+gold_fa
+```
+
+## How Many Factors?
+
+```{r, echo = TRUE}
+fa.parallel(wide_gold)
+```
+
+---
+
+```{r, echo = TRUE, results = "hide"}
+VSS(wide_gold)
+```
+
+## Fitting CFA
+
+```{r, echo = TRUE}
+library(lavaan)
+gold_cfa <- 
+  cfa(
+    model = "f1 =~ Gold_1_1 + Gold_1_2 + Gold_1_3
+                   + Gold_1_4 + Gold_1_5 + Gold_1_6
+                   + Gold_1_7 + Gold_1_8 + Gold_1_9
+                   + Gold_1_7 + Gold_1_8 + Gold_1_9
+                   + Gold_1_10 + Gold_1_11 + Gold_1_12
+                   + Gold_1_13 + Gold_1_14 + Gold_1_15",
+    data = wide_gold,
+    std.lv = TRUE
+  )
+```
+
+---
+
+```{r, echo = TRUE}
+summary(gold_cfa, header = FALSE)
+```
+
+## Network Models
+
+```{r}
+qgraph::qgraph(qgraph::cor_auto(wide_gold), graph = "pcor", threshold = 0.99)
+```
+
+## Structural equation models
+
+- CFA models a subclass of **structural equation models** (SEMs)
+- SEMs allow researchers to define arbitrary relationships among variables: not just factors explaining indicators.
+- SEMs are flexible but complex!
+- The bibliography has some references for the interested.
